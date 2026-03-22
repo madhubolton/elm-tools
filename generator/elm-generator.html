@@ -1135,7 +1135,7 @@ ${notes || 'No notes provided — use your knowledge of this subject and apply t
 Produce the complete HTML document now. Output ONLY the HTML — nothing else.`;
 
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
+    const response = await fetch('https://elm-proxy.madhubolton.workers.dev', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
