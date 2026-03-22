@@ -12,9 +12,9 @@
   --surface-2: #1C1F25;
   --border: #252830;
   --border-mid: #2E3340;
-  --text: #C8CDD8;
-  --text-muted: #5A6070;
-  --text-dim: #3A4050;
+  --text: #E8ECF4;
+  --text-muted: #9AA3B8;
+  --text-dim: #5A6070;
   --accent: #B8976A;
   --accent-light: #D8B88A;
   --accent-dim: #6A5030;
@@ -373,7 +373,7 @@ select option { background: #1C1F25; }
   font-family: 'Source Code Pro', monospace;
   font-size: 11.5px;
   line-height: 1.65;
-  color: #7A8898;
+  color: #A8B8C8;
   white-space: pre-wrap;
   word-break: break-all;
 }
@@ -573,55 +573,10 @@ select option { background: #1C1F25; }
       </div>
     </div>
 
-    <!-- Components -->
+    <!-- Structure note -->
     <div class="panel-section">
-      <div class="panel-label">Components</div>
-      <div class="component-toggles" id="componentToggles">
-        <div class="toggle-row" onclick="toggleComponent('statRow')">
-          <span class="toggle-label">Stat Row <span class="toggle-tier tier-optional">Optional</span></span>
-          <div class="toggle-switch" id="toggle-statRow"></div>
-        </div>
-        <div class="toggle-row" onclick="toggleComponent('actorCards')">
-          <span class="toggle-label">Actor Cards <span class="toggle-tier tier-core">Core</span></span>
-          <div class="toggle-switch on" id="toggle-actorCards"></div>
-        </div>
-        <div class="toggle-row" onclick="toggleComponent('verbalMarkers')">
-          <span class="toggle-label">Verbal Markers <span class="toggle-tier tier-core">Core</span></span>
-          <div class="toggle-switch on" id="toggle-verbalMarkers"></div>
-        </div>
-        <div class="toggle-row" onclick="toggleComponent('dynamicsTable')">
-          <span class="toggle-label">Dynamics Table <span class="toggle-tier tier-core">Core</span></span>
-          <div class="toggle-switch on" id="toggle-dynamicsTable"></div>
-        </div>
-        <div class="toggle-row" onclick="toggleComponent('inversionBox')">
-          <span class="toggle-label">Inversion Box <span class="toggle-tier tier-core">Core</span></span>
-          <div class="toggle-switch on" id="toggle-inversionBox"></div>
-        </div>
-        <div class="toggle-row" onclick="toggleComponent('causalChain')">
-          <span class="toggle-label">Causal Chain <span class="toggle-tier tier-optional">Optional</span></span>
-          <div class="toggle-switch" id="toggle-causalChain"></div>
-        </div>
-        <div class="toggle-row" onclick="toggleComponent('ralgSection')">
-          <span class="toggle-label">RALG Section <span class="toggle-tier tier-optional">Optional</span></span>
-          <div class="toggle-switch" id="toggle-ralgSection"></div>
-        </div>
-        <div class="toggle-row" onclick="toggleComponent('worldsGrid')">
-          <span class="toggle-label">Worlds Grid <span class="toggle-tier tier-optional">Optional</span></span>
-          <div class="toggle-switch" id="toggle-worldsGrid"></div>
-        </div>
-        <div class="toggle-row" onclick="toggleComponent('convergenceBox')">
-          <span class="toggle-label">Convergence Box <span class="toggle-tier tier-optional">Optional</span></span>
-          <div class="toggle-switch" id="toggle-convergenceBox"></div>
-        </div>
-        <div class="toggle-row" onclick="toggleComponent('findingBox')">
-          <span class="toggle-label">Finding Box <span class="toggle-tier tier-optional">Optional</span></span>
-          <div class="toggle-switch" id="toggle-findingBox"></div>
-        </div>
-        <div class="toggle-row" onclick="toggleComponent('eschaGrid')">
-          <span class="toggle-label">Eschatology Cards <span class="toggle-tier tier-optional">Optional</span></span>
-          <div class="toggle-switch" id="toggle-eschaGrid"></div>
-        </div>
-      </div>
+      <div class="panel-label">Structure</div>
+      <p style="font-size:13px;color:var(--text-muted);line-height:1.7;">The model selects components based on your analysis notes — Worlds Grid for pluriverse analyses, RALG when resolution is the focus, Causal Chain when load propagates across systems, and so on. The more analytical detail you provide, the more precisely the structure will fit.</p>
     </div>
 
     <!-- Generate -->
@@ -772,7 +727,6 @@ function clearProgress() {
 // =====================
 function buildSystemPrompt() {
   const pal = palettes[selectedPalette];
-  const activeComponents = Object.entries(components).filter(([,v])=>v).map(([k])=>k);
 
   return `You are the ELM Analysis Generator for Awakening Heart. You produce complete, self-contained HTML analysis documents using the ELM (Existential Load Model) framework developed by Madhu Bolton.
 
@@ -820,28 +774,34 @@ Always import exactly this Google Fonts link:
 - Cinzel: section labels, supertitles, room tags, actor names, source pubs. Letter-spacing 2–5px. Size 7.5–11px.
 - Source Sans 3: body copy. Weight 300. Size 12.5–14px.
 
-## PAGE STRUCTURE (in order)
+## PAGE STRUCTURE
 
-1. Series banner [if series applies]
+Always include (in this order):
+1. Series banner (if series applies)
 2. Masthead (supertitle + h1 + subtitle + accent-rule)
 3. Premise block
 4. Method note
-${components.statRow ? '5. Stat row (4 data cells)' : ''}
 5. Four Rooms map (2×2 grid: prediction / agency / identity / meaning)
-${components.actorCards ? '6. Actor cards (2-col grid, load indicators)' : ''}
-${components.worldsGrid ? '7. Worlds grid (3-col, for multi-world / pluriverse analyses)' : ''}
-${components.verbalMarkers ? '8. Verbal markers (3-col grid, speech decoding)' : ''}
-${components.dynamicsTable ? '9. Dynamics table' : ''}
-${components.causalChain ? '10. Causal chain' : ''}
-${components.inversionBox ? '11. Inversion box' : ''}
-${components.findingBox ? '12. Finding box' : ''}
-${components.convergenceBox ? '13. Convergence box' : ''}
-${components.ralgSection ? '14. RALG section (3-step: R/A/L)' : ''}
-${components.eschaGrid ? '15. Eschatology cards (3-col)' : ''}
-16. Diagnosis grid (2-col)
-17. Conclusions grid (3-col, numbered 01–06)
-18. Sources section
-19. Observer note (closing paragraph + attribution + series nav)
+6. Actor cards (2-col grid with load indicators) — always include, minimum 4 actors
+7. Verbal markers (3-col grid) — always include, minimum 3 markers
+8. Dynamics table — always include, minimum 5 rows
+9. Diagnosis grid (2-col) — always include
+10. Conclusions grid (3-col, numbered 01–06) — always include
+11. Sources section — always include
+12. Observer note — always include last
+
+Choose from these OPTIONAL components and insert them where they serve the analysis. Include each ONLY if it genuinely fits the subject:
+
+- **Stat row** (4 data cells): include when 4 concrete numbers would ground the analysis — good for empirical, ecological, economic subjects
+- **Inversion box**: include when the system designed to solve the problem is the mechanism generating it — fits most analyses
+- **Causal chain**: include when load propagates sequentially across systems — ecological, social cascade analyses
+- **Worlds grid** (3-col): include ONLY for pluriverse / multi-ontology analyses where incompatible worlds are in genuine contact
+- **Finding box**: include when one counterintuitive finding deserves extra visual weight
+- **Convergence box** (crisis register, dark red): include when all four rooms are saturating simultaneously toward a threshold
+- **RALG section** (3-step R/A/L): include when resolution is structurally central — individual, organisational analyses
+- **Eschatology cards** (3-col): include when competing meaning architectures across traditions are structurally central
+
+Insert optional components between the dynamics table and diagnosis grid, in whatever order serves the analytical flow.
 
 ## COMPLETE CSS TO USE
 
@@ -1117,7 +1077,7 @@ async function generate() {
   log(`// Subject: ${subject}`);
   log(`// Palette: ${palettes[selectedPalette].label}`);
   log(`// Series: ${series}${seriesPart ? ' · ' + seriesPart : ''}`);
-  log(`// Components: ${Object.entries(components).filter(([,v])=>v).map(([k])=>k).join(', ')}`);
+  log(`// Structure: AI-selected based on analysis content`);
   if (novelConcept) log(`// Novel concept: ${novelConcept}`);
   log('');
   log('// Streaming from claude-sonnet-4-20250514...', 'section');
@@ -1134,88 +1094,43 @@ ${notes || 'No notes provided — use your knowledge of this subject and apply t
 
 Produce the complete HTML document now. Output ONLY the HTML — nothing else.`;
 
+  // Animate progress while waiting
+  const progressStages = [
+    { pct: 10, label: 'Connecting...', delay: 0 },
+    { pct: 25, label: 'Writing masthead and premise...', delay: 2000 },
+    { pct: 40, label: 'Building Four Rooms map...', delay: 5000 },
+    { pct: 55, label: 'Generating actor cards...', delay: 9000 },
+    { pct: 70, label: 'Writing dynamics and markers...', delay: 14000 },
+    { pct: 82, label: 'Building diagnosis and conclusions...', delay: 20000 },
+    { pct: 92, label: 'Finalising sources and observer note...', delay: 27000 },
+  ];
+  const progressTimers = progressStages.map(s =>
+    setTimeout(() => setProgress(s.pct, s.label), s.delay)
+  );
+
   try {
     const response = await fetch('https://elm-proxy.madhubolton.workers.dev', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
-        max_tokens: 8000,
+        max_tokens: 16000,
         system: buildSystemPrompt(),
         messages: [{ role: 'user', content: userPrompt }],
-        stream: true,
       })
     });
+
+    progressTimers.forEach(t => clearTimeout(t));
 
     if (!response.ok) {
       const err = await response.json();
       throw new Error(err.error?.message || `API error ${response.status}`);
     }
 
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder();
-    let buffer = '';
-    let charCount = 0;
-    let lastLogUpdate = 0;
-
-    const stages = [
-      { chars: 500,  pct: 15, label: 'Writing masthead and premise...' },
-      { chars: 2000, pct: 30, label: 'Building Four Rooms map...' },
-      { chars: 4000, pct: 50, label: 'Generating actor cards and markers...' },
-      { chars: 6000, pct: 70, label: 'Writing dynamics and diagnosis...' },
-      { chars: 8000, pct: 85, label: 'Building conclusions...' },
-      { chars: 10000,pct: 95, label: 'Finalising observer note and sources...' },
-    ];
-
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-
-      buffer += decoder.decode(value, { stream: true });
-      const lines = buffer.split('\n');
-      buffer = lines.pop();
-
-      for (const line of lines) {
-        if (!line.startsWith('data: ')) continue;
-        const data = line.slice(6);
-        if (data === '[DONE]') continue;
-
-        try {
-          const event = JSON.parse(data);
-          if (event.type === 'content_block_delta' && event.delta?.type === 'text_delta') {
-            const text = event.delta.text;
-            generatedHTML += text;
-            charCount += text.length;
-
-            // Update progress
-            const stage = stages.find(s => charCount < s.chars);
-            if (stage) setProgress(stage.pct, stage.label);
-            else setProgress(95, 'Finalising...');
-
-            // Update log periodically
-            if (charCount - lastLogUpdate > 200) {
-              const snippet = generatedHTML.slice(-120).replace(/\n/g, ' ').trim();
-              const logEl = document.getElementById('streamLog');
-              // Update last line or add new
-              const lines2 = logEl.querySelectorAll('.log-line.stream');
-              if (lines2.length > 0) {
-                lines2[lines2.length - 1].textContent = '  ' + snippet;
-              } else {
-                const l = document.createElement('div');
-                l.className = 'log-line stream content';
-                l.textContent = '  ' + snippet;
-                logEl.appendChild(l);
-              }
-              logEl.scrollTop = logEl.scrollHeight;
-              lastLogUpdate = charCount;
-            }
-
-            // Update source panel live
-            document.getElementById('sourceCode').textContent = generatedHTML;
-          }
-        } catch(e) { /* skip malformed events */ }
-      }
-    }
+    const data = await response.json();
+    generatedHTML = data.content[0].text;
+    const charCount = generatedHTML.length;
+    log(`  Received ${charCount.toLocaleString()} characters`);
 
     // Done
     setProgress(100, 'Complete');
