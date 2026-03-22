@@ -661,14 +661,14 @@ const components = {
 };
 
 const palettes = {
-  amber:   { accent:'#C4701A', light:'#E8A050', dim:'#7A4010', glow:'rgba(196,112,26,0.12)', ink:'#181210', warmWhite:'#F5F0E8', warmDark:'#261E14', greyWarm:'#6A6058', border:'#3A2E20', borderMid:'#2A2018', label:'Amber / Industrial' },
-  forest:  { accent:'#4A7A5A', light:'#7ABB8A', dim:'#233D2A', glow:'rgba(74,122,90,0.12)',  ink:'#0E1410', warmWhite:'#EDF4EE', warmDark:'#141E16', greyWarm:'#5A6A5C', border:'#243428', borderMid:'#1A2A1E', label:'Forest / Cedar' },
-  teal:    { accent:'#1A7A8A', light:'#5ABCCC', dim:'#0E4A55', glow:'rgba(26,122,138,0.12)', ink:'#050F12', warmWhite:'#EDF6F8', warmDark:'#081418', greyWarm:'#4A6A70', border:'#0E3040', borderMid:'#0A2030', label:'Ocean / Teal' },
-  blue:    { accent:'#2E6B9E', light:'#6AADD4', dim:'#1A4A72', glow:'rgba(46,107,158,0.12)', ink:'#0E1520', warmWhite:'#EDF2F8', warmDark:'#141C28', greyWarm:'#5A6878', border:'#1E2E44', borderMid:'#162038', label:'Geopolitical / Blue' },
-  gold:    { accent:'#C9A84C', light:'#E8C97A', dim:'#8B6914', glow:'rgba(201,168,76,0.12)', ink:'#1A1410', warmWhite:'#F7F3ED', warmDark:'#221C14', greyWarm:'#6A6050', border:'#3A3020', borderMid:'#2A2418', label:'Prestige / Gold' },
-  sage:    { accent:'#4A7A62', light:'#88BBAA', dim:'#2A5040', glow:'rgba(74,122,98,0.12)',  ink:'#0C1410', warmWhite:'#EDF4F0', warmDark:'#141E18', greyWarm:'#506860', border:'#243830', borderMid:'#1A2A24', label:'Sage / Precision' },
-  ochre:   { accent:'#7A6A4A', light:'#C4A86A', dim:'#3A3020', glow:'rgba(122,106,74,0.12)', ink:'#0A0C0E', warmWhite:'#F0EDE8', warmDark:'#161410', greyWarm:'#5A5848', border:'#2A2820', borderMid:'#201E18', label:'Ochre / Contemplative' },
-  emerald: { accent:'#3A7A5A', light:'#6AB890', dim:'#1E4A36', glow:'rgba(58,122,90,0.12)',  ink:'#111816', warmWhite:'#EEF4F0', warmDark:'#161E18', greyWarm:'#4A6458', border:'#1E3028', borderMid:'#162420', label:'Emerald / Systemic' },
+  amber:   { accent:'#C4701A', light:'#E8A050', dim:'#7A4010', glow:'rgba(196,112,26,0.12)', ink:'#181210', warmWhite:'#F5F0E8', warmDark:'#261E14', greyWarm:'#887B70', border:'#3A2E20', borderMid:'#2A2018', label:'Amber / Industrial' },
+  forest:  { accent:'#4A7A5A', light:'#7ABB8A', dim:'#233D2A', glow:'rgba(74,122,90,0.12)',  ink:'#0E1410', warmWhite:'#EDF4EE', warmDark:'#141E16', greyWarm:'#6E8270', border:'#243428', borderMid:'#1A2A1E', label:'Forest / Cedar' },
+  teal:    { accent:'#1A7A8A', light:'#5ABCCC', dim:'#0E4A55', glow:'rgba(26,122,138,0.12)', ink:'#050F12', warmWhite:'#EDF6F8', warmDark:'#081418', greyWarm:'#647F87', border:'#0E3040', borderMid:'#0A2030', label:'Ocean / Teal' },
+  blue:    { accent:'#2E6B9E', light:'#6AADD4', dim:'#1A4A72', glow:'rgba(46,107,158,0.12)', ink:'#0E1520', warmWhite:'#EDF2F8', warmDark:'#141C28', greyWarm:'#757F93', border:'#1E2E44', borderMid:'#162038', label:'Geopolitical / Blue' },
+  gold:    { accent:'#C9A84C', light:'#E8C97A', dim:'#8B6914', glow:'rgba(201,168,76,0.12)', ink:'#1A1410', warmWhite:'#F7F3ED', warmDark:'#221C14', greyWarm:'#8B7D68', border:'#3A3020', borderMid:'#2A2418', label:'Prestige / Gold' },
+  sage:    { accent:'#4A7A62', light:'#88BBAA', dim:'#2A5040', glow:'rgba(74,122,98,0.12)',  ink:'#0C1410', warmWhite:'#EDF4F0', warmDark:'#141E18', greyWarm:'#668372', border:'#243830', borderMid:'#1A2A24', label:'Sage / Precision' },
+  ochre:   { accent:'#7A6A4A', light:'#C4A86A', dim:'#3A3020', glow:'rgba(122,106,74,0.12)', ink:'#0A0C0E', warmWhite:'#F0EDE8', warmDark:'#161410', greyWarm:'#7D7A64', border:'#2A2820', borderMid:'#201E18', label:'Ochre / Contemplative' },
+  emerald: { accent:'#3A7A5A', light:'#6AB890', dim:'#1E4A36', glow:'rgba(58,122,90,0.12)',  ink:'#111816', warmWhite:'#EEF4F0', warmDark:'#161E18', greyWarm:'#628875', border:'#1E3028', borderMid:'#162420', label:'Emerald / Systemic' },
 };
 
 let selectedPalette = 'amber';
@@ -785,23 +785,50 @@ Always include (in this order):
 6. Actor cards (2-col grid with load indicators) — always include, minimum 4 actors
 7. Verbal markers (3-col grid) — always include, minimum 3 markers
 8. Dynamics table — always include, minimum 5 rows
-9. Diagnosis grid (2-col) — always include
-10. Conclusions grid (3-col, numbered 01–06) — always include
-11. Sources section — always include
-12. Observer note — always include last
+9. [Optional components here — see below]
+10. Diagnosis grid (2-col) — always include
+11. **Predictions section** — always include, immediately after diagnosis grid
+12. Conclusions grid (3-col, numbered 01–06) — always include
+13. Sources section — always include
+14. Observer note — always include last
 
-Choose from these OPTIONAL components and insert them where they serve the analysis. Include each ONLY if it genuinely fits the subject:
+Choose from these OPTIONAL components and insert them between the dynamics table and diagnosis grid where they serve the analysis:
 
-- **Stat row** (4 data cells): include when 4 concrete numbers would ground the analysis — good for empirical, ecological, economic subjects
-- **Inversion box**: include when the system designed to solve the problem is the mechanism generating it — fits most analyses
-- **Causal chain**: include when load propagates sequentially across systems — ecological, social cascade analyses
-- **Worlds grid** (3-col): include ONLY for pluriverse / multi-ontology analyses where incompatible worlds are in genuine contact
+- **Stat row** (4 data cells): include when 4 concrete numbers would ground the analysis
+- **Inversion box**: include when the system designed to solve the problem is the mechanism generating it
+- **Causal chain**: include when load propagates sequentially across systems
+- **Worlds grid** (3-col): include ONLY for pluriverse / multi-ontology analyses
 - **Finding box**: include when one counterintuitive finding deserves extra visual weight
-- **Convergence box** (crisis register, dark red): include when all four rooms are saturating simultaneously toward a threshold
-- **RALG section** (3-step R/A/L): include when resolution is structurally central — individual, organisational analyses
-- **Eschatology cards** (3-col): include when competing meaning architectures across traditions are structurally central
+- **Convergence box** (crisis register, dark red): include when all four rooms are saturating toward a threshold
+- **RALG section** (3-step R/A/L): include when resolution is structurally central
+- **Eschatology cards** (3-col): include when competing meaning architectures are central
 
-Insert optional components between the dynamics table and diagnosis grid, in whatever order serves the analytical flow.
+## PREDICTIONS SECTION — ALWAYS REQUIRED
+
+The predictions section appears after the diagnosis grid, before conclusions. It contains 3–4 specific falsifiable ELM predictions. Each prediction must name which Room it hinges on, state what would confirm it, and state what would falsify it. Be genuinely specific — not "the system will struggle" but "as long as the Identity Room requires X, the system will produce Y within Z context."
+
+HTML structure for predictions section:
+<div class="section">
+  <div class="section-label">ELM Predictions</div>
+  <div class="section-title">What the Model <em>Expects to See</em></div>
+  <div class="section-rule"></div>
+  <div class="predictions-grid">
+    <div class="pred-card">
+      <div class="pred-room">Identity Room</div>
+      <div class="pred-claim">Specific falsifiable prediction stated precisely...</div>
+      <div class="pred-conditions">
+        <div class="pred-confirms">
+          <div class="pred-cond-label">Confirms if</div>
+          <div class="pred-cond-text">Observable signal that would confirm this</div>
+        </div>
+        <div class="pred-falsifies">
+          <div class="pred-cond-label">Falsifies if</div>
+          <div class="pred-cond-text">Observable signal that would falsify this</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 ## COMPLETE CSS TO USE
 
@@ -981,6 +1008,15 @@ Include this exact CSS (with the palette variables substituted):
   .observer-note p { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; color: var(--grey-warm); line-height: 1.82; max-width: 700px; margin: 0 auto 20px; }
   .observer-note .attribution { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: var(--accent-dim); display: block; margin-bottom: 10px; }
   .series-nav { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: var(--accent-dim); }
+  .predictions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 56px; }
+  .pred-card { background: var(--warm-dark); border: 1px solid var(--border); border-top: 3px solid var(--accent-dim); padding: 28px; }
+  .pred-room { font-family: 'Cinzel', serif; font-size: 8.5px; letter-spacing: 2.5px; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; }
+  .pred-claim { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 300; color: var(--warm-white); line-height: 1.5; margin-bottom: 20px; }
+  .pred-conditions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; border-top: 1px solid var(--border); padding-top: 16px; }
+  .pred-cond-label { font-family: 'Cinzel', serif; font-size: 7.5px; letter-spacing: 2px; margin-bottom: 6px; }
+  .pred-confirms .pred-cond-label { color: #5A9A6A; }
+  .pred-falsifies .pred-cond-label { color: #9A5A5A; }
+  .pred-cond-text { font-size: 12.5px; line-height: 1.65; color: var(--grey-warm); }
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--ink); }
   ::-webkit-scrollbar-thumb { background: var(--accent-dim); }
@@ -1015,6 +1051,8 @@ Include this exact CSS (with the palette variables substituted):
     .chain-node::after { display: none; }
     .ralg-section { padding: 24px 20px; }
     .finding-box, .convergence-box { padding: 24px 22px; }
+    .predictions-grid { grid-template-columns: 1fr; }
+    .pred-conditions { grid-template-columns: 1fr; }
   }
   @media (max-width: 400px) {
     .page { padding: 24px 16px; }
