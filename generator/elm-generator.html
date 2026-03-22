@@ -1094,50 +1094,96 @@ ${notes || 'No notes provided — use your knowledge of this subject and apply t
 
 Produce the complete HTML document now. Output ONLY the HTML — nothing else.`;
 
-  // Animate progress while waiting
-  const progressStages = [
-    { pct: 10, label: 'Connecting...', delay: 0 },
-    { pct: 25, label: 'Writing masthead and premise...', delay: 2000 },
-    { pct: 40, label: 'Building Four Rooms map...', delay: 5000 },
-    { pct: 55, label: 'Generating actor cards...', delay: 9000 },
-    { pct: 70, label: 'Writing dynamics and markers...', delay: 14000 },
-    { pct: 82, label: 'Building diagnosis and conclusions...', delay: 20000 },
-    { pct: 92, label: 'Finalising sources and observer note...', delay: 27000 },
-  ];
-  const progressTimers = progressStages.map(s =>
-    setTimeout(() => setProgress(s.pct, s.label), s.delay)
-  );
-
   try {
+    setProgress(8, 'Connecting...');
+
     const response = await fetch('https://elm-proxy.madhubolton.workers.dev', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 16000,
+        stream: true,
         system: buildSystemPrompt(),
         messages: [{ role: 'user', content: userPrompt }],
       })
     });
 
-    progressTimers.forEach(t => clearTimeout(t));
-
     if (!response.ok) {
-      const err = await response.json();
-      throw new Error(err.error?.message || `API error ${response.status}`);
+      const errText = await response.text();
+      throw new Error(`API error ${response.status}: ${errText.slice(0,200)}`);
     }
 
-    const data = await response.json();
-    generatedHTML = data.content[0].text;
-    const charCount = generatedHTML.length;
-    log(`  Received ${charCount.toLocaleString()} characters`);
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+    let charCount = 0;
+    let lastLogUpdate = 0;
+
+    const stages = [
+      { chars: 800,  pct: 15, label: 'Writing masthead and premise...' },
+      { chars: 3000, pct: 30, label: 'Building Four Rooms map...' },
+      { chars: 6000, pct: 48, label: 'Generating actor cards...' },
+      { chars: 9000, pct: 62, label: 'Writing verbal markers...' },
+      { chars: 12000,pct: 75, label: 'Dynamics table and optional sections...' },
+      { chars: 16000,pct: 88, label: 'Building diagnosis and conclusions...' },
+      { chars: 20000,pct: 95, label: 'Finalising sources and observer note...' },
+    ];
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop();
+
+      for (const line of lines) {
+        if (!line.startsWith('data: ')) continue;
+        const data = line.slice(6).trim();
+        if (data === '[DONE]') continue;
+        try {
+          const event = JSON.parse(data);
+          if (event.type === 'content_block_delta' && event.delta?.type === 'text_delta') {
+            const text = event.delta.text;
+            generatedHTML += text;
+            charCount += text.length;
+
+            // Progress
+            const stage = stages.find(s => charCount < s.chars);
+            if (stage) setProgress(stage.pct, stage.label);
+            else setProgress(96, 'Almost done...');
+
+            // Log update every ~300 chars
+            if (charCount - lastLogUpdate > 300) {
+              const snippet = generatedHTML.slice(-100).replace(/\s+/g, ' ').trim();
+              const logEl = document.getElementById('streamLog');
+              const existing = logEl.querySelector('.log-stream');
+              if (existing) {
+                existing.textContent = '  ' + snippet;
+              } else {
+                const l = document.createElement('div');
+                l.className = 'log-line content log-stream';
+                l.textContent = '  ' + snippet;
+                logEl.appendChild(l);
+              }
+              logEl.scrollTop = logEl.scrollHeight;
+              lastLogUpdate = charCount;
+            }
+          }
+        } catch(e) { /* skip parse errors */ }
+      }
+    }
+
+    const charCount2 = generatedHTML.length;
+    log(`  Streamed ${charCount2.toLocaleString()} characters`, 'content');
 
     // Done
     setProgress(100, 'Complete');
     setTimeout(clearProgress, 1500);
 
     log('');
-    log(`// Generation complete — ${charCount.toLocaleString()} characters`, 'done');
+    log(`// Generation complete — ${generatedHTML.length.toLocaleString()} characters`, 'done');
     log(`// Rendering preview...`, 'done');
 
     // Render preview
@@ -1155,7 +1201,7 @@ Produce the complete HTML document now. Output ONLY the HTML — nothing else.`;
     const slug = subject.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
     const filename = `elm-${slug}.html`;
     document.getElementById('downloadFilename').textContent = filename;
-    document.getElementById('tokenCount').textContent = `${Math.round(charCount / 4).toLocaleString()} tokens est.`;
+    document.getElementById('tokenCount').textContent = `${Math.round(generatedHTML.length / 4).toLocaleString()} tokens est.`;
     document.getElementById('downloadBtn').disabled = false;
     document.getElementById('downloadBtn').dataset.filename = filename;
 

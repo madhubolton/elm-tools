@@ -3,7 +3,7 @@ export default {
     const corsHeaders = {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, anthropic-version, x-api-key',
+      'Access-Control-Allow-Headers': 'Content-Type',
     };
 
     if (request.method === 'OPTIONS') {
@@ -18,16 +18,16 @@ export default {
         'Content-Type': 'application/json',
         'x-api-key': env.ANTHROPIC_API_KEY,
         'anthropic-version': '2023-06-01',
+        'anthropic-beta': 'interleaved-thinking-2025-05-14',
       },
       body: body,
     });
 
-    const result = await response.text();
-
-    return new Response(result, {
+    // Stream the response directly back — no buffering, no timeout
+    return new Response(response.body, {
       status: response.status,
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': response.headers.get('Content-Type') || 'application/json',
         ...corsHeaders,
       }
     });
