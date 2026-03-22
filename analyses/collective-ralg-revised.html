@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collective RALG — The World Through the Lens of Existential Load</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Deep interior palette — night, depth, stillness */
+    --accent: #7A6A4A;
+    --accent-light: #C4A86A;
+    --accent-dim: #3A3020;
+    --ink: #0A0C0E;
+    --warm-white: #F0EDE8;
+    --warm-mid: #C8C0B0;
+    --warm-dark: #121410;
+    --grey-warm: #5A5648;
+    --border: #222018;
+    --border-mid: #1A1810;
+
+    /* Movement colors */
+    --recognize: #3A5A7A;
+    --accept: #5A3A6A;
+    --letgo: #3A6A5A;
+    --become: #7A6A3A;
+    --entrain: #3A5A3A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--ink);
+    color: var(--warm-white);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  /* ==================
+     SERIES BANNER
+  ================== */
+  .series-banner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 24px;
+    border: 1px solid var(--accent-dim);
+    background: rgba(122,106,74,0.05);
+    margin-bottom: 64px;
+  }
+
+  .series-pip {
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .series-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--accent-light);
+    flex-shrink: 0;
+  }
+
+  .series-divider {
+    width: 1px; height: 16px;
+    background: var(--accent-dim);
+    flex-shrink: 0;
+  }
+
+  .series-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--grey-warm);
+  }
+
+  .series-part {
+    margin-left: auto;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--accent-dim);
+  }
+
+  /* ==================
+     MASTHEAD
+  ================== */
+  .masthead {
+    text-align: center;
+    padding: 72px 0 56px;
+    border-bottom: 1px solid var(--accent-dim);
+    margin-bottom: 64px;
+    position: relative;
+  }
+
+  .masthead::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 1px; height: 36px;
+    background: linear-gradient(to bottom, transparent, var(--accent-dim));
+  }
+
+  .masthead .supertitle {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: var(--accent-light);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0.7;
+  }
+
+  .masthead h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 58px;
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--warm-white);
+    margin-bottom: 16px;
+  }
+
+  .masthead h1 em { color: var(--accent-light); font-style: italic; }
+
+  .masthead .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-style: italic;
+    color: var(--grey-warm);
+    margin-bottom: 32px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .masthead .accent-rule {
+    width: 60px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--accent), transparent);
+    margin: 0 auto;
+  }
+
+  /* ==================
+     PREMISE
+  ================== */
+  .premise {
+    background: var(--warm-dark);
+    border-left: 3px solid var(--accent);
+    padding: 36px 44px;
+    margin-bottom: 64px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    line-height: 1.82;
+    color: #C8C0B0;
+  }
+
+  .premise strong { color: var(--accent-light); font-weight: 600; }
+
+  /* ==================
+     MOVEMENT SECTIONS
+  ================== */
+  .movement {
+    margin-bottom: 80px;
+    position: relative;
+  }
+
+  .movement-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+
+  .movement-number {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--grey-warm);
+    opacity: 0.6;
+    flex-shrink: 0;
+  }
+
+  .movement-rule {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--border), transparent);
+  }
+
+  .movement-name {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    flex-shrink: 0;
+  }
+
+  .movement.recognize .movement-name { color: #8AABCF; }
+  .movement.accept .movement-name { color: #B48ACF; }
+  .movement.letgo .movement-name { color: #8ACFB4; }
+  .movement.become .movement-name { color: var(--accent-light); }
+  .movement.entrain .movement-name { color: #8ACF8A; }
+
+  .movement-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 300;
+    line-height: 1.2;
+    color: var(--warm-white);
+    margin-bottom: 32px;
+    max-width: 640px;
+  }
+
+  .movement-title em { font-style: italic; }
+
+  .movement.recognize .movement-title em { color: #8AABCF; }
+  .movement.accept .movement-title em { color: #B48ACF; }
+  .movement.letgo .movement-title em { color: #8ACFB4; }
+  .movement.become .movement-title em { color: var(--accent-light); }
+  .movement.entrain .movement-title em { color: #8ACF8A; }
+
+  .movement-body {
+    font-size: 15px;
+    color: #A8A298;
+    line-height: 1.88;
+  }
+
+  .movement-body p {
+    margin-bottom: 20px;
+  }
+
+  .movement-body p:last-child { margin-bottom: 0; }
+
+  .movement-body strong { color: #C8C0B0; font-weight: 600; }
+
+  /* ==================
+     CALLOUT
+  ================== */
+  .callout {
+    border-left: 2px solid var(--accent);
+    padding: 24px 32px;
+    margin: 32px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-style: italic;
+    color: var(--accent-light);
+    line-height: 1.72;
+    background: rgba(122,106,74,0.04);
+  }
+
+  .callout.recognize { border-color: #3A5A7A; color: #8AABCF; background: rgba(58,90,122,0.05); }
+  .callout.accept { border-color: #5A3A6A; color: #B48ACF; background: rgba(90,58,106,0.05); }
+  .callout.letgo { border-color: #3A6A5A; color: #8ACFB4; background: rgba(58,106,90,0.05); }
+  .callout.become { border-color: var(--accent); color: var(--accent-light); background: rgba(122,106,74,0.05); }
+  .callout.entrain { border-color: #3A5A3A; color: #8ACF8A; background: rgba(58,90,58,0.05); }
+
+  /* ==================
+     LOAD PATTERN BOX
+  ================== */
+  .load-box {
+    background: var(--warm-dark);
+    border: 1px solid var(--border);
+    padding: 36px 40px;
+    margin: 36px 0;
+  }
+
+  .load-box-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--accent-light);
+    margin-bottom: 20px;
+    opacity: 0.8;
+  }
+
+  .load-box-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--warm-white);
+    line-height: 1.3;
+    margin-bottom: 24px;
+  }
+
+  .load-rows {
+    display: grid;
+    gap: 14px;
+  }
+
+  .load-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 20px;
+    align-items: start;
+    font-size: 13.5px;
+    line-height: 1.72;
+  }
+
+  .load-room {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    padding: 4px 10px;
+    text-align: center;
+    border: 1px solid;
+    margin-top: 2px;
+  }
+
+  .room-p { border-color: #3A5A7A; color: #8AABCF; background: rgba(58,90,122,0.1); }
+  .room-a { border-color: #7A4A2A; color: #CF9A8A; background: rgba(122,74,42,0.1); }
+  .room-i { border-color: #5A3A7A; color: #B48ACF; background: rgba(90,58,122,0.1); }
+  .room-m { border-color: #5A7A2A; color: #A8C870; background: rgba(90,122,42,0.1); }
+
+  .load-desc {
+    color: #7A7468;
+  }
+
+  .load-desc strong { color: #A8A090; }
+
+  /* ==================
+     ENTRAIN TABLE
+  ================== */
+  .entrain-grid {
+    display: grid;
+    gap: 2px;
+    margin: 32px 0;
+  }
+
+  .entrain-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    background: var(--warm-dark);
+    border: 1px solid var(--border);
+  }
+
+  .entrain-label {
+    padding: 20px 24px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--warm-white);
+    border-right: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+  }
+
+  .entrain-desc {
+    padding: 20px 24px;
+    font-size: 13.5px;
+    color: #7A7468;
+    line-height: 1.72;
+  }
+
+  .entrain-desc strong { color: #A8A090; }
+
+  /* ==================
+     CLOSING LINE
+  ================== */
+  .closing-line {
+    text-align: center;
+    padding: 72px 0 56px;
+    border-top: 1px solid var(--accent-dim);
+    margin-top: 24px;
+  }
+
+  .closing-line .cl-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-style: italic;
+    color: var(--warm-mid);
+    line-height: 1.6;
+    max-width: 560px;
+    margin: 0 auto 12px;
+  }
+
+  .closing-line .cl-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-style: italic;
+    color: var(--accent-light);
+    line-height: 1.6;
+    max-width: 560px;
+    margin: 0 auto 36px;
+  }
+
+  /* ==================
+     OBSERVER NOTE
+  ================== */
+  .observer-note {
+    text-align: center;
+    padding: 0 64px 52px;
+  }
+
+  .observer-note p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--grey-warm);
+    line-height: 1.88;
+    max-width: 620px;
+    margin: 0 auto 24px;
+  }
+
+  .observer-note .attribution {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--accent-dim);
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .series-nav {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--accent-dim);
+  }
+
+  /* ==================
+     SCROLLBAR
+  ================== */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--ink); }
+  ::-webkit-scrollbar-thumb { background: var(--accent-dim); }
+
+  /* ==================
+     RESPONSIVE
+  ================== */
+  @media (max-width: 767px) {
+    .page { padding: 40px 24px; }
+    .masthead { padding: 48px 0 40px; }
+    .masthead h1 { font-size: 36px; }
+    .masthead .subtitle { font-size: 16px; }
+    .premise { padding: 26px 28px; font-size: 17px; }
+    .movement-title { font-size: 26px; }
+    .load-row { grid-template-columns: 1fr; gap: 8px; }
+    .entrain-row { grid-template-columns: 1fr; }
+    .entrain-label { border-right: none; border-bottom: 1px solid var(--border); padding: 16px 20px; }
+    .observer-note { padding: 0 20px 40px; }
+    .closing-line .cl-main, .closing-line .cl-sub { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- SERIES BANNER -->
+  <div class="series-banner">
+    <div class="series-pip"></div>
+    <div class="series-label">Series</div>
+    <div class="series-divider"></div>
+    <div class="series-title">The World Through the Lens of Existential Load</div>
+    <div class="series-part">Framework Document</div>
+  </div>
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="supertitle">Existential Load Model — Collective Practice</div>
+    <h1>Collective<br><em>RALG</em></h1>
+    <div class="subtitle">What the protocol requires when the system cannot be solved — and what becomes possible when it cannot</div>
+    <div class="accent-rule"></div>
+  </div>
+
+  <!-- PREMISE -->
+  <div class="premise">
+    The RALG protocol — Recognize, Accept, Let Go — was developed as a personal practice technology. It works because the individual has some sovereignty over their own regulatory architecture. The observer and the observed are in the same body. At collective scale, none of these conditions hold. <strong>The people who can see the system clearly are rarely the ones with the power to change it. The people with the power to change it are rarely the ones able to see it clearly. And the systems generating the most load are often the ones most defended against the recognition that would reduce it.</strong> This document proposes a fifth movement — and asks what honest participation in a field of large-scale intractability actually requires.
+  </div>
+
+  <!-- MOVEMENT 1: RECOGNIZE -->
+  <div class="movement recognize">
+    <div class="movement-header">
+      <div class="movement-number">I</div>
+      <div class="movement-rule"></div>
+      <div class="movement-name">RECOGNIZE</div>
+    </div>
+    <div class="movement-title">The ELM does not offer <em>viable solutions</em> at all scales.</div>
+    <div class="movement-body">
+      <p>The model maps how load is generated, distributed, and sustained within systems. It can identify which loops are running, what coupling failures are active, and what the energy cost of current configurations is. It can trace the pathological coupling between worlds with precision. It can name the structural conditions that would be required for resolution.</p>
+      <p>What it cannot do is produce those structural conditions. It cannot change tenure law. It cannot transfer custodial authority. It cannot reverse a century of extracted old-growth. It cannot redistribute civilisational meaning architectures. It cannot make a collapsing system coherent by analysing its incoherence more clearly.</p>
+      <p>This is not a limitation of the model. It is a property of the territory. <strong>Many of the most significant systems generating the most load are, at the timescales available, genuinely intractable.</strong> The climate coupling has crossed thresholds. The wealth concentration has momentum that no current political architecture is capable of reversing. The cultural erasure of suppressed worlds has consumed irreplaceable material. Ancient forests logged do not return. The first move of Collective RALG is to Recognize this without flinching. Not as defeat. As precision. The model that tells you what it cannot do is more trustworthy than the one that promises more than the territory allows.</p>
+
+      <div class="callout recognize">
+        Intractability named clearly is the beginning of coherent participation.<br>
+        Intractability denied is the beginning of load.
+      </div>
+
+      <p>There is also a second recognition required, one that is harder to make and more important: <strong>the recognition that you are inside the system you are analysing.</strong> The loops you can see in collapsing institutions, in civilisational dysfunction, in the coupling failures of worlds in collision — these are not external phenomena you are observing from a neutral position. You are coupled to them. Your nervous system carries their perturbations. Your Prediction, Agency, Identity, and Meaning rooms are running under the influence of the same fields you are trying to map.</p>
+      <p>This is not a reason to stop mapping. It is a reason to include yourself in the map.</p>
+    </div>
+  </div>
+
+  <!-- MOVEMENT 2: ACCEPT -->
+  <div class="movement accept">
+    <div class="movement-header">
+      <div class="movement-number">II</div>
+      <div class="movement-rule"></div>
+      <div class="movement-name">ACCEPT</div>
+    </div>
+    <div class="movement-title">Many problems cannot be solved. <em>Accept</em> does not mean abandon.</div>
+    <div class="movement-body">
+      <p>Accept, in the individual protocol, means stopping the addition of gain to the loop that is running. Not fighting the prediction, not amplifying the identity threat, not spinning the meaning narrative. The observer withdraws its amplifying participation and allows the loop to be what it is.</p>
+      <p>At collective scale, the analog is more complex — but the core move is identical: <strong>stop adding the gain of believing that the right intervention, if you could only find it, would solve it.</strong></p>
+      <p>This is a specific and difficult form of load to release, because it is a form of load that wears the face of care. The activist who cannot stop fighting. The practitioner who believes their framework is the one that will finally crack it. The leader who knows the system is in collapse and is trying to hold it together through force of will. The analyst who produces another report, another model, another mapping — as if the problem were a lack of analysis rather than a structural condition that analysis alone cannot move.</p>
+      <p>None of these are bad faith. They are, frequently, the most earnest and capable people in a field. But <strong>care fused with load carries the signature of that load into every intervention it produces.</strong> The healing effort becomes another transmission of gain. The activist's urgency amplifies the panic loop. The practitioner's certainty rigidifies the identity architecture of the people they are trying to help. The analysis produces more analysis, and the system continues.</p>
+
+      <div class="callout accept">
+        Trying to save the world is itself often a load pattern.<br>
+        This does not delegitimise care. It refines it.
+      </div>
+
+      <p>The four-room signature of this pattern is precise:</p>
+    </div>
+
+    <div class="load-box">
+      <div class="load-box-label">Load Pattern — The World-Fixer</div>
+      <div class="load-box-title">What care fused with load looks like across the Four Rooms</div>
+      <div class="load-rows">
+        <div class="load-row">
+          <div class="load-room room-p">PREDICTION</div>
+          <div class="load-desc">Amplified by catastrophe. The future is a collapsing system that must be stabilised now. Prediction Room running on threat-detection, unable to register possibility, unable to update when evidence contradicts the catastrophe model. <strong>Urgency as a permanent state.</strong></div>
+        </div>
+        <div class="load-row">
+          <div class="load-room room-a">AGENCY</div>
+          <div class="load-desc">Amplified by over-responsibility. The sense that if you stop, it collapses. That your effort is load-bearing. That rest is betrayal. Agency running at maximum, unable to receive, unable to delegate, unable to acknowledge that <strong>your effort is not the only thing standing between the world and its dysfunction.</strong></div>
+        </div>
+        <div class="load-row">
+          <div class="load-room room-i">IDENTITY</div>
+          <div class="load-desc">Amplified by being the one who sees. Identity constituted by awareness of what others miss. The self-model is organised around perceiving dysfunction clearly — which means the observer whose identity is structured this way may become subtly invested in its persistence. <strong>The one who sees cannot easily release what seeing has become.</strong></div>
+        </div>
+        <div class="load-row">
+          <div class="load-room room-m">MEANING</div>
+          <div class="load-desc">Amplified by needing history to resolve correctly. Meaning architecture requires that the arc bends, that the work matters, that the suffering was not pointless. <strong>When history fails to resolve correctly, meaning collapses — unless it can be sustained by further effort, further analysis, further intervention.</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="movement-body">
+      <p>Naming this pattern does not require abandoning the work. It requires asking, honestly, how much of the effort is carrying load. How much of the urgency is Prediction Room amplification. How much of the inability to rest is Agency Room overdrive. How much of the certainty about what needs to happen is Identity Room rigidity defending the self-model of the one who sees.</p>
+      <p>Accept, at collective scale, begins with this honest inventory. Not to produce guilt. To reduce the overhead that the load is adding to the work — so that what remains is care without the signature of the load pattern fused to it.</p>
+    </div>
+  </div>
+
+  <!-- MOVEMENT 3: LET GO -->
+  <div class="movement letgo">
+    <div class="movement-header">
+      <div class="movement-number">III</div>
+      <div class="movement-rule"></div>
+      <div class="movement-name">LET GO</div>
+    </div>
+    <div class="movement-title">Let go of outcome control <em>as the frame for participation.</em></div>
+    <div class="movement-body">
+      <p>Individual Let Go is what remains when the observer stops maintaining the surplus cost of the loop. Not a decision. Not an act of will. The overhead drops because something stops being added — and coherence returns not because anything was fixed but because the energy previously consumed in amplification is no longer consumed there.</p>
+      <p>Collective Let Go is not available as a single act. You cannot decide to release civilisational load the way you can decide to release a personal grudge. But something analogous is available — and it is more radical than it first appears.</p>
+      <p><strong>Let Go of outcome control as the frame for participation.</strong> This is the deepest relinquishment the model asks. Not of effort, not of care, not of engagement — but of the belief that the validity of participation depends on its producing the intended effect. That the work matters only if the system responds. That presence is valuable only if it changes something measurable.</p>
+      <p>This is not passivity. The ELM is very precise here. The model does not promise control over outcomes. It points to a way of affecting conditions. These are not the same thing. Control belongs to the old frame — the Agency Room of a system that believes its leverage is decisive. Field participation belongs to a different frame entirely: one in which causality is real but not command, in which influence propagates without requiring mastery of the system being influenced.</p>
+
+      <div class="callout letgo">
+        You can affect conditions without controlling outcomes.<br>
+        You can be causal without being decisive.<br>
+        This is not less. It is a different relationship to power.
+      </div>
+
+      <p>The regulatory overhead being released here is enormous. It includes: the constant evaluation of whether the work is working. The adjustment of strategy in response to the system's failure to respond. The increasing effort required to maintain hope against evidence. The identity investment in being the person whose intervention matters. The meaning architecture that requires the arc to bend on a timeline you can witness.</p>
+      <p>What is being released here is not just a cognitive frame. It is a structure of protection. The urgency, the over-responsibility, the need for history to resolve correctly — these are not only load patterns. They are also the ways the self has been sheltering from the full weight of what is actually happening. The work of Let Go, honestly entered, is a grief practice before it is anything else.</p>
+      <p>Full contact with what is being lost — the forests that will not return, the worlds that are being destroyed, the futures that are foreclosing — is not the end of coherence. It is, for those willing to lean into it rather than manage it from a distance, one of the most direct paths into it. The regulatory overhead of not fully feeling the loss is itself a load. When it drops, what remains is not emptiness. It is something more like undefended presence. And from undefended presence, a different quality of participation becomes available — not because anything was added, but because something costly was finally allowed to be what it is.</p>
+      <p>When this overhead drops, something becomes available that was not available while it was being maintained. Not a solution. A state. And from that state, a different kind of participation becomes possible.</p>
+    </div>
+  </div>
+
+  <!-- MOVEMENT 4: BECOME -->
+  <div class="movement become">
+    <div class="movement-header">
+      <div class="movement-number">IV</div>
+      <div class="movement-rule"></div>
+      <div class="movement-name">BECOME</div>
+    </div>
+    <div class="movement-title">What is already there when the <em>load drops.</em></div>
+    <div class="movement-body">
+      <p>The fourth movement is not a step in the sense the first three are steps. It is not something you do. It is what is disclosed when the doing of the first three is genuinely complete.</p>
+      <p>The coherent oscillator. Not constructed. Revealed. The practitioner who has done enough work that their presence is regulating rather than dysregulating — not because they have added coherence to themselves, but because they have removed sufficient load that what was always already there is no longer obscured by it. <strong>The building is not built. The scaffold is taken down.</strong></p>
+      <p>This is a precise dynamical claim, not a spiritual aspiration. A system whose load is genuinely reduced has a deeper attractor basin. It is less easily pulled into the coupling patterns of dysregulated systems it encounters. It does not add gain to the loops it touches. Its rhythms are stable enough that proximate systems can entrain to them — if those systems have any capacity for entrainment left.</p>
+      <p>The critical distinction: <strong>Become cannot be in service of Entrain.</strong> The moment Become is instrumentalised — the moment the inner work is undertaken in order to produce effects in others — gain is reintroduced. The coherent oscillator is no longer being revealed; it is being constructed as a tool. And a tool is not a coherent oscillator. It is a system running the loop of its own utility.</p>
+
+      <div class="callout become">
+        The work is not to become coherent so that you can be effective.<br>
+        The work is to become coherent.<br>
+        Effectiveness, where it comes, comes downstream of that — uninvited, uncontrolled, real.
+      </div>
+
+      <p>There is also something the model requires be said about what the coherent oscillator is not: it is not soothing. It is not conflict-avoidant. It is not the person who calms every room they enter by agreeing with everyone in it.</p>
+      <p><strong>The coherent oscillator has teeth.</strong> It refuses dysregulated terms of engagement. It does not become dysregulation in order to prove it cares. It does not feed panic, coercion, identity inflation, or meaning collapse — even when those patterns press hard for cooperation. Its refusal to cooperate with the prevailing load architecture is itself a form of intervention, though not a forceful one. It simply does not add gain to what isn't coherence. And in a field running on gain-amplified loops, that refusal is disruptive — sometimes profoundly so.</p>
+      <p>This is why Become is demanding in a way the first three movements are not. The first three require letting go of things. Become requires remaining something — consistently, under pressure, in contact with systems that are organised precisely to recruit you into their coupling patterns.</p>
+      <p>The individual doing Collective RALG is always doing it in a field where civilisational Recognize is incomplete, Accept is contested, and collective Let Go is nowhere near. The coherent oscillator exists inside a system that hasn't done the work and won't do it on any timeline you can predict or control. <strong>Become is the only movement that is fully available to any individual regardless of what the collective is doing.</strong> Which is why it is the movement on which everything else depends.</p>
+    </div>
+  </div>
+
+  <!-- MOVEMENT 5: ENTRAIN -->
+  <div class="movement entrain">
+    <div class="movement-header">
+      <div class="movement-number">V</div>
+      <div class="movement-rule"></div>
+      <div class="movement-name">ENTRAIN</div>
+    </div>
+    <div class="movement-title">Coherence becomes available. <em>Some systems</em> will entrain.</div>
+    <div class="movement-body">
+      <p>The fifth movement is not a strategy. It is a description of what sometimes happens when the first four are genuinely complete.</p>
+      <p>A coherent oscillator in proximity does not automatically regulate every surrounding system. Some systems are too defended, too amplified, too committed to their current attractor. Some will reject coherence because coherence threatens the organisation of the self or group as it currently exists. Coherence is not universally welcome. In a field that has organised itself around dysregulation, the person who is not dysregulated is often the most unsettling presence.</p>
+
+      <div class="entrain-grid">
+        <div class="entrain-row">
+          <div class="entrain-label">Some will entrain</div>
+          <div class="entrain-desc">Systems with sufficient residual coherence will register the stable oscillator and organise around it. This can be rapid or gradual. It is rarely predictable in advance. <strong>The conditions were created. The entrainment found its own timing.</strong></div>
+        </div>
+        <div class="entrain-row">
+          <div class="entrain-label">Some will attack it</div>
+          <div class="entrain-desc">Systems whose identity architecture requires the dominant coupling pattern to continue will experience coherence as threat. The attack is not irrational — from inside a rigid attractor, the coherent oscillator is genuinely destabilising. <strong>This is not evidence that the coherence has failed. It is evidence that it is real.</strong></div>
+        </div>
+        <div class="entrain-row">
+          <div class="entrain-label">Some will ignore it</div>
+          <div class="entrain-desc">Systems too amplified to receive signal from outside their own loops will not register the oscillator at all. The gain is too high. The coupling architecture excludes inputs that don't reinforce its current configuration. <strong>This is not rejection. It is not yet recognition.</strong></div>
+        </div>
+        <div class="entrain-row">
+          <div class="entrain-label">Some will register it later</div>
+          <div class="entrain-desc">Perturbations propagate through coupled networks at their own pace. The coherent oscillator whose influence is invisible in the moment may be precisely what reorganises a system after a crisis creates an opening. <strong>Effect without feedback is still effect. The absence of visible response is not the absence of influence.</strong></div>
+        </div>
+      </div>
+
+      <p>This is not comforting in the way that promises are comforting. It does not say: your coherence will heal the world, or change the system, or produce the outcome your Meaning Room requires. It says something more modest and more real: <strong>your coherence creates conditions. What those conditions produce is not yours to determine.</strong></p>
+      <p>This is the difference between control and participation. Between command and field effect. Between a practitioner who needs to see the outcome to know the work was real, and one who has released that need and can remain coherent regardless of whether the system responds.</p>
+
+      <div class="callout entrain">
+        The opposite of collapse is not control.<br>
+        It is coherence.
+      </div>
+
+      <p>Collective coherence, when it emerges, appears to behave more like a threshold phenomenon than a linear one. It likely does not build in simple proportion to effort invested. It tips — when enough people have done enough of the first four movements that the distributed field of recognition reaches a density at which the system can begin to see itself. Below the threshold, the loops run unobserved and self-amplifying. At the threshold, something shifts that no single actor produced and no single actor could have produced alone. This is a model-consistent inference, not a settled fact. But it is the most coherent account available of why collective change so rarely looks like the accumulation of individual efforts — and why it so often looks, in retrospect, like something that suddenly became possible.</p>
+      <p>This is the deepest way in which Collective RALG is not individual RALG applied at scale. It is not a protocol for fixing society. It is a description of how one remains coherent in contact with large-scale intractability — and how that coherence may propagate without domination, influence without command, participate without needing to control.</p>
+      <p>The irreducible connection to individual practice remains: the distributed observer is composed of individual observers. The collective coherence threshold is reached one nervous system at a time. The path to collective field effect runs through personal work — not as a substitute for structural engagement, but as the substrate from which genuine engagement, without the signature of load fused to it, becomes possible.</p>
+      <p><strong>This is why the model does not terminate in insight. It terminates in a changed quality of participation.</strong> The case studies build framework literacy — the capacity to see which loops are running, what coupling failures are active, where the load is concentrated. The practice develops the capacity to not add gain to those loops while remaining in contact with them. One without the other is incomplete. The sophisticated observer who is still dysregulated carries their load into everything they see. The regulated practitioner who cannot see the structure they are inside cannot navigate it.</p>
+      <p>The model asks for both. The work produces both. And from both together, something becomes available that was not available before — not a solution, but a coherent oscillator. Not a fixed world, but a different quality of presence within the unfixed one.</p>
+    </div>
+  </div>
+
+  <!-- CLOSING LINE -->
+  <div class="closing-line">
+    <div class="cl-main">The opposite of collapse is not control.</div>
+    <div class="cl-sub">It is coherence.</div>
+  </div>
+
+  <!-- OBSERVER NOTE -->
+  <div class="observer-note">
+    <p>The work is not to become coherent so that you can be effective.<br>
+    The work is to become coherent.<br>
+    What follows is not yours to determine.<br>
+    But it is real.</p>
+    <span class="attribution">ELM Analysis — Madhu Bolton, 2026 / Awakening Heart</span>
+    <div class="series-nav">Framework Document — Collective Practice &nbsp;·&nbsp; Related: BC Old-Growth · The One-World World as High-Load Attractor · The Clearing</div>
+  </div>
+
+</div>
+</body>
+</html>

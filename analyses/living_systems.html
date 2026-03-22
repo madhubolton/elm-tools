@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Living Systems — Climate Through the Lens of Existential Load, Part IV</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Part IV palette — deep ocean teal, bioluminescent, geological depth */
+    --accent: #1A7A8A;
+    --accent-light: #5ABCCC;
+    --accent-dim: #0E4A55;
+    --accent-glow: rgba(26,122,138,0.12);
+    --ink: #050F12;
+    --warm-white: #E8F3F5;
+    --warm-mid: #BCD5DA;
+    --warm-dark: #0A181C;
+    --grey-warm: #4A707A;
+    --border: #0E2A32;
+    --border-mid: #081822;
+
+    /* Room analogues */
+    --predict-analogue: #2A5A8C;
+    --agency-analogue: #7A4A2A;
+    --identity-analogue: #1A7A4A;
+    --meaning-analogue: #5A2A7A;
+
+    /* Signal */
+    --red-signal: #8B2222;
+    --amber-signal: #9A6018;
+    --crisis: #6A1212;
+
+    /* Biological actors */
+    --coral: #CC7744;
+    --coral-dim: #8A4422;
+    --glacier: #88BBCC;
+    --glacier-dim: #447788;
+    --amazon: #2A8A44;
+    --amazon-dim: #145522;
+    --amoc: #3A5A9A;
+    --amoc-dim: #1A2A6A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--ink);
+    color: var(--warm-white);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .page { max-width: 1100px; margin: 0 auto; padding: 60px 40px; }
+
+  .series-banner { display: flex; align-items: center; gap: 16px; padding: 14px 24px; border: 1px solid var(--accent-dim); background: rgba(26,122,138,0.06); margin-bottom: 48px; }
+  .series-pip { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
+  .series-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 4px; color: var(--accent); flex-shrink: 0; }
+  .series-divider { width: 1px; height: 16px; background: var(--accent-dim); flex-shrink: 0; }
+  .series-title { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: var(--grey-warm); }
+  .series-part { margin-left: auto; font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: var(--accent-dim); }
+
+  .masthead { text-align: center; padding: 60px 0 48px; border-bottom: 1px solid var(--accent-dim); margin-bottom: 56px; position: relative; }
+  .masthead::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 30px; background: linear-gradient(to bottom, transparent, var(--accent-dim)); }
+  .masthead .supertitle { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 5px; color: var(--accent); text-transform: uppercase; margin-bottom: 22px; opacity: 0.85; }
+  .masthead h1 { font-family: 'Cormorant Garamond', serif; font-size: 54px; font-weight: 300; line-height: 1.12; color: var(--warm-white); margin-bottom: 14px; }
+  .masthead h1 em { color: var(--accent-light); font-style: italic; }
+  .masthead .subtitle { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: var(--grey-warm); margin-bottom: 28px; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .masthead .accent-rule { width: 60px; height: 2px; background: linear-gradient(to right, transparent, var(--accent), transparent); margin: 0 auto; }
+
+  .premise { background: var(--warm-dark); border-left: 3px solid var(--accent); padding: 34px 42px; margin-bottom: 56px; font-family: 'Cormorant Garamond', serif; font-size: 19px; line-height: 1.78; color: #B8D8DC; }
+  .premise strong { color: var(--accent-light); font-weight: 600; }
+
+  .section { margin-bottom: 72px; }
+  .section-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; opacity: 0.75; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--warm-white); margin-bottom: 6px; line-height: 1.2; }
+  .section-title em { color: var(--accent-light); font-style: italic; }
+  .section-rule { width: 100%; height: 1px; background: linear-gradient(to right, var(--accent-dim), transparent); margin: 16px 0 40px; }
+
+  .method-note { background: rgba(26,122,138,0.05); border: 1px solid rgba(26,122,138,0.22); border-left: 3px solid var(--accent-dim); padding: 28px 38px; margin-bottom: 56px; }
+  .method-note .mn-label { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 3px; color: var(--accent-dim); margin-bottom: 12px; }
+  .method-note p { font-size: 13.5px; color: #5A8090; line-height: 1.82; margin-bottom: 10px; }
+  .method-note p:last-child { margin-bottom: 0; }
+  .method-note strong { color: #88B0BC; }
+
+  /* THE ANALOGY TABLE — the centrepiece theoretical contribution */
+  .analogy-table { width: 100%; border-collapse: collapse; margin-bottom: 56px; font-size: 13px; }
+  .analogy-table th { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 2.5px; color: var(--accent); text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--accent-dim); background: var(--warm-dark); }
+  .analogy-table td { padding: 14px 16px; border-bottom: 1px solid var(--border-mid); vertical-align: top; line-height: 1.65; }
+  .analogy-table .col-room { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2px; width: 12%; white-space: nowrap; }
+  .analogy-table .col-human { color: #5A8090; width: 29%; }
+  .analogy-table .col-biological { color: #5A9070; width: 29%; }
+  .analogy-table .col-pattern { color: #8A7090; width: 30%; font-style: italic; }
+  .analogy-table .row-pred .col-room { color: #8AABCF; }
+  .analogy-table .row-agency .col-room { color: #CF9A8A; }
+  .analogy-table .row-identity .col-room { color: #7AB89A; }
+  .analogy-table .row-meaning .col-room { color: #B48ACF; }
+  .analogy-table td strong { color: #88B0BC; }
+  .analogy-table tr:hover td { background: rgba(26,122,138,0.03); }
+
+  /* BIOLOGICAL SYSTEMS — portrait cards */
+  .systems-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 56px; }
+  .sys-card { background: var(--warm-dark); border: 1px solid var(--border); padding: 32px; position: relative; overflow: hidden; }
+  .sys-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .sys-card.coral::before   { background: linear-gradient(to right, var(--coral), var(--coral-dim)); }
+  .sys-card.glacier::before { background: linear-gradient(to right, var(--glacier), var(--glacier-dim)); }
+  .sys-card.amazon::before  { background: linear-gradient(to right, var(--amazon), var(--amazon-dim)); }
+  .sys-card.amoc::before    { background: linear-gradient(to right, var(--amoc), var(--amoc-dim)); }
+
+  .sys-name { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px; margin-bottom: 4px; }
+  .sys-card.coral .sys-name   { color: #EE9966; }
+  .sys-card.glacier .sys-name { color: var(--glacier); }
+  .sys-card.amazon .sys-name  { color: #66CC88; }
+  .sys-card.amoc .sys-name    { color: #88AADD; }
+
+  .sys-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: var(--grey-warm); margin-bottom: 18px; }
+
+  .room-badge { display: inline-block; font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 2px; padding: 3px 10px; margin-bottom: 16px; border: 1px solid; }
+  .badge-identity  { border-color: var(--identity-analogue); color: #7AB89A; background: rgba(26,122,74,0.1); }
+  .badge-prediction{ border-color: var(--predict-analogue); color: #8AABCF; background: rgba(42,90,140,0.1); }
+  .badge-agency    { border-color: var(--agency-analogue);  color: #CF9A8A; background: rgba(122,74,42,0.1); }
+  .badge-meaning   { border-color: var(--meaning-analogue); color: #B48ACF; background: rgba(90,42,122,0.1); }
+  .badge-accent    { border-color: var(--accent-dim); color: var(--accent-light); background: rgba(26,122,138,0.1); }
+
+  .sys-desc { font-size: 13.5px; color: #5A8090; line-height: 1.72; }
+  .sys-desc strong { color: var(--warm-white); font-weight: 600; }
+
+  .load-indicator { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
+  .load-label { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 2px; color: var(--grey-warm); margin-bottom: 8px; }
+  .load-bar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .load-fill { height: 100%; border-radius: 2px; }
+  .load-extreme  { background: var(--crisis);      width: 100%; animation: pulse-signal 2s infinite; }
+  .load-critical { background: var(--red-signal);  width: 96%; }
+  .load-high     { background: var(--accent);      width: 80%; }
+  .load-elevated { background: #3A6A7A;            width: 62%; }
+  @keyframes pulse-signal { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+
+  /* CORAL BLEACHING SEQUENCE — the deep detail */
+  .bleaching-sequence { border: 1px solid var(--border); margin-bottom: 56px; }
+  .bleach-header { padding: 24px 32px; background: var(--warm-dark); border-bottom: 1px solid var(--border); }
+  .bleach-header .bh-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: var(--coral-dim, var(--accent-dim)); margin-bottom: 8px; color: #AA5522; }
+  .bleach-header .bh-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: var(--warm-white); line-height: 1.3; }
+  .bleach-stages { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0; }
+  .bleach-stage { padding: 28px 24px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .bleach-stage:last-child { border-right: none; }
+  .stage-num { font-family: 'Cinzel', serif; font-size: 32px; opacity: 0.08; color: var(--accent-light); line-height: 1; margin-bottom: 6px; }
+  .stage-label { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 2px; margin-bottom: 8px; }
+  .stage-1 .stage-label { color: var(--accent); }
+  .stage-2 .stage-label { color: #9A7030; }
+  .stage-3 .stage-label { color: #AA5522; }
+  .stage-4 .stage-label { color: var(--red-signal); }
+  .stage-title { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--warm-white); margin-bottom: 10px; line-height: 1.3; }
+  .stage-body { font-size: 12.5px; color: #4A7080; line-height: 1.7; }
+  .stage-body strong { color: #88AAAA; }
+  .stage-elm { font-family: 'Cormorant Garamond', serif; font-size: 12px; font-style: italic; color: var(--accent-dim); margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); line-height: 1.55; }
+
+  .callout { background: rgba(26,122,138,0.06); border: 1px solid rgba(26,122,138,0.22); padding: 26px 34px; margin: 24px 0; font-family: 'Cormorant Garamond', serif; font-size: 17px; font-style: italic; color: var(--accent-light); line-height: 1.72; }
+
+  /* CAUSAL CHAIN — the synthesis diagram */
+  .causal-chain { border: 1px solid var(--border); margin-bottom: 56px; overflow: hidden; }
+  .cc-header { padding: 20px 32px; background: var(--warm-dark); border-bottom: 1px solid var(--border); }
+  .cc-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: var(--accent); margin-bottom: 6px; }
+  .cc-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; color: var(--warm-white); }
+  .chain-row { display: flex; align-items: stretch; }
+  .chain-node { flex: 1; padding: 26px 24px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); position: relative; }
+  .chain-node:last-child { border-right: none; }
+  .chain-node::after { content: '→'; position: absolute; right: -10px; top: 50%; transform: translateY(-50%); font-family: 'Cinzel', serif; font-size: 14px; color: var(--accent-dim); z-index: 2; }
+  .chain-node:last-child::after { display: none; }
+  .cn-room { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 2px; margin-bottom: 6px; }
+  .cn-system { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: var(--grey-warm); margin-bottom: 8px; }
+  .cn-desc { font-size: 12.5px; line-height: 1.62; }
+  .chain-row.human .cn-room   { color: #8AABCF; }
+  .chain-row.human .cn-desc   { color: #4A6878; }
+  .chain-row.transit { background: rgba(26,122,138,0.03); }
+  .chain-row.transit .cn-room { color: var(--accent); }
+  .chain-row.transit .cn-desc { color: #4A8888; }
+  .chain-row.bio .cn-room     { color: #7AB89A; }
+  .chain-row.bio .cn-desc     { color: #3A6858; }
+
+  .inversion-box { background: rgba(26,122,138,0.06); border: 1px solid rgba(26,122,138,0.28); padding: 38px 46px; margin-bottom: 56px; }
+  .inversion-box .inv-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; }
+  .inversion-box .inv-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: var(--warm-white); margin-bottom: 20px; line-height: 1.3; }
+  .inversion-box .inv-title em { color: var(--accent-light); }
+  .inversion-box p { font-size: 14px; color: #5A8090; line-height: 1.82; margin-bottom: 14px; }
+  .inversion-box p:last-child { margin-bottom: 0; }
+  .inversion-box p strong { color: #88B0BC; }
+
+  .diagnosis { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 56px; }
+  .diag-card { background: var(--warm-dark); border: 1px solid var(--border); padding: 32px; }
+  .diag-title { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: var(--accent); margin-bottom: 12px; }
+  .diag-main { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; color: var(--warm-white); line-height: 1.42; margin-bottom: 14px; }
+  .diag-body { font-size: 13.5px; color: #4A7080; line-height: 1.78; }
+  .diag-body strong { color: #7AAAB8; }
+
+  .conclusion-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 40px; }
+  .concl-card { background: var(--warm-dark); border: 1px solid var(--border); padding: 28px; }
+  .concl-num { font-family: 'Cinzel', serif; font-size: 36px; color: var(--accent); opacity: 0.18; line-height: 1; margin-bottom: 8px; }
+  .concl-label { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 2px; color: var(--accent); margin-bottom: 10px; }
+  .concl-title { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--warm-white); margin-bottom: 12px; line-height: 1.35; }
+  .concl-body { font-size: 13px; color: #3A6070; line-height: 1.72; }
+  .concl-body strong { color: #5A9080; }
+
+  /* SERIES COMPLETE BOX */
+  .series-complete { border: 1px solid var(--accent-dim); background: rgba(26,122,138,0.04); padding: 38px 46px; margin-bottom: 56px; }
+  .sc-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 4px; color: var(--accent); margin-bottom: 20px; }
+  .sc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 40px; }
+  .sc-item { border-left: 1px solid var(--accent-dim); padding-left: 16px; }
+  .sc-part { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 2px; color: var(--accent-dim); margin-bottom: 4px; }
+  .sc-title { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--warm-white); margin-bottom: 6px; }
+  .sc-finding { font-size: 12.5px; color: #4A7080; line-height: 1.6; }
+  .sc-finding strong { color: #7AAAB8; }
+
+  .sources-section { border-top: 1px solid var(--border); padding-top: 48px; margin-top: 24px; margin-bottom: 48px; }
+  .sources-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 4px; color: var(--accent-dim); margin-bottom: 28px; }
+  .sources-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 40px; }
+  .source-item { border-left: 1px solid var(--border); padding-left: 16px; }
+  .source-authors { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: var(--accent-light); line-height: 1.4; margin-bottom: 3px; }
+  .source-title { font-size: 12px; color: #4A7080; line-height: 1.5; margin-bottom: 2px; }
+  .source-pub { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 1.5px; color: var(--accent-dim); }
+
+  .observer-note { text-align: center; padding: 52px 64px; border-top: 1px solid var(--border); margin-top: 24px; }
+  .observer-note p { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; color: var(--grey-warm); line-height: 1.82; max-width: 720px; margin: 0 auto 20px; }
+  .observer-note .attribution { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: var(--accent-dim); display: block; margin-bottom: 10px; }
+  .series-end { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: var(--accent-dim); }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--ink); }
+  ::-webkit-scrollbar-thumb { background: var(--accent-dim); }
+
+  @media (max-width: 1024px) {
+    .page { padding: 48px 32px; }
+    .masthead h1 { font-size: 42px; }
+    .bleach-stages { grid-template-columns: 1fr 1fr; }
+    .systems-grid { grid-template-columns: 1fr 1fr; }
+    .conclusion-grid { grid-template-columns: 1fr 1fr; }
+    .sc-grid { grid-template-columns: 1fr; }
+    .sources-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 767px) {
+    .page { padding: 32px 20px; }
+    .masthead { padding: 44px 0 36px; margin-bottom: 40px; }
+    .masthead h1 { font-size: 30px; }
+    .masthead .subtitle { font-size: 15px; }
+    .section-title { font-size: 24px; }
+    .premise { padding: 24px 24px; font-size: 16px; }
+    .series-banner { flex-wrap: wrap; gap: 10px; }
+    .series-part { margin-left: 0; }
+    .systems-grid, .diagnosis, .conclusion-grid, .sources-grid { grid-template-columns: 1fr; }
+    .bleach-stages { grid-template-columns: 1fr; }
+    .chain-row { flex-direction: column; }
+    .chain-node::after { content: '↓'; right: auto; left: 50%; top: auto; bottom: -14px; transform: translateX(-50%); }
+    .analogy-table, .analogy-table thead, .analogy-table tbody, .analogy-table th, .analogy-table td, .analogy-table tr { display: block; width: 100%; }
+    .analogy-table thead { display: none; }
+    .analogy-table td { padding: 8px 14px; }
+    .analogy-table .col-room { padding-top: 18px; border-top: 1px solid var(--border); }
+    .callout { padding: 20px 22px; font-size: 15px; }
+    .inversion-box { padding: 24px 22px; }
+    .inversion-box .inv-title { font-size: 20px; }
+    .observer-note { padding: 40px 22px; }
+    .observer-note p { font-size: 17px; }
+    .series-complete { padding: 24px 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="series-banner">
+    <div class="series-pip"></div>
+    <div class="series-label">Series</div>
+    <div class="series-divider"></div>
+    <div class="series-title">The World Through the Lens of Existential Load — Climate</div>
+    <div class="series-part">Part IV of IV</div>
+  </div>
+
+  <div class="masthead">
+    <div class="supertitle">Existential Load Model — Applied Analysis</div>
+    <h1>The <em>Living</em> Systems</h1>
+    <div class="subtitle">Coral reefs, glaciers, and the Amazon — extending the ELM to biological organisms experiencing threshold events</div>
+    <div class="accent-rule"></div>
+  </div>
+
+  <div class="premise">
+    The first three parts of this series mapped the load architecture of human systems: corporations, nation-states, scientists, and activists. Each revealed something the model had not previously needed to account for. Part IV asks the most theoretically ambitious question in the series: <strong>can the ELM illuminate the dynamics of non-human biological systems — coral reefs, glaciers, the Amazon, ocean circulation — as they approach and cross the thresholds that Parts I through III's load architecture has been generating?</strong> The answer is not that these systems have psychology. It is that they have structure — self-regulatory architecture, equilibrium states, coupling dynamics, and threshold events — that maps precisely onto the ELM's framework. And that mapping reveals the final and most consequential finding: the load that originates in human Meaning Room fracture ends, through a traceable causal chain, in the biological identity collapse of ecosystems that sustain human life.
+  </div>
+
+  <div class="method-note">
+    <div class="mn-label">On Method, Evidence, and Theoretical Scope</div>
+    <p>The empirical claims draw on peer-reviewed research: the 2025 Coral Restoration Foundation Tipping Point Report and the Science Advances analysis of cumulative coral bleaching risk; PNAS research on pre-bleaching nutrient cycling destabilisation; Nature Climate Change findings on irreversible glacier loss after temperature overshoot; Wikipedia synthesis of IPCC tipping point definitions; and Land and Climate Review research on cryosphere tipping dynamics. All biological systems described operate according to well-documented regulatory mechanisms and threshold dynamics.</p>
+    <p><strong>The ELM application here is explicitly analogical, not direct.</strong> Biological systems do not have Prediction Rooms in the psychological sense — they do not form representations of the future. They do have regulatory mechanisms that perform analogous structural functions: homeostatic maintenance (Prediction Room analogue), response repertoires when conditions change (Agency Room analogue), and organisational identity — the characteristic structure that either persists or dissolves (Identity Room analogue). The analogy is structural, not experiential. The claim is that the ELM's four-room architecture maps onto the architecture of biological self-regulation with enough precision to generate novel explanatory power — not that coral reefs have existential experiences. Where the analogy holds, it is genuinely illuminating. Where it breaks down, the breakdown is noted explicitly.</p>
+  </div>
+
+  <!-- THE STRUCTURAL ANALOGY -->
+  <div class="section">
+    <div class="section-label">Part One</div>
+    <div class="section-title">The Structural <em>Analogy</em> — Mapping the Four Rooms to Biological Systems</div>
+    <div class="section-rule"></div>
+
+    <div class="callout">
+      The ELM's four rooms describe the architecture of self-regulation in any sufficiently complex system. The Prediction Room processes environmental signals and generates expectations. The Agency Room selects and executes responses. The Identity Room maintains the system's characteristic organisation — what it is, not just what it does. The Meaning Room (the most specifically human) provides the evaluative framework within which action and identity cohere. Of these four, the first three have direct biological analogues. The fourth — Meaning — is where the analogy reaches its limit, and where the most significant theoretical insight emerges.
+    </div>
+
+    <table class="analogy-table">
+      <thead>
+        <tr>
+          <th class="col-room">ROOM</th>
+          <th class="col-human">HUMAN SYSTEM FUNCTION</th>
+          <th class="col-biological">BIOLOGICAL SYSTEM ANALOGUE</th>
+          <th class="col-pattern">WHERE THE ANALOGY HOLDS / BREAKS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-pred">
+          <td class="col-room">PREDICTION</td>
+          <td class="col-human">Processes environmental signals; generates expectations and models of the future; detects threats and opportunities. Dysregulation: distorted, split, or noise-saturated signals that prevent accurate environmental tracking. <strong>Parts I–III found this room most frequently corrupted by identity-preserving strategies.</strong></td>
+          <td class="col-biological">Biological homeostatic sensing — the system's capacity to detect deviation from optimal conditions and signal for regulatory response. In corals: thermal stress sensors, photosynthetic efficiency monitors, nutrient cycling metrics. In glaciers: mass balance signals, albedo readings, meltwater feedback. In the Amazon: drought stress signals, moisture recycling measurements, biodiversity density monitors. <strong>Biological "prediction" operates below the threshold of representation — it is molecular and physiological, not cognitive.</strong></td>
+          <td class="col-pattern">Analogy holds structurally: both systems process environmental inputs into regulatory signals. Biological systems cannot actively distort their own sensing (as human systems do — Parts I and II's key finding). They can only respond to what the sensing detects. This is why biological threshold crossings, once approaching, cannot be strategically delayed through manufactured uncertainty. <em>The biological Prediction Room is honest by necessity.</em></td>
+        </tr>
+        <tr class="row-agency">
+          <td class="col-room">AGENCY</td>
+          <td class="col-human">Selects and executes responses; acts on the environment; manages the gap between predicted states and desired ones. Dysregulation: compulsive optionality, paralysis, performance substituting for structural change. <strong>Part III found the responder community's collective agency insufficient to the prediction room's requirements.</strong></td>
+          <td class="col-biological">The biological response repertoire — the range of regulatory actions available when sensing detects deviation. In corals: symbiont shuffling (replacing thermally-sensitive algae with heat-tolerant variants), calcification rate adjustment, immune response deployment. In glaciers: calving rates, drainage system adjustments, seasonal accumulation balancing ablation. In the Amazon: stomatal closure to reduce water loss, root depth adjustment, fire-recovery regrowth. <strong>The biological Agency Room has a fixed ceiling: it can only deploy responses within the repertoire that evolution has provided.</strong></td>
+          <td class="col-pattern">Analogy holds with one crucial difference: biological agency cannot be expanded through learning, strategy, or institutional change. The coral cannot choose to develop a new heat-tolerance mechanism in response to a threat. It can only access its existing response repertoire. This is a harder constraint than anything in the human system — but it also means that biological Agency Room limits are precisely known, while human ones are frequently underestimated through over-reliance on future technological solutions.</td>
+        </tr>
+        <tr class="row-identity">
+          <td class="col-room">IDENTITY</td>
+          <td class="col-human">Maintains characteristic self-organisation — what the system is, not just what it does. The deepest load in the human system. Identity Room threats generate the most sustained and extreme defensive responses. <strong>All four parts of this series found Identity Room threat as the primary driver of system dysfunction.</strong></td>
+          <td class="col-biological">Species-characteristic organisation — the specific biological architecture that defines what a system is. For coral reefs: the coral-zooxanthellae symbiosis, the calcium carbonate skeleton structure, the multi-species community organisation around that structure. For glaciers: the ice-mass accumulation/ablation equilibrium, the feedback relationship between ice coverage and albedo. For the Amazon: the moisture recycling loop that generates up to 50% of its own rainfall, sustaining the forest that generates the moisture. <strong>Biological identity is the most literal possible meaning of "what the system is" — it is the physical organisation that constitutes the ecosystem.</strong></td>
+          <td class="col-pattern">Analogy holds most powerfully here: biological identity collapse IS the extinction event. When a coral reef bleaches beyond recovery, its biological identity — the symbiotic architecture that constitutes it — dissolves. This is not metaphor. It is the structural event the ELM was built to map. The difference from human identity: biological identity collapse is physical and often irreversible. Human identity can reorganise. Biological identity, at the ecosystem scale, largely cannot — at least not on human timescales.</td>
+        </tr>
+        <tr class="row-meaning">
+          <td class="col-room">MEANING</td>
+          <td class="col-human">The evaluative framework within which action and identity cohere. The room that generates purpose, justification, and the narrative that makes sacrifice intelligible. Specifically human — the room that assigns significance to events and creates the conditions under which Agency Room responses are or are not generated. <strong>Parts I–III found Meaning Room fracture as the primary barrier to adequate response at every scale.</strong></td>
+          <td class="col-biological"><em>No direct biological analogue exists.</em> Biological systems do not assign meaning to their circumstances. A bleaching coral does not experience its dissolution as significant or insignificant. A retreating glacier does not evaluate the loss of its ice mass. The Meaning Room is the specifically human contribution to the system — and this is the most theoretically significant finding of Part IV: <strong>it is the human Meaning Room's fracture that is generating the physical conditions that are dissolving the biological Identity Rooms of these systems.</strong> The missing Meaning Room in biological systems is not their limitation. It is the location of the problem.</td>
+          <td class="col-pattern">This is where the analogy breaks — and the break is the insight. Biological systems cannot generate the meaning architecture that would motivate adequate protection of their own identity. Only human systems can do that. The failure to do so — the Meaning Room fractures mapped in Parts I, II, and III — is the causal pathway through which human load is transmitted into biological identity collapse. The coral does not need a Meaning Room. It needs the humans watching it bleach to have one adequate to the situation.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- BIOLOGICAL SYSTEMS: FOUR CASE STUDIES -->
+  <div class="section">
+    <div class="section-label">Part Two</div>
+    <div class="section-title">Four <em>Biological Systems</em> — Load Profiles at the Threshold</div>
+    <div class="section-rule"></div>
+
+    <div class="systems-grid">
+
+      <div class="sys-card coral">
+        <div class="sys-name">CORAL REEFS — THE COUPLED OSCILLATOR COLLAPSE</div>
+        <div class="sys-subtitle">Primary load: Identity Room dissolution through symbiosis breakdown</div>
+        <div class="room-badge badge-identity">IDENTITY THRESHOLD</div>
+        <div class="sys-desc">
+          The coral reef presents the ELM's most precisely documented case of biological Identity Room dissolution. The reef's identity — its structural existence as a reef — is constituted by the symbiosis between coral polyps and photosynthetic microalgae (Symbiodiniaceae). The algae provide up to 90% of the coral's energy through photosynthesis; the coral provides shelter and nutrients. <strong>This is a coupled biological oscillator in the most literal sense: two organisms whose metabolic cycles are entrained to each other, the whole being dependent on the coupling remaining stable.</strong><br><br>
+          The 2025 global bleaching event — the fourth and most widespread on record, affecting 84% of coral reefs worldwide according to the International Coral Reef Initiative — is not primarily the story of an organism dying. It is the story of a regulatory architecture collapsing under load it was not evolved to sustain. PNAS research on pre-bleaching dynamics revealed that heat stress destabilises nutrient cycling between coral and algae <em>before bleaching becomes visually apparent</em> — the internal regulatory coupling breaks down before the external identity change is visible. This is the ELM's pre-threshold load signature at biological scale.<br><br>
+          The Coral Restoration Foundation's 2025 Tipping Point Report confirms the assessment: Florida's elkhorn and staghorn corals — once dominant — are now functionally extinct in the wild. At current warming trajectories, the window during which bleaching-recovery cycles can maintain reef identity is narrowing asymptotically toward zero.
+        </div>
+        <div class="load-indicator">
+          <div class="load-label">IDENTITY THRESHOLD PROXIMITY</div>
+          <div class="load-bar"><div class="load-fill load-extreme"></div></div>
+        </div>
+      </div>
+
+      <div class="sys-card glacier">
+        <div class="sys-name">THE CRYOSPHERE — IRREVERSIBLE SELF-REINFORCING LOSS</div>
+        <div class="sys-subtitle">Primary load: Agency Room exhaustion through albedo feedback</div>
+        <div class="room-badge badge-agency">AGENCY THRESHOLD</div>
+        <div class="sys-desc">
+          The cryosphere's most structurally significant feature — in ELM terms — is the ice-albedo feedback: ice is highly reflective, reflecting solar energy back to space; as ice melts, it exposes darker ocean or land surface that absorbs more heat, warming the system further, melting more ice. <strong>This is an Agency Room self-defeating mechanism: the glacier's primary regulatory capacity (maintaining ice mass) generates the very condition that reduces its capacity to maintain ice mass.</strong> The system's own response to load becomes a load amplifier beyond a certain threshold.<br><br>
+          Nature Climate Change (2025) showed that exceeding 1.5°C and returning to below it would still produce irreversible glacier loss for centuries — the hysteresis is enormous. The Antarctic Ice Sheet research (Communications Earth and Environment, 2025) found that West Antarctic collapse may already be triggered at current warming levels, with 800,000 years of paleoclimate data showing tipping behaviour with little additional warming required. Over 40% of all mountain glacier mass is expected to be gone by 2100. Unlike coral reefs, which may find thermal refugia, <strong>glacier retreat is largely irreversible on any human-relevant timescale once self-sustaining feedback loops are engaged.</strong> The glacier's Agency Room — its regulatory capacity — has been structurally narrowed by the very warming it cannot prevent.
+        </div>
+        <div class="load-indicator">
+          <div class="load-label">IDENTITY THRESHOLD PROXIMITY</div>
+          <div class="load-bar"><div class="load-fill load-critical"></div></div>
+        </div>
+      </div>
+
+      <div class="sys-card amazon">
+        <div class="sys-name">THE AMAZON — THE MEANING ROOM THAT CANNOT SPEAK FOR ITSELF</div>
+        <div class="sys-subtitle">Primary load: Prediction Room signal unheard; Identity under approached threshold</div>
+        <div class="room-badge badge-prediction">PREDICTION / IDENTITY</div>
+        <div class="sys-desc">
+          The Amazon rainforest presents a Prediction Room signal of extraordinary precision that the human systems around it have consistently failed to act on. The forest generates approximately 50% of its own rainfall through moisture recycling — trees release water vapour that forms clouds that rain back into the forest. <strong>This self-sustaining moisture loop is the Amazon's Identity Room mechanism: the forest creates the conditions for its own existence.</strong> Deforestation and warming together are eroding both sides of this feedback: less forest generates less moisture, which stresses the remaining forest, which reduces moisture further.<br><br>
+          The Amazon has now crossed approximately 20% deforestation — studies suggest 25-30% may trigger dieback of the eastern Amazon into a savannah-like state that cannot recover. The Prediction Room signal from the ecological science community has been clear for decades. The political and economic Identity Room of Brazil — and the Meaning Room architectures of the development-justice dimension discussed in Part II — have consistently outweighed it. <strong>The Amazon is the most acute example of the Meaning Room failure described across this series: a biological system whose self-regulatory capacity is being dismantled in real time by human systems whose Meaning Rooms cannot generate adequate protective response.</strong>
+        </div>
+        <div class="load-indicator">
+          <div class="load-label">IDENTITY THRESHOLD PROXIMITY</div>
+          <div class="load-bar"><div class="load-fill load-high"></div></div>
+        </div>
+      </div>
+
+      <div class="sys-card amoc">
+        <div class="sys-name">THE AMOC — THE PLANETARY THERMOSTAT APPROACHING ITS THRESHOLD</div>
+        <div class="sys-subtitle">Primary load: Coupled oscillator destabilisation with cascading system consequences</div>
+        <div class="room-badge badge-accent">COUPLED SYSTEM THRESHOLD</div>
+        <div class="sys-desc">
+          The Atlantic Meridional Overturning Circulation — the system of ocean currents that carries warm surface water from the tropics to northern latitudes and returns cold deep water southward — is the most consequential single physical system in Part IV. <strong>Its load profile is that of a planetary-scale coupled oscillator that has been operating stably for millennia and is now showing early warning signals of approaching threshold instability.</strong> An August 2025 study concluded that AMOC collapse could begin as early as the 2060s; 44 climate scientists in an October 2024 open letter stated the risk had been significantly underestimated.<br><br>
+          The AMOC is a regulatory mechanism for much of the Northern Hemisphere's climate — its stability enables Western Europe's mild climate, regulates the African and Asian monsoon systems, and distributes heat globally. Its Identity Room is the density-gradient driven circulation itself. Freshwater influx from melting ice sheets is reducing the salinity gradient that drives the circulation. <strong>The AMOC is experiencing Agency Room constraints identical to those of the glacier: its regulatory mechanism (thermohaline circulation) is being undermined by the very inputs — freshwater from melting ice — that the warming it cannot prevent is generating.</strong> The feedback loop has no biological analogue. It is pure physics consuming itself.
+        </div>
+        <div class="load-indicator">
+          <div class="load-label">IDENTITY THRESHOLD PROXIMITY</div>
+          <div class="load-bar"><div class="load-fill load-elevated"></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CORAL BLEACHING IN DEPTH -->
+  <div class="section">
+    <div class="section-label">Part Three</div>
+    <div class="section-title">Coral Bleaching as <em>Biological ELM</em> — A Detailed Sequence</div>
+    <div class="section-rule"></div>
+
+    <p style="color:#4A7080; font-size:14px; margin-bottom:28px;">The coral bleaching event is the most richly documented case in this analysis — and the one where the ELM structural analogy achieves its greatest precision. The PNAS research on pre-bleaching dynamics reveals a four-stage sequence that maps exactly onto the ELM's load-to-threshold pathway. Following this sequence in detail is how the analogy becomes argument rather than metaphor.</p>
+
+    <div class="bleaching-sequence">
+      <div class="bleach-header">
+        <div class="bh-label">CASE ANALYSIS — CORAL BLEACHING SEQUENCE</div>
+        <div class="bh-title">From ambient load to identity dissolution — the ELM stages in biological time</div>
+      </div>
+      <div class="bleach-stages">
+
+        <div class="bleach-stage stage-1">
+          <div class="stage-num">1</div>
+          <div class="stage-label">PRE-THRESHOLD — REGULATION</div>
+          <div class="stage-title">The symbiosis maintains itself</div>
+          <div class="stage-body">Under normal conditions, coral polyps house their algal partners in a regulated nutritional balance: the algae photosynthesize and translocate carbon compounds to the coral host; the coral provides inorganic nutrients and physical shelter. The coupling is stable within a thermal range that the system has occupied for millions of years. <strong>Ocean temperature fluctuates; the biological identity of the reef persists.</strong> Both partners maintain their distinct character while being constituted by their relationship. This is the ELM's low-load stable attractor state — the coupled oscillator running coherently.</div>
+          <div class="stage-elm">ELM reading: All four rooms functioning within adaptive range. Identity Room stable; Agency Room responses proportionate to Prediction Room signals; Meaning Room (in the extended analogy) — the reef's existence — not threatened.</div>
+        </div>
+
+        <div class="bleach-stage stage-2">
+          <div class="stage-num">2</div>
+          <div class="stage-label">ELEVATED LOAD — PRE-VISIBLE DISRUPTION</div>
+          <div class="stage-title">Internal regulation failing before external signs appear</div>
+          <div class="stage-body">The PNAS research (2021) documented something the standard bleaching narrative obscures: <strong>heat stress destabilises nutrient cycling between coral and algae before bleaching becomes visually apparent.</strong> Increased metabolic energy demands shift the symbiosis from a nitrogen-limited to a carbon-limited state — the coral begins consuming more, the algae retain photosynthates rather than translocating them, the energetic advantage of the symbiosis erodes. The biological Identity Room is failing internally while its external appearance is maintained. <strong>The visible bleaching event is not the crisis — it is the announcement that the internal regulatory architecture has already collapsed.</strong></div>
+          <div class="stage-elm">ELM reading: Agency Room responding to Prediction Room signal (increased heat stress) — but the available responses are insufficient. Internal coupling is degrading. This is precisely the pre-threshold load signature the ELM identifies in human systems: outward coherence maintained while internal regulatory architecture is breaking down. The parallel to Part I's split Prediction Room is structural, not metaphorical: in both cases, the external presentation delays recognition of internal collapse.</div>
+        </div>
+
+        <div class="bleach-stage stage-3">
+          <div class="stage-num">3</div>
+          <div class="stage-label">THRESHOLD EVENT — IDENTITY DISSOLUTION</div>
+          <div class="stage-title">The symbiosis breaks; the organism expels its partner</div>
+          <div class="stage-body">When temperature anomalies exceed approximately 1-2°C above the seasonal maximum for sustained periods, the algal photosynthetic machinery begins producing reactive oxygen species. To protect itself from oxidative damage, the coral expels the algae. A bleached coral is not dead — it has completed the equivalent of a human system's identity collapse: it is still structurally present, but the defining relationship that constituted its biological identity has dissolved. <strong>The coral skeleton remains; the reef is gone.</strong> Without the algae's contribution (up to 90% of energy supply), the coral enters a state of nutritional starvation, immune compromise, and heightened disease vulnerability.</div>
+          <div class="stage-elm">ELM reading: Identity Room event. The coral's biological identity — constituted by the symbiotic coupling — has dissolved. This is not metaphor: the zooxanthellae ARE the coral's primary energy source, and the coral's characteristic color, health, and structural integrity are all downstream of their presence. Identity Room dissolution in biological systems is physical dissolution of characteristic organisation. The ELM's claim that identity threat generates extreme defensive responses is literalised here: expulsion of the symbiont is the organism's desperate self-protective act — and it is self-defeating.</div>
+        </div>
+
+        <div class="bleach-stage stage-4">
+          <div class="stage-num">4</div>
+          <div class="stage-label">POST-THRESHOLD — RECOVERY OR MORTALITY</div>
+          <div class="stage-title">Two trajectories: restitution or permanent collapse</div>
+          <div class="stage-body">If conditions improve within weeks, some corals can reacquire symbionts and recover — slowly, with impaired growth and reduced reproduction for years afterward. If conditions persist or recur before recovery is complete, the coral dies. <strong>The 2023-2025 global bleaching event, covering 84% of all coral reefs, is generating bleaching intervals shorter than recovery periods across most reef systems.</strong> The frequency of events now exceeds the biological recovery time — meaning the reef Identity Room cannot reconstitute itself before the next threshold event begins dismantling it again. This is not a single crisis. It is a cumulative ratchet toward permanent identity dissolution at ecosystem scale.</div>
+          <div class="stage-elm">ELM reading: The post-threshold condition maps onto what the ELM calls a metastable state — a system oscillating near threshold without the regulatory capacity to return to the prior stable attractor. In human systems, this is the condition that precedes either genuine transformation or collapse. In biological systems at this scale, the transformation option is not available on relevant timescales. The cumulative ratchet is the biological analogue of the structural inertia coupling identified in Part I — but operating without the possibility of strategic intervention by the system itself.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- THE CAUSAL CHAIN -->
+  <div class="section">
+    <div class="section-label">Part Four</div>
+    <div class="section-title">The Full <em>Causal Chain</em> — From Human Psychology to Biological Collapse</div>
+    <div class="section-rule"></div>
+
+    <div class="callout">
+      This is the series' synthesis claim: the load that originates in human Meaning Room fracture propagates through a traceable causal architecture into the physical conditions that dissolve the biological Identity Rooms of systems that sustain human life. The chain is not metaphorical. Each link is empirically documented. The ELM provides the framework within which the links become visible as a single connected system — rather than separate problems addressed by separate disciplines.
+    </div>
+
+    <div class="causal-chain">
+      <div class="cc-header">
+        <div class="cc-label">CAUSAL ARCHITECTURE — FOUR PARTS CONNECTED</div>
+        <div class="cc-title">The propagation pathway from human load to biological threshold</div>
+      </div>
+
+      <div class="chain-row human">
+        <div class="chain-node">
+          <div class="cn-room">PART I LINK</div>
+          <div class="cn-system">Corporate Identity Room</div>
+          <div class="cn-desc">The fossil fuel industry's Identity Room threat generates organised Prediction Room noise — manufactured uncertainty about climate science — sustained for four decades. <strong>This delays public recognition of the threat.</strong></div>
+        </div>
+        <div class="chain-node">
+          <div class="cn-room">PART II LINK</div>
+          <div class="cn-system">Petrostate Identity Room</div>
+          <div class="cn-desc">Petrostate social contracts require continued fossil fuel revenue. Their Identity Room threat prevents the Meaning Room architecture needed for adequate climate commitments. <strong>This delays the transition.</strong></div>
+        </div>
+        <div class="chain-node">
+          <div class="cn-room">PART III LINK</div>
+          <div class="cn-system">Responder Agency Room</div>
+          <div class="cn-desc">The climate science and activist community carries full Prediction Room clarity but insufficient Agency Room. Movement Meaning Room fractures prevent coherent collective action. <strong>This limits the response.</strong></div>
+        </div>
+        <div class="chain-node">
+          <div class="cn-room">CONVERGENCE</div>
+          <div class="cn-system">System-wide Meaning Failure</div>
+          <div class="cn-desc">The combined effect: no Meaning Room architecture adequate to the scale of the required transition has been constructed in any of the primary human systems involved. <strong>Emissions continue; warming accelerates.</strong></div>
+        </div>
+      </div>
+
+      <div class="chain-row transit">
+        <div class="chain-node">
+          <div class="cn-room">PHYSICAL TRANSMISSION</div>
+          <div class="cn-system">Atmospheric CO₂</div>
+          <div class="cn-desc">Human Meaning Room failure transmits directly into atmospheric chemistry. CO₂ concentrations now exceed 420ppm — higher than at any point in human history, and rising.</div>
+        </div>
+        <div class="chain-node">
+          <div class="cn-room">PHYSICAL TRANSMISSION</div>
+          <div class="cn-system">Ocean Warming</div>
+          <div class="cn-desc">Atmospheric load transmits into ocean heat content. The ocean has absorbed over 90% of excess heat. Marine heatwaves of intensity sufficient to trigger mass bleaching are now occurring at intervals reef systems cannot recover from.</div>
+        </div>
+        <div class="chain-node">
+          <div class="cn-room">PHYSICAL TRANSMISSION</div>
+          <div class="cn-system">Ice Melt and Freshwater</div>
+          <div class="cn-desc">Atmospheric load transmits into cryosphere mass loss — irreversible over centuries even if warming stops. Freshwater influx is altering the salinity gradients that drive AMOC circulation.</div>
+        </div>
+        <div class="chain-node">
+          <div class="cn-room">PHYSICAL TRANSMISSION</div>
+          <div class="cn-system">Regional Climate Disruption</div>
+          <div class="cn-desc">Atmospheric load transmits into regional precipitation patterns, drought intensity, fire frequency — altering the environmental conditions within which biological systems evolved their regulatory architectures.</div>
+        </div>
+      </div>
+
+      <div class="chain-row bio">
+        <div class="chain-node">
+          <div class="cn-room">BIOLOGICAL ENDPOINT</div>
+          <div class="cn-system">Coral Symbiosis Collapse</div>
+          <div class="cn-desc">Human Meaning Room failure → ocean warming → pre-bleaching nutrient disruption → symbiosis expulsion → <strong>biological Identity Room dissolution.</strong> 84% of reefs affected in the 2023–2025 event.</div>
+        </div>
+        <div class="chain-node">
+          <div class="cn-room">BIOLOGICAL ENDPOINT</div>
+          <div class="cn-system">Glacier Identity Loss</div>
+          <div class="cn-desc">Human Meaning Room failure → atmospheric loading → albedo feedback → irreversible mass loss → <strong>self-sustaining regulatory collapse.</strong> 40% of mountain glacier mass gone by 2100.</div>
+        </div>
+        <div class="chain-node">
+          <div class="cn-room">BIOLOGICAL ENDPOINT</div>
+          <div class="cn-system">Amazon Moisture Loop</div>
+          <div class="cn-desc">Human Meaning Room failure → deforestation + warming → moisture recycling disruption → <strong>forest-to-savannah transition threshold approached.</strong> At ~25-30% deforestation, self-sustaining dieback may begin.</div>
+        </div>
+        <div class="chain-node">
+          <div class="cn-room">BIOLOGICAL ENDPOINT</div>
+          <div class="cn-system">AMOC Circulation</div>
+          <div class="cn-desc">Human Meaning Room failure → ice melt → salinity gradient disruption → circulation weakening → <strong>potential collapse of the planetary thermostat.</strong> Possible onset as early as the 2060s.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE NOVEL ELM FINDING -->
+  <div class="section">
+    <div class="section-label">Part Five</div>
+    <div class="section-title">The Novel <em>ELM Finding</em> — Series Synthesis</div>
+    <div class="section-rule"></div>
+
+    <div class="inversion-box">
+      <div class="inv-label">ELM THEORETICAL CONTRIBUTION — PART IV AND SERIES SYNTHESIS</div>
+      <div class="inv-title">The Biological Systems Are Not Separate From the Human Load Story.<br><em>They Are Its Downstream Expression.</em></div>
+      <p>Across four parts, this series has applied the ELM to domains it was not originally designed to address: corporations, nation-states, scientific institutions, activist movements, and now biological ecosystems. Each application has returned something that refines the model. Part IV's most significant contribution is neither methodological nor empirical — it is architectural: <strong>the demonstration that the ELM connects the levels.</strong></p>
+      <p>Prior to this series, the ELM was a model of individual and relational load architecture. The series has established that the same structural logic — Identity Room threat generating load-management strategies that preserve the threat while externalising its costs — operates across every scale from personal psychology to planetary biochemistry. The corporation that manufactured climate doubt to protect its Identity Room contributed to the atmospheric loading that is dissolving coral reefs on the other side of the causal chain. <strong>The structure is the same at every scale. Only the timescale and the physical substrate change.</strong></p>
+      <p>Part IV contributes the model's most theoretically adventurous extension: the application of ELM structural analysis to non-human biological systems. The Prediction Room, Agency Room, and Identity Room analogues in biological systems hold with sufficient precision to generate novel explanatory power. Coral bleaching is not merely a climate impact — it is a biological Identity Room event triggered by the propagated load of human Meaning Room failure, observable in its pre-threshold signature (nutrient cycling disruption before visible bleaching) exactly as the ELM predicts for any system under accumulating load that its regulatory architecture cannot discharge.</p>
+      <p>The theoretical limit the analogy reaches is also the most important finding: <strong>biological systems have no Meaning Room.</strong> They cannot generate the evaluative framework that would assign sufficient significance to their own dissolution to motivate their own protection. Only human systems have Meaning Rooms. The capacity to make the coral's bleaching matter — to embed it in a meaning architecture that generates adequate Agency Room response — exists only in the human layer of this system. <strong>This is why the Meaning Room fractures mapped in Parts I, II, and III are not merely a political or economic problem. They are the mechanism by which biological identity collapse is permitted to proceed.</strong></p>
+      <p>The series' final prediction: the biological systems will continue approaching their thresholds at the pace generated by the human load architecture documented across Parts I through III — until and unless the human Meaning Room fractures are resolved not at the level of information (which is already sufficient) but at the level of identity and meaning. The science has been clear for decades. The Prediction Room of the global climate system is functioning. <strong>The operative question is whether human Meaning Rooms — the only systems in this entire causal chain capable of generating meaning adequate to biological identity — will reorganise in time to matter.</strong></p>
+    </div>
+  </div>
+
+  <!-- SYSTEM DIAGNOSIS -->
+  <div class="section">
+    <div class="section-label">Part Six</div>
+    <div class="section-title">System <em>Diagnosis</em> — The Full Architecture</div>
+    <div class="section-rule"></div>
+
+    <div class="diagnosis">
+      <div class="diag-card">
+        <div class="diag-title">THE BIOLOGICAL FINDING</div>
+        <div class="diag-main">Pre-threshold load is biologically detectable before identity dissolution is visible</div>
+        <div class="diag-body">
+          The PNAS finding on coral bleaching — that nutrient cycling disrupts before visible bleaching — has a direct ELM application: <strong>biological systems, like human ones, show pre-threshold load signatures in their internal regulatory dynamics before external identity change becomes apparent.</strong> This finding generates a diagnostic tool: monitoring internal regulatory coherence (symbiosis coupling, moisture recycling efficiency, circulation density gradients) rather than waiting for threshold events to become visible. The ELM's load architecture predicts the event before the event.
+        </div>
+      </div>
+
+      <div class="diag-card">
+        <div class="diag-title">THE IRREVERSIBILITY FINDING</div>
+        <div class="diag-main">Biological Identity Room collapse is largely irreversible on human timescales</div>
+        <div class="diag-body">
+          The most critical asymmetry between human and biological Identity Room events: <strong>human identity structures, under sufficient pressure, can reorganise.</strong> They may do so badly, slowly, and at great cost — but reorganisation is possible. Biological identity collapse at ecosystem scale is largely irreversible. Glacier mass lost to self-sustaining feedback cannot be recovered. Species lost to extinction cannot be restored. Reef systems that cross the cumulative bleaching threshold cannot reconstitute themselves. This asymmetry makes the stakes of human Meaning Room failure categorically different from personal or even institutional identity failure.
+        </div>
+      </div>
+
+      <div class="diag-card">
+        <div class="diag-title">THE COUPLING FINDING</div>
+        <div class="diag-main">Human and biological systems are tightly coupled — in both directions</div>
+        <div class="diag-body">
+          The causal chain runs from human Meaning Room to biological Identity Room — but the coupling is bidirectional. <strong>Coral reef collapse affects the food security and storm protection of hundreds of millions of people.</strong> Glacier loss threatens the freshwater supply of billions in glacier-fed river systems. AMOC disruption would reshape agriculture, precipitation, and livability across entire continents. The biological Identity Room collapses feed back into human load — not as Meaning Room events (the reef cannot generate meaning) but as Agency Room constraints that narrow the remaining human options.
+        </div>
+      </div>
+
+      <div class="diag-card">
+        <div class="diag-title">THE MEANING GAP</div>
+        <div class="diag-main">The only systems capable of generating adequate protective meaning are the ones that have failed to do so</div>
+        <div class="diag-body">
+          Part IV's most uncomfortable finding: <strong>the biological systems have no Meaning Room.</strong> They cannot advocate for themselves, construct meaning architectures around their own preservation, or generate the political will required to protect them. That capacity belongs exclusively to human systems — the same human systems whose Meaning Room fractures this series has mapped across four parts. The gap between what the biological systems need and what the human Meaning Rooms are providing is the operative measure of the series' central problem.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SYNTHESIS -->
+  <div class="section">
+    <div class="section-label">Synthesis — Part IV</div>
+    <div class="section-title">What the Model <em>Reveals</em> at the Biological Scale</div>
+    <div class="section-rule"></div>
+
+    <div class="conclusion-grid">
+      <div class="concl-card">
+        <div class="concl-num">01</div>
+        <div class="concl-label">THE STRUCTURAL CLAIM</div>
+        <div class="concl-title">The ELM maps biological systems with structural precision, not poetic analogy.</div>
+        <div class="concl-body">The Prediction Room, Agency Room, and Identity Room analogues in coral reefs, glaciers, and ocean circulation are structural — they describe actual regulatory mechanisms, actual response repertoires, and actual organisational identity. <strong>The analogy generates empirically testable predictions: pre-threshold internal disruption before visible identity change, Agency Room exhaustion at fixed biological limits, Identity Room dissolution as physical ecosystem collapse.</strong></div>
+      </div>
+
+      <div class="concl-card">
+        <div class="concl-num">02</div>
+        <div class="concl-label">THE CORAL FINDING</div>
+        <div class="concl-title">Bleaching is a biological Identity Room event with a documented pre-threshold signature.</div>
+        <div class="concl-body">The PNAS research showing nutrient cycling disruption before visible bleaching is the ELM's pre-threshold load pattern in biological form. <strong>The coral's Identity Room — constituted by the algal symbiosis — begins failing internally before it collapses externally.</strong> This is not metaphor. It is the structural sequence the ELM predicts for any coupled system under accumulating load exceeding its regulatory capacity.</div>
+      </div>
+
+      <div class="concl-card">
+        <div class="concl-num">03</div>
+        <div class="concl-label">THE IRREVERSIBILITY DISTINCTION</div>
+        <div class="concl-title">Biological identity collapse differs from human identity collapse in one critical dimension.</div>
+        <div class="concl-body">Human identity structures can reorganise under pressure — slowly, painfully, but genuinely. <strong>Biological identity at ecosystem scale cannot, on human-relevant timescales.</strong> This asymmetry is the most important structural feature of the climate system that the ELM reveals: the human systems that are generating the load have reorganisation options that the biological systems absorbing the consequences do not.</div>
+      </div>
+
+      <div class="concl-card">
+        <div class="concl-num">04</div>
+        <div class="concl-label">THE MEANING ROOM ABSENCE</div>
+        <div class="concl-title">Biological systems have no Meaning Room — and that absence is the location of the entire problem.</div>
+        <div class="concl-body">The coral cannot make its bleaching matter. The glacier cannot generate the significance architecture required for its own protection. <strong>Only human Meaning Rooms can do that — and the fractures in those Meaning Rooms, mapped across Parts I through III, are the mechanism by which biological identity collapse is permitted to proceed.</strong> The problem is not information failure. It is meaning architecture failure at civilisational scale.</div>
+      </div>
+
+      <div class="concl-card">
+        <div class="concl-num">05</div>
+        <div class="concl-label">THE CAUSAL CHAIN</div>
+        <div class="concl-title">The load originating in human psychology ends in coral bleaching. The model connects the levels.</div>
+        <div class="concl-body">The ELM's most significant contribution across this series: the demonstration that the same structural logic connects personal identity threat to atmospheric chemistry to biological ecosystem collapse. <strong>The corporation protecting its Identity Room through manufactured uncertainty, the petrostate protecting its social contract, the scientist unable to discharge the load of what they know — all of these are causally upstream of the coral reef's biological identity dissolution.</strong> The chain is traceable. The ELM makes it visible as a system.</div>
+      </div>
+
+      <div class="concl-card">
+        <div class="concl-num">06</div>
+        <div class="concl-label">THE PREDICTIVE CLAIM</div>
+        <div class="concl-title">The biological thresholds will continue to approach until the human Meaning Room fractures are addressed.</div>
+        <div class="concl-body">The series' final and most falsifiable prediction: the biological systems will approach their thresholds at the pace generated by the human load architecture — regardless of how much more information is produced, how many more targets are set, or how many more conferences are held. <strong>The operative room is Meaning. It has not been adequately addressed. Until it is, the downstream biological Identity Rooms will continue to dissolve.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERIES COMPLETE -->
+  <div class="section">
+    <div class="section-label">Series Complete</div>
+    <div class="section-title">What the <em>Series</em> Has Built</div>
+    <div class="section-rule"></div>
+
+    <div class="series-complete">
+      <div class="sc-label">ELM CLIMATE SERIES — CUMULATIVE CONTRIBUTIONS</div>
+      <div class="sc-grid">
+        <div class="sc-item">
+          <div class="sc-part">PART I — THE CARBON MACHINE</div>
+          <div class="sc-title">Organised Prediction Room Noise as Load-Management</div>
+          <div class="sc-finding">The fossil fuel industry did not fail to understand climate science. It understood it with extraordinary precision and used that understanding to engineer public epistemic uncertainty. <strong>Prediction Room noise as deliberate Identity Room survival strategy — a pattern the model had not previously encountered.</strong></div>
+        </div>
+        <div class="sc-item">
+          <div class="sc-part">PART II — SOVEREIGNTY AND SMOKE</div>
+          <div class="sc-title">The Social Contract Load-Transfer Problem</div>
+          <div class="sc-finding">Petrostate transition cannot be achieved through fiscal instruments alone because the operative load is political-identity, not economic. The development justice asymmetry is a Meaning Room incompatibility generated by structural position, not bad faith — requiring a different resolution architecture than any currently being attempted. <strong>Meaning Room conflicts produced by accurate perception of structurally asymmetric positions.</strong></div>
+        </div>
+        <div class="sc-item">
+          <div class="sc-part">PART III — THE SCIENTISTS AND THE ACTIVISTS</div>
+          <div class="sc-title">Accurate-Prediction Load as a Distinct Load State</div>
+          <div class="sc-finding">The most committed actors in the system are operating at the structural limit of their available agency. The movement's Meaning Room fractures are not failures of coalition-building — they reflect the problem's genuine incompatible requirements. <strong>Prediction Room accuracy that outpaces Agency Room capacity generates a specific, underrecognised distress configuration — now documented in the clinical literature on climate scientists.</strong></div>
+        </div>
+        <div class="sc-item">
+          <div class="sc-part">PART IV — THE LIVING SYSTEMS</div>
+          <div class="sc-title">The Model Connects the Levels</div>
+          <div class="sc-finding">Biological systems have Prediction Room, Agency Room, and Identity Room analogues that map with structural precision to the ELM. The coral bleaching sequence is a biological Identity Room event with a documented pre-threshold signature. Biological systems have no Meaning Room — making the human Meaning Room fractures mapped across Parts I–III the operative mechanism of their dissolution. <strong>The load originating in human psychology ends in coral bleaching. The chain is traceable. The ELM makes it visible as a system.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="sources-section">
+    <div class="sources-label">Sources &amp; Further Reading</div>
+    <div class="sources-grid">
+      <div class="source-item">
+        <div class="source-authors">Rädecker et al.</div>
+        <div class="source-title">Heat stress destabilizes symbiotic nutrient cycling in corals</div>
+        <div class="source-pub">PNAS, 2021</div>
+      </div>
+      <div class="source-item">
+        <div class="source-authors">Coral Restoration Foundation</div>
+        <div class="source-title">The 2025 Tipping Point Report: A Call to Accelerate</div>
+        <div class="source-pub">Coral Restoration Foundation, October 2025</div>
+      </div>
+      <div class="source-item">
+        <div class="source-authors">Mellin et al.</div>
+        <div class="source-title">Cumulative risk of future bleaching for the world's coral reefs</div>
+        <div class="source-pub">Science Advances, 2024</div>
+      </div>
+      <div class="source-item">
+        <div class="source-authors">Mongabay / multiple coral researchers</div>
+        <div class="source-title">Coral bleaching: How warming seas are transforming the world's reefs</div>
+        <div class="source-pub">Mongabay, February 2026</div>
+      </div>
+      <div class="source-item">
+        <div class="source-authors">Rounce et al.</div>
+        <div class="source-title">Irreversible glacier change and trough water for centuries after overshooting 1.5°C</div>
+        <div class="source-pub">Nature Climate Change, May 2025</div>
+      </div>
+      <div class="source-item">
+        <div class="source-authors">van den Akker et al.</div>
+        <div class="source-title">Antarctic Ice Sheet tipping in the last 800,000 years warns of future ice loss</div>
+        <div class="source-pub">Communications Earth and Environment, May 2025</div>
+      </div>
+      <div class="source-item">
+        <div class="source-authors">Levermann et al.</div>
+        <div class="source-title">Mapping tipping risks from Antarctic ice basins under global warming</div>
+        <div class="source-pub">Nature Climate Change, February 2026</div>
+      </div>
+      <div class="source-item">
+        <div class="source-authors">Tedesco, Rapp &amp; Heil (polar scientists' letter)</div>
+        <div class="source-title">The cryosphere is nearing irreversible tipping points — and the world is not prepared</div>
+        <div class="source-pub">Land and Climate Review / COP30 submission, November 2025</div>
+      </div>
+      <div class="source-item">
+        <div class="source-authors">Wikipedia synthesis / IPCC AR6</div>
+        <div class="source-title">Tipping points in the climate system — comprehensive overview</div>
+        <div class="source-pub">Wikipedia (citing IPCC AR6, 2022 and subsequent literature), updated 2026</div>
+      </div>
+      <div class="source-item">
+        <div class="source-authors">Scott et al.</div>
+        <div class="source-title">Should I stay or should I go? Coral bleaching from the symbionts' perspective</div>
+        <div class="source-pub">Ecology Letters, May 2024</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="observer-note">
+    <p>The coral reef does not know it is bleaching. The glacier does not know it is retreating. The Amazon does not know it is approaching a threshold beyond which it cannot sustain itself. These systems have no Meaning Room — no capacity to make their own dissolution matter, to construct the significance architecture that would generate protective response. That capacity belongs exclusively to the human systems this series has spent four parts documenting — and it has not yet been adequately used. The question the ELM asks at the end of this series is not whether the science is clear. It has been clear for decades. The question is whether human Meaning Rooms will reorganise to the scale the situation requires, before the biological systems that sustain human life complete their dissolution. That is the only question left.</p>
+    <span class="attribution">ELM Analysis — Madhu Bolton, 2026 / Awakening Heart</span>
+    <div class="series-end">The Climate Series — Complete &nbsp;·&nbsp; Part IV of IV — The Living Systems</div>
+  </div>
+
+</div>
+</body>
+</html>

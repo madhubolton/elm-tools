@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Iran War Through the Four Rooms — ELM Analysis v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dim: #8B6914;
+    --ink: #1A1410;
+    --warm-white: #F7F3ED;
+    --warm-mid: #EDE5D8;
+    --warm-dark: #2A2218;
+    --grey-warm: #6B6358;
+    --prediction: #3A5A8C;
+    --prediction-light: #D0DDEF;
+    --agency: #7A3A2A;
+    --agency-light: #F0DDD8;
+    --identity: #2A6B4A;
+    --identity-light: #D0EAD8;
+    --meaning: #6A3A7A;
+    --meaning-light: #E8D8F0;
+    --red-signal: #9B2B2B;
+    --amber: #C4701A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--ink);
+    color: var(--warm-white);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  /* HEADER */
+  .masthead {
+    text-align: center;
+    padding: 70px 0 50px;
+    border-bottom: 1px solid var(--gold-dim);
+    margin-bottom: 60px;
+  }
+
+  .masthead .supertitle {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0.8;
+  }
+
+  .masthead h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--warm-white);
+    margin-bottom: 16px;
+  }
+
+  .masthead h1 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .masthead .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--grey-warm);
+    margin-bottom: 30px;
+  }
+
+  .masthead .gold-rule {
+    width: 80px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto;
+  }
+
+  /* PREMISE BLOCK */
+  .premise {
+    background: var(--warm-dark);
+    border-left: 3px solid var(--gold);
+    padding: 32px 40px;
+    margin-bottom: 60px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.75;
+    color: #D8CEBC;
+  }
+
+  .premise strong {
+    color: var(--gold-light);
+    font-weight: 600;
+  }
+
+  /* SECTION HEADERS */
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--warm-white);
+    margin-bottom: 6px;
+  }
+
+  .section-title em { color: var(--gold); font-style: italic; }
+
+  .section-rule {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold-dim), transparent);
+    margin: 16px 0 40px;
+  }
+
+  /* ACTOR CARDS */
+  .actors-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .actor-card {
+    background: var(--warm-dark);
+    border: 1px solid #3A3020;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .actor-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .actor-card.iran::before { background: var(--identity); }
+  .actor-card.israel::before { background: var(--prediction); }
+  .actor-card.usa::before { background: var(--agency); }
+  .actor-card.region::before { background: var(--meaning); }
+
+  .actor-name {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+  }
+
+  .actor-card.iran .actor-name { color: #7AB89A; }
+  .actor-card.israel .actor-name { color: #8AABCF; }
+  .actor-card.usa .actor-name { color: #CF9A8A; }
+  .actor-card.region .actor-name { color: #B48ACF; }
+
+  .actor-dominant-room {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--grey-warm);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+
+  .room-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    padding: 3px 10px;
+    margin-bottom: 16px;
+    border: 1px solid;
+  }
+
+  .badge-identity { border-color: var(--identity); color: #7AB89A; background: rgba(42,107,74,0.1); }
+  .badge-prediction { border-color: var(--prediction); color: #8AABCF; background: rgba(58,90,140,0.1); }
+  .badge-agency { border-color: var(--agency); color: #CF9A8A; background: rgba(122,58,42,0.1); }
+  .badge-meaning { border-color: var(--meaning); color: #B48ACF; background: rgba(106,58,122,0.1); }
+
+  .actor-desc {
+    font-size: 14px;
+    color: #B0A898;
+    line-height: 1.7;
+  }
+
+  .actor-desc strong {
+    color: var(--warm-white);
+    font-weight: 600;
+  }
+
+  .load-indicator {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #3A3020;
+  }
+
+  .load-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--grey-warm);
+    margin-bottom: 8px;
+  }
+
+  .load-bar {
+    height: 4px;
+    background: #3A3020;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .load-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.3s;
+  }
+
+  .load-high { background: var(--red-signal); width: 92%; }
+  .load-critical { background: #7B1A1A; width: 98%; }
+  .load-extreme { background: #5A0A0A; width: 100%; animation: pulse-red 2s infinite; }
+  .load-med { background: var(--amber); width: 65%; }
+
+  @keyframes pulse-red {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  /* FOUR ROOMS MAP */
+  .rooms-map {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid #3A3020;
+    margin-bottom: 60px;
+  }
+
+  .room-cell {
+    padding: 36px;
+    border: 1px solid #3A3020;
+    position: relative;
+  }
+
+  .room-number {
+    font-family: 'Cinzel', serif;
+    font-size: 48px;
+    font-weight: 400;
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    opacity: 0.07;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .room-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+
+  .room-cell.prediction .room-tag { color: #8AABCF; }
+  .room-cell.agency .room-tag { color: #CF9A8A; }
+  .room-cell.identity .room-tag { color: #7AB89A; }
+  .room-cell.meaning .room-tag { color: #B48ACF; }
+
+  .room-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--warm-white);
+    margin-bottom: 16px;
+  }
+
+  .room-content {
+    font-size: 13.5px;
+    color: #A8A098;
+    line-height: 1.75;
+  }
+
+  .room-content strong { color: #D8CEBC; font-weight: 600; }
+
+  .actor-tag {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 7.5px;
+    letter-spacing: 1.5px;
+    padding: 2px 7px;
+    margin: 2px 2px 6px 0;
+    border-radius: 1px;
+  }
+
+  .tag-iran { background: rgba(42,107,74,0.2); color: #7AB89A; border: 1px solid rgba(42,107,74,0.4); }
+  .tag-israel { background: rgba(58,90,140,0.2); color: #8AABCF; border: 1px solid rgba(58,90,140,0.4); }
+  .tag-usa { background: rgba(122,58,42,0.2); color: #CF9A8A; border: 1px solid rgba(122,58,42,0.4); }
+  .tag-proxy { background: rgba(106,58,122,0.2); color: #B48ACF; border: 1px solid rgba(106,58,122,0.4); }
+
+  /* COUPLED OSCILLATOR DYNAMICS */
+  .dynamics-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 60px;
+    font-size: 13.5px;
+  }
+
+  .dynamics-table th {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2.5px;
+    color: var(--gold);
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--gold-dim);
+    background: var(--warm-dark);
+  }
+
+  .dynamics-table td {
+    padding: 16px;
+    border-bottom: 1px solid #2A2218;
+    vertical-align: top;
+    color: #A8A098;
+    line-height: 1.65;
+  }
+
+  .dynamics-table td:first-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--warm-white);
+    font-style: italic;
+    white-space: nowrap;
+    padding-right: 24px;
+    width: 22%;
+  }
+
+  .dynamics-table td strong { color: #D8CEBC; }
+  .dynamics-table tr:hover td { background: rgba(201,168,76,0.03); }
+
+  /* VERBAL MARKERS SECTION */
+  .markers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 60px;
+  }
+
+  .marker-card {
+    background: var(--warm-dark);
+    border: 1px solid #3A3020;
+    padding: 24px;
+  }
+
+  .marker-actor {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+
+  .marker-card.m-iran .marker-actor { color: #7AB89A; }
+  .marker-card.m-israel .marker-actor { color: #8AABCF; }
+  .marker-card.m-usa .marker-actor { color: #CF9A8A; }
+
+  .marker-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--gold-light);
+    line-height: 1.6;
+    margin-bottom: 10px;
+    padding-left: 16px;
+    border-left: 2px solid var(--gold-dim);
+  }
+
+  .marker-decode {
+    font-size: 12px;
+    color: #7A7268;
+    line-height: 1.6;
+  }
+
+  .marker-room {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 7px;
+    letter-spacing: 1.5px;
+    padding: 2px 6px;
+    margin-top: 8px;
+  }
+
+  /* SYSTEM DIAGNOSIS */
+  .diagnosis {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .diag-card {
+    background: var(--warm-dark);
+    border: 1px solid #3A3020;
+    padding: 32px;
+  }
+
+  .diag-title {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .diag-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--warm-white);
+    line-height: 1.45;
+    margin-bottom: 16px;
+  }
+
+  .diag-body {
+    font-size: 13.5px;
+    color: #9A9288;
+    line-height: 1.75;
+  }
+
+  .diag-body strong { color: #C8C0B0; }
+
+  /* RALG APPLICATION */
+  .ralg-section {
+    background: var(--warm-dark);
+    border: 1px solid #3A3020;
+    border-left: 3px solid var(--gold-dim);
+    padding: 40px;
+    margin-bottom: 60px;
+  }
+
+  .ralg-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 28px;
+  }
+
+  .ralg-step {
+    padding: 24px;
+    border: 1px solid #3A3020;
+  }
+
+  .ralg-letter {
+    font-family: 'Cinzel', serif;
+    font-size: 32px;
+    color: var(--gold);
+    opacity: 0.5;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .ralg-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .ralg-body {
+    font-size: 13px;
+    color: #9A9288;
+    line-height: 1.7;
+  }
+
+  .ralg-body strong { color: #C8C0B0; }
+
+  /* OBSERVER NOTE */
+  .observer-note {
+    text-align: center;
+    padding: 50px 60px;
+    border-top: 1px solid #3A3020;
+    margin-top: 20px;
+  }
+
+  .observer-note p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--grey-warm);
+    line-height: 1.8;
+    max-width: 680px;
+    margin: 0 auto 20px;
+  }
+
+  .observer-note .attribution {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--gold-dim);
+  }
+
+  /* CALLOUT */
+  .callout {
+    background: rgba(201,168,76,0.05);
+    border: 1px solid rgba(201,168,76,0.2);
+    padding: 24px 32px;
+    margin: 24px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--gold-light);
+    line-height: 1.7;
+  }
+
+  /* SECTION SPACING */
+  .section { margin-bottom: 70px; }
+
+  /* THRESHOLD DYNAMICS */
+  .threshold-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid #3A3020;
+    margin-bottom: 32px;
+  }
+  .threshold-cell { padding: 36px; border: 1px solid #3A3020; }
+  .threshold-cell.hormuz { border-top: 3px solid #C4701A; }
+  .threshold-cell.interceptor { border-top: 3px solid #9B2B2B; }
+  .threshold-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; margin-bottom: 8px; }
+  .threshold-cell.hormuz .threshold-label { color: #C4701A; }
+  .threshold-cell.interceptor .threshold-label { color: #CF7A7A; }
+  .threshold-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; color: var(--warm-white); margin-bottom: 16px; line-height: 1.3; }
+  .threshold-body { font-size: 13.5px; color: #A8A098; line-height: 1.75; }
+  .threshold-body strong { color: #D8CEBC; }
+  .threshold-body em { color: var(--gold-light); }
+  .threshold-stat { background: rgba(201,168,76,0.05); border-left: 2px solid var(--gold-dim); padding: 12px 16px; margin: 16px 0; font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: var(--gold-light); line-height: 1.6; }
+  .convergence-box { background: rgba(155,43,43,0.08); border: 1px solid rgba(155,43,43,0.3); padding: 32px 40px; margin-bottom: 60px; }
+  .convergence-box .conv-title { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 3px; color: #CF7A7A; margin-bottom: 16px; }
+  .convergence-box p { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #C8C0B0; line-height: 1.8; }
+  .convergence-box p strong { color: var(--warm-white); }
+
+  /* ESCHATOLOGICAL */
+  .escha-intro { background: var(--warm-dark); border-left: 3px solid var(--meaning); padding: 32px 40px; margin-bottom: 40px; font-family: 'Cormorant Garamond', serif; font-size: 18px; line-height: 1.8; color: #C8C0B0; }
+  .escha-intro strong { color: var(--gold-light); }
+  .escha-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 32px; }
+  .escha-card { background: var(--warm-dark); border: 1px solid #3A3020; padding: 28px; position: relative; overflow: hidden; }
+  .escha-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, var(--meaning), transparent); }
+  .escha-tradition { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: #B48ACF; margin-bottom: 4px; }
+  .escha-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--warm-white); margin-bottom: 16px; font-weight: 400; line-height: 1.3; }
+  .escha-body { font-size: 13px; color: #9A9288; line-height: 1.75; }
+  .escha-body strong { color: #C8C0B0; }
+  .escha-body em { color: #B48ACF; }
+  .inversion-box { background: rgba(106,58,122,0.08); border: 1px solid rgba(106,58,122,0.3); padding: 36px 44px; margin-bottom: 32px; }
+  .inversion-box .inv-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: #B48ACF; margin-bottom: 16px; }
+  .inversion-box .inv-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: var(--warm-white); margin-bottom: 20px; line-height: 1.3; }
+  .inversion-box .inv-title em { color: #B48ACF; font-style: italic; }
+  .inversion-box p { font-size: 14px; color: #9A9288; line-height: 1.8; margin-bottom: 14px; }
+  .inversion-box p strong { color: #C8C0B0; }
+  .escha-theory-note { background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.15); padding: 28px 36px; margin-bottom: 60px; }
+  .escha-theory-note .etn-label { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 3px; color: var(--gold-dim); margin-bottom: 12px; }
+  .escha-theory-note p { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; color: #A89880; line-height: 1.8; }
+  .escha-theory-note p strong { color: var(--gold-light); font-style: normal; }
+
+  /* CONCLUSION */
+  .conclusion-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 40px; }
+  .concl-card { background: var(--warm-dark); border: 1px solid #3A3020; padding: 28px; }
+  .concl-num { font-family: 'Cinzel', serif; font-size: 36px; color: var(--gold); opacity: 0.2; line-height: 1; margin-bottom: 8px; }
+  .concl-label { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 2px; color: var(--gold); margin-bottom: 10px; }
+  .concl-title { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--warm-white); margin-bottom: 12px; line-height: 1.35; }
+  .concl-body { font-size: 13px; color: #8A8278; line-height: 1.7; }
+  .concl-body strong { color: #B8B0A0; }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--ink); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dim); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="supertitle">Existential Load Model — Applied Analysis</div>
+    <h1>The Iran War Through<br><em>The Four Rooms</em></h1>
+    <div class="subtitle">A systems-level mapping of collective existential load</div>
+    <div class="gold-rule"></div>
+  </div>
+
+  <!-- PREMISE -->
+  <div class="premise">
+    The ELM was developed to map the existential load of an individual organism. But the Four Rooms describe universal dynamics: <strong>any system with predictive modeling, agency, identity-maintenance, and meaning-making will generate load when these become dysregulated.</strong> Nation-states, governing systems, and military actors are collective organisms. They predict, act, identify, and make meaning — and they carry load. What follows maps the Iran conflict system through the model not as metaphor, but as structural analysis.
+  </div>
+
+  <!-- ACTOR LOAD PROFILES -->
+  <div class="section">
+    <div class="section-label">Part One</div>
+    <div class="section-title">Actor Load <em>Profiles</em></div>
+    <div class="section-rule"></div>
+
+    <div class="actors-grid">
+
+      <!-- IRAN -->
+      <div class="actor-card iran">
+        <div class="actor-name">IRAN</div>
+        <div class="actor-dominant-room">Primary load: Identity Room → Meaning Room</div>
+        <div class="room-badge badge-identity">IDENTITY / MEANING</div>
+        <div class="actor-desc">
+          The Islamic Republic's entire architecture is identity-load. <strong>The Revolution is the Identity.</strong> 1979 is not history — it is the present-tense self-definition of the state. Any external threat is processed not as a strategic problem (Agency) but as an ontological threat: to back down is to cease to exist as what it claims to be.<br><br>
+          The Meaning Room compounds this: the eschatological framework (resistance axis, divine mandate, martyrdom theology) provides a meaning structure that <strong>makes escalation spiritually coherent</strong> and de-escalation spiritually illegible. The load doesn't manifest as anxiety — it manifests as <em>rigidity</em>. The system can't update because updating would dissolve the self.<br><br>
+          Prediction Room: <strong>chronically dysregulated</strong> — the regime systematically generates predictive errors by filtering intelligence through ideological frames. What doesn't fit the narrative doesn't register.
+        </div>
+        <div class="load-indicator">
+          <div class="load-label">SYSTEM LOAD</div>
+          <div class="load-bar"><div class="load-fill load-extreme"></div></div>
+        </div>
+      </div>
+
+      <!-- ISRAEL -->
+      <div class="actor-card israel">
+        <div class="actor-name">ISRAEL</div>
+        <div class="actor-dominant-room">Primary load: Prediction Room → Agency Room</div>
+        <div class="room-badge badge-prediction">PREDICTION / AGENCY</div>
+        <div class="actor-desc">
+          Israel's dominant load is Prediction Room dysregulation presenting as hypervigilance. <strong>The October 7th failure was a catastrophic prediction error</strong> — and when a Prediction Room collapses that completely, the response is always the same: overcorrection into the Agency Room. Compulsive action as the antidote to unpredictability.<br><br>
+          The result: an Agency Room in <strong>reactive overdrive</strong> — military operations as the only available register. Not because strategy is absent but because the system cannot tolerate inaction while the prediction architecture is still rebuilding. Every pause feels like another October 7th in formation.<br><br>
+          Identity load is also present and significant: existential threat to Jewish statehood activates an <strong>identity-survival script</strong> that overrides strategic cost-benefit analysis. When identity is in the room, agency calculations change completely — the question is no longer "is this effective?" but "is this necessary to remain who we are?"
+        </div>
+        <div class="load-indicator">
+          <div class="load-label">SYSTEM LOAD</div>
+          <div class="load-bar"><div class="load-fill load-critical"></div></div>
+        </div>
+      </div>
+
+      <!-- USA -->
+      <div class="actor-card usa">
+        <div class="actor-name">UNITED STATES</div>
+        <div class="actor-dominant-room">Primary load: Agency Room (fragmented)</div>
+        <div class="room-badge badge-agency">AGENCY</div>
+        <div class="actor-desc">
+          The US presents a distinctive pattern: <strong>Agency Room dysregulation characterized by compulsive optionality</strong> — simultaneously needing to act and needing to be seen as not-acting, deploying force while negotiating, maintaining alliances while pursuing deals. This is the hallmark of an Agency Room that has lost coherent orientation.<br><br>
+          The domestic Meaning Room is shattered — there is no shared American narrative about what this conflict means or what victory looks like. This meaning-vacuum creates <strong>Agency Room chaos</strong>: when you don't know what you're for, you can only respond to what you're against. Reactive agency masquerading as strategy.<br><br>
+          Prediction Room: currently <strong>operating on legacy models</strong> that assume deterrence logic still holds for Iranian decision-making — a significant prediction error given how deep Iran's Identity load runs.
+        </div>
+        <div class="load-indicator">
+          <div class="load-label">SYSTEM LOAD</div>
+          <div class="load-bar"><div class="load-fill load-high"></div></div>
+        </div>
+      </div>
+
+      <!-- REGIONAL ACTORS -->
+      <div class="actor-card region">
+        <div class="actor-name">REGIONAL SYSTEM</div>
+        <div class="actor-dominant-room">Proxy actors: Meaning Room dysregulation</div>
+        <div class="room-badge badge-meaning">MEANING</div>
+        <div class="actor-desc">
+          Hezbollah, Hamas, Houthis, Iraqi militias — each is a <strong>Meaning Room entity</strong>. They exist almost entirely in the register of meaning: resistance theology, martyrdom culture, civilizational narrative. This makes them extraordinarily load-tolerant in conventional military terms (casualties, economic destruction) while being extremely load-sensitive to <em>meaning-threats</em> — anything that would render the resistance narrative incoherent.<br><br>
+          The paradox: <strong>military defeats often increase rather than decrease their load tolerance</strong>, because defeat can be assimilated into the martyrdom narrative and actually deepens meaning coherence. Traditional Agency Room responses (bombing, blockade) are not addressing the operative room.<br><br>
+          Saudi Arabia and Gulf states: running Prediction Room exhaustion — a system that has maintained threat predictions for 40 years with no resolution is structurally depleted.
+        </div>
+        <div class="load-indicator">
+          <div class="load-label">SYSTEM LOAD</div>
+          <div class="load-bar"><div class="load-fill load-med"></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOUR ROOMS MAP -->
+  <div class="section">
+    <div class="section-label">Part Two</div>
+    <div class="section-title">The <em>Four Rooms</em> — Conflict Mapping</div>
+    <div class="section-rule"></div>
+
+    <div class="rooms-map">
+
+      <div class="room-cell prediction">
+        <div class="room-number">I</div>
+        <div class="room-tag">PREDICTION ROOM</div>
+        <div class="room-title">What will happen next?<br>Can I trust my model of reality?</div>
+        <div class="room-content">
+          <div style="margin-bottom:10px;">
+            <span class="actor-tag tag-israel">ISRAEL</span>
+            <span class="actor-tag tag-usa">USA</span>
+            <span class="actor-tag tag-iran">IRAN</span>
+          </div>
+          <strong>The entire conflict is a prediction failure cascade.</strong> October 7 shattered Israel's intelligence model. Iran's nuclear timeline forecasts have been wrong for two decades. US assessments of proxy deterrence have failed repeatedly. Every actor is operating with a broken prediction architecture while simultaneously relying on predictions to justify action.<br><br>
+          The ELM would identify this as the <em>root-generating condition</em>: when prediction fails catastrophically, the system floods the Agency Room with compulsive action and the Identity Room with defensive rigidity. The conflict cannot stabilize until at least one actor's Prediction Room achieves enough accuracy to model off-ramps credibly.
+        </div>
+      </div>
+
+      <div class="room-cell agency">
+        <div class="room-number">II</div>
+        <div class="room-tag">AGENCY ROOM</div>
+        <div class="room-title">What can I do?<br>Am I acting or being acted upon?</div>
+        <div class="room-content">
+          <div style="margin-bottom:10px;">
+            <span class="actor-tag tag-israel">ISRAEL</span>
+            <span class="actor-tag tag-usa">USA</span>
+          </div>
+          <strong>The most visible room in the conflict — and the most misleading.</strong> What appears to be strategy is predominantly Agency Room dysregulation: compulsive action as a response to helplessness, not a coherent causal plan.<br><br>
+          Israel's operational tempo since October 7 shows the classic pattern: <em>action as regulation rather than action as strategy</em>. The question "will this work?" has been subordinated to "can we afford not to act?"<br><br>
+          Iran's proxy use is Agency Room management at remove — maintaining the experience of agency (we are striking our enemies) while avoiding the Prediction Room cost (direct confrontation with uncertain outcome).
+        </div>
+      </div>
+
+      <div class="room-cell identity">
+        <div class="room-number">III</div>
+        <div class="room-tag">IDENTITY ROOM</div>
+        <div class="room-title">Who are we?<br>Does this threaten what we fundamentally are?</div>
+        <div class="room-content">
+          <div style="margin-bottom:10px;">
+            <span class="actor-tag tag-iran">IRAN</span>
+            <span class="actor-tag tag-israel">ISRAEL</span>
+          </div>
+          <strong>The deepest load, and the least visible to outside analysis.</strong> Both Iran and Israel are running existential identity scripts simultaneously — and their identity structures are mutually invalidating. Iran's Islamic Republic requires Israel's illegitimacy as a definitional feature. Israel's security doctrine requires Iran's containment as an identity-expression, not just a strategic preference.<br><br>
+          This is why diplomacy consistently fails at the structural level: it would require both systems to update identity-level narratives, which is neurologically and institutionally more costly than continuing the conflict. <em>The war is, in part, how these identity structures maintain themselves.</em>
+        </div>
+      </div>
+
+      <div class="room-cell meaning">
+        <div class="room-number">IV</div>
+        <div class="room-tag">MEANING ROOM</div>
+        <div class="room-title">Why does this matter?<br>What does this suffering serve?</div>
+        <div class="room-content">
+          <div style="margin-bottom:10px;">
+            <span class="actor-tag tag-proxy">PROXIES</span>
+            <span class="actor-tag tag-iran">IRAN</span>
+            <span class="actor-tag tag-usa">USA</span>
+          </div>
+          <strong>The asymmetric room — and the one Western analysis most consistently misses.</strong> Iran and its proxies have <em>elaborate, coherent Meaning Room architecture</em>: divine mandate, resistance theology, historical narrative of colonial oppression, martyrdom as the highest meaning-state. This meaning coherence is a strategic resource that conventional military analysis doesn't know how to account for.<br><br>
+          US and Western actors: <strong>Meaning Room is fractured</strong>. Democracy promotion, rules-based order, Iranian containment — none of these generate the meaning-coherence that drives willingness to absorb cost over decades. This is a structural asymmetry that shapes every other room.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COUPLED OSCILLATOR DYNAMICS -->
+  <div class="section">
+    <div class="section-label">Part Three</div>
+    <div class="section-title">Coupled <em>Oscillator Dynamics</em></div>
+    <div class="section-rule"></div>
+
+    <div class="callout">
+      In the ELM, the Four Rooms are coupled oscillators — they entrain to each other within a system, and systems entrain to each other across boundaries. In the Iran conflict, multiple oscillator couplings are running simultaneously, most of them generating chaotic rather than coherent entrainment.
+    </div>
+
+    <table class="dynamics-table">
+      <thead>
+        <tr>
+          <th>COUPLING</th>
+          <th>DYNAMIC</th>
+          <th>ELM PATTERN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Iran ↔ Israel</td>
+          <td>Mutually reinforcing Identity Room activation. Each actor's identity-threat response <strong>triggers</strong> the other's. Iran's rhetorical eliminationism confirms Israel's existential scripts. Israel's military operations confirm Iran's resistance narrative. The oscillators have entrained — to each other's dysregulation. This is <em>coupled catastrophe</em>: the two systems are perfectly synchronized in a way that guarantees escalation.</td>
+          <td>Runaway coupling — oscillators phase-locked in high-load state. Neither can de-escalate without the other interpreting it as weakness and increasing pressure.</td>
+        </tr>
+        <tr>
+          <td>Iran ↔ Proxies</td>
+          <td>Iran uses proxies as <strong>Agency Room extension</strong> — maintaining agency experience while exporting Prediction Room risk. Proxies use Iran as <strong>Meaning Room anchor</strong> — the narrative and resources that make local resistance legible. This is a relatively <em>stable coupling</em>, which is why it has persisted for 40 years. The load is distributed and the functions are complementary.</td>
+          <td>Stable complementary coupling — functionally coherent, highly resilient. Disrupting it requires addressing both the Agency architecture and the Meaning coherence simultaneously.</td>
+        </tr>
+        <tr>
+          <td>USA ↔ Israel</td>
+          <td>A <strong>co-dysregulation pattern</strong>: US Prediction Room failures reinforce Israel's Agency Room overdrive; Israel's Agency Room escalation creates US Prediction Room chaos. The ally relationship means each actor's dysregulation is transmitted directly to the other rather than buffered. What should be a regulating influence becomes <em>load amplification</em>.</td>
+          <td>Entrained dysregulation — the coupling that should provide co-regulation is instead coupling the load. Classic pattern when two systems are both in high-load states and in close contact.</td>
+        </tr>
+        <tr>
+          <td>Iran ↔ Nuclear Threshold</td>
+          <td>The most dangerous oscillator in the system. Iran's nuclear program is simultaneously <strong>Agency Room</strong> (deterrence capability), <strong>Identity Room</strong> (sovereign right, national pride), and <strong>Meaning Room</strong> (defiance of Western order). This triple-room loading means <em>no single type of pressure can address it</em>. Sanctions hit Agency. Military strikes hit Identity. Neither touches Meaning.</td>
+          <td>Multi-room loading on a single variable — the most load-resistant configuration in the model. Changes in one room can be compensated by the others, making the position extraordinarily sticky.</td>
+        </tr>
+        <tr>
+          <td>Regional System ↔ Global Order</td>
+          <td>The global system's Meaning Room is in chronic dysregulation — there is no coherent narrative of what the international order is for or who it protects. This <strong>meaning vacuum</strong> means regional actors face no meaningful entraining signal from outside. Without a coherent external Meaning Room, each regional actor defaults to its own meaning architecture, and these are mutually incompatible.</td>
+          <td>Decoupled oscillator problem — the system that should provide regulatory entrainment (global order) is itself dysregulated, leaving regional sub-systems to amplify rather than dampen each other.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- VERBAL MARKERS -->
+  <div class="section">
+    <div class="section-label">Part Four</div>
+    <div class="section-title">ELLM — Verbal <em>Markers</em> in the Field</div>
+    <div class="section-rule"></div>
+
+    <p style="color:#9A9288; font-size:14px; margin-bottom:28px;">The ELLM decodes which room is speaking through language patterns. Below: characteristic speech acts from the conflict, decoded through the marker system.</p>
+
+    <div class="markers-grid">
+
+      <div class="marker-card m-iran">
+        <div class="marker-actor">IRAN — KHAMENEI/IRGC</div>
+        <div class="marker-quote">"The Zionist entity will not survive another 25 years."</div>
+        <div class="marker-decode">Absolute-future certainty claim. Not prediction (which would carry probability) but identity-assertion: this is stated to declare who the speaker is, not to forecast. The elimination of Israel is structurally necessary to Iran's identity coherence.</div>
+        <span class="room-badge badge-identity">IDENTITY ROOM</span>
+        <div class="marker-quote" style="margin-top:16px;">"We will respond at a time and place of our choosing."</div>
+        <div class="marker-decode">Classic Agency Room language under Prediction Room constraint. Asserting control over timing when the actual capacity to respond is limited. The vagueness is the signal — specific plans don't need this framing.</div>
+        <span class="room-badge badge-agency">AGENCY ROOM</span>
+      </div>
+
+      <div class="marker-card m-israel">
+        <div class="marker-actor">ISRAEL — NETANYAHU / IDF</div>
+        <div class="marker-quote">"We will do whatever is necessary to ensure this never happens again."</div>
+        <div class="marker-decode">Identity Room in the Agency Room register. "Whatever is necessary" is a meaning-load statement pretending to be strategic. The absolute qualifier ("never," "whatever") signals identity-level activation — not operational planning language.</div>
+        <span class="room-badge badge-identity">IDENTITY / AGENCY</span>
+        <div class="marker-quote" style="margin-top:16px;">"Hamas could not have been allowed to celebrate October 7th as a victory."</div>
+        <div class="marker-decode">Prediction Room logic collapsed into Meaning Room imperative. "Could not have been allowed" retroactively frames past action as necessary — the signature of a system justifying Agency Room compulsion through Meaning Room coherence.</div>
+        <span class="room-badge badge-meaning">MEANING ROOM</span>
+      </div>
+
+      <div class="marker-card m-usa">
+        <div class="marker-actor">USA — EXECUTIVE / STATE DEPT</div>
+        <div class="marker-quote">"We support Israel's right to defend itself while calling for restraint."</div>
+        <div class="marker-decode">Incoherent coupling signature. Two mutually incompatible Agency Room positions held simultaneously — the verbal marker of a system that has lost meaning-coherence and is running agency-language without an orienting framework. This sentence cannot generate strategy.</div>
+        <span class="room-badge badge-agency">AGENCY INCOHERENCE</span>
+        <div class="marker-quote" style="margin-top:16px;">"All options remain on the table."</div>
+        <div class="marker-decode">Pure Agency Room load-management language. Maintains the experience of having agency (options) without commitment to any. The most reliable verbal marker of Prediction Room failure — when you can't predict outcomes, you assert optionality.</div>
+        <span class="room-badge badge-prediction">PREDICTION ROOM FAILURE</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SYSTEM DIAGNOSIS -->
+  <div class="section">
+    <div class="section-label">Part Five</div>
+    <div class="section-title">System <em>Diagnosis</em></div>
+    <div class="section-rule"></div>
+
+    <div class="diagnosis">
+
+      <div class="diag-card">
+        <div class="diag-title">INCOHERENCE PATTERN</div>
+        <div class="diag-main">Rigid Coupling<br>in the Identity Room</div>
+        <div class="diag-body">
+          The conflict system shows the ELM pattern of <strong>rigid coupling</strong> — oscillators locked in high-load states that have become self-sustaining. Neither actor can update their identity architecture without the other interpreting the change as vulnerability and escalating. The coupling itself is now the primary driver, beyond the intentions of any actor.<br><br>
+          In clinical terms: the conflict has become <strong>identity-regulatory</strong> for both systems. It is not a problem they are failing to solve — it is a solution (to identity-load) they are successfully implementing.
+        </div>
+      </div>
+
+      <div class="diag-card">
+        <div class="diag-title">ROOT LOAD</div>
+        <div class="diag-main">Prediction Failure<br>Cascading Into All Rooms</div>
+        <div class="diag-body">
+          The generative condition is Prediction Room failure across all actors. When prediction collapses, identity rigidifies (threat response), agency becomes compulsive (action as substitute for orientation), and meaning must work harder to make the suffering legible.<br><br>
+          <strong>No actor has a credible model of what "resolution" looks like</strong> — not because they haven't tried, but because their prediction architectures are systematically distorted by the very identity and meaning loads the conflict is maintaining.
+        </div>
+      </div>
+
+      <div class="diag-card">
+        <div class="diag-title">THE ASYMMETRY</div>
+        <div class="diag-main">Meaning Room Strength<br>vs. Meaning Room Fracture</div>
+        <div class="diag-body">
+          The structural asymmetry the ELM illuminates most clearly: Iran and its proxies have <strong>high-coherence Meaning Rooms</strong>. The West has fractured Meaning Rooms. In a prolonged conflict where all other variables roughly balance, this asymmetry is determinative — systems with coherent meaning can absorb far greater agency and prediction losses before reaching system-level failure.<br><br>
+          This is why purely military or economic pressure has not produced the predicted outcomes across 40 years. <strong>The operative room is not being addressed.</strong>
+        </div>
+      </div>
+
+      <div class="diag-card">
+        <div class="diag-title">THE STABILIZATION PROBLEM</div>
+        <div class="diag-main">Recognition Without<br>a Coherent Oscillator</div>
+        <div class="diag-body">
+          In the ELM, stabilization requires a coherent oscillator in proximity — a system stable enough to provide regulating entrainment. In the Iran conflict system, <strong>no actor currently occupies this role</strong>. The US could theoretically function as a coherent oscillator, but its own Meaning Room fracture prevents it from projecting the stability needed.<br><br>
+          Historically, this role has been played by great powers with clear meaning architectures. The current multipolar disorder is, in ELM terms, a <strong>coherent-oscillator vacuum</strong> — and in that vacuum, every coupled system amplifies rather than dampens.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RALG APPLICATION -->
+  <div class="section">
+    <div class="section-label">Part Six</div>
+    <div class="section-title">RALG at <em>System Scale</em></div>
+    <div class="section-rule"></div>
+
+    <div class="ralg-section">
+      <p style="font-family:'Cormorant Garamond',serif; font-size:18px; color:#C8C0B0; line-height:1.75; font-style:italic;">
+        The RALG protocol — Recognize, Accept, Let Go — is the ELM's recovery pathway. At individual scale it's a contemplative intervention. At system scale, it maps the structural conditions that would need to be met for genuine de-escalation. These conditions do not currently exist. But the map reveals what would have to change.
+      </p>
+
+      <div class="ralg-steps">
+        <div class="ralg-step">
+          <div class="ralg-letter">R</div>
+          <div class="ralg-label">RECOGNIZE</div>
+          <div class="ralg-body">
+            What would recognition look like at system scale? <strong>Each actor seeing its own load architecture accurately</strong> — Iran recognizing that its identity structure is generating the threat that justifies the identity structure. Israel recognizing that Agency Room overdrive is creating the conditions it's trying to prevent. The US recognizing that its Meaning Room fracture is the primary constraint on effective action.<br><br>
+            Recognition at this scale requires leadership with enough Observer capacity to see beyond the room they're operating in. This is extraordinarily rare in high-load conflict systems.
+          </div>
+        </div>
+        <div class="ralg-step">
+          <div class="ralg-letter">A</div>
+          <div class="ralg-label">ACCEPT</div>
+          <div class="ralg-body">
+            Acceptance at system scale means <strong>accepting the actual conditions</strong>: Iran is not going to experience a sudden identity transformation. Israel's trauma is real and generates real operational imperatives. The proxies' meaning coherence is not propaganda — it is structurally genuine. The West's meaning fracture is not a communication problem — it reflects real value pluralism.<br><br>
+            Current policy operates almost entirely in non-acceptance: persistent prediction that the other side will eventually capitulate to sufficient pressure. This is a Prediction Room error compounding an Identity Room problem.
+          </div>
+        </div>
+        <div class="ralg-step">
+          <div class="ralg-letter">LG</div>
+          <div class="ralg-label">LET GO</div>
+          <div class="ralg-body">
+            The most structurally demanding step. What would each actor need to let go of? <strong>Iran:</strong> the identity-requirement that Israel's illegitimacy be maintained as a state doctrine. <strong>Israel:</strong> the meaning-frame in which maximum security requires maximum control. <strong>USA:</strong> the legacy prediction models (deterrence theory, rational actor assumptions) that are generating continuous forecast error.<br><br>
+            None of these are available under current load conditions. Let Go only becomes possible when recognition and acceptance have genuinely occurred — and when the identity is stable enough that releasing the load doesn't feel like dissolution.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THRESHOLD DYNAMICS: HORMUZ + INTERCEPTORS -->
+  <div class="section">
+    <div class="section-label">Part Seven</div>
+    <div class="section-title">Converging <em>Thresholds</em></div>
+    <div class="section-rule"></div>
+
+    <div class="callout">
+      The system is not just oscillating in a stable high-load attractor. Two distinct threshold dynamics are now running simultaneously — one slow-burning, one fast. Their convergence is what elevates this from chronic conflict to potential phase transition.
+    </div>
+
+    <div class="threshold-grid">
+
+      <div class="threshold-cell hormuz">
+        <div class="threshold-label">SLOW THRESHOLD — GLOBAL CASCADE</div>
+        <div class="threshold-title">The Strait of Hormuz<br>Closure</div>
+        <div class="threshold-body">
+          The Strait closed effectively on February 28, 2026. Tanker traffic fell approximately 70% immediately and reached near-zero within days. The numbers define the scale of the Prediction Room shock delivered simultaneously to the entire global system.
+          <div class="threshold-stat">20 million barrels per day — roughly 20% of global petroleum consumption and over one-quarter of global seaborne oil trade — stopped flowing.</div>
+          The bypass capacity is catastrophically insufficient: Saudi and UAE pipelines combined can reroute at most 5.5 million barrels per day — less than a quarter of normal flow. The gap is not bridgeable on any near-term timeline.<br><br>
+          <strong>The cascade structure through the ELM:</strong> this is a Prediction Room shock that propagates into every other room of every dependent system. Industrial planning collapses (Prediction). Governments scramble for alternatives that don't exist (Agency overdrive). National identities built on economic stability fracture (Identity load). And the meaning architecture of the global trading order — that commerce is protected, that rules obtain — begins to dissolve (Meaning Room).<br><br>
+          One-third of the world's fertiliser trade passes through the strait. This is not only an energy crisis — it is a food system crisis with a 6-12 month lag built in. The Prediction Room consequences extend across multiple years regardless of how quickly the conflict resolves.<br><br>
+          <strong>The asymmetric impact is the ELM's Meaning Room asymmetry made material.</strong> 84% of Hormuz crude flows to Asia — China, India, Japan, South Korea. The West is inconvenienced. Asia faces potential civilizational-scale disruption. India imports half its crude through the strait. Bangladesh and Pakistan source the majority of their LNG from Qatar through Hormuz, powering 50% and 25% of their electricity generation respectively. This creates a critical second-order pressure: China's strategic calculus shifts dramatically when its own energy security is at stake, potentially forcing it off the sideline in ways that further destabilize the system.
+        </div>
+      </div>
+
+      <div class="threshold-cell interceptor">
+        <div class="threshold-label">FAST THRESHOLD — DEFENSIVE COLLAPSE</div>
+        <div class="threshold-title">Interceptor Depletion<br>and the Arithmetic of Attrition</div>
+        <div class="threshold-body">
+          Iran's explicit doctrine is "attrition through abundance" — saturation volume, decoys, and manoeuvrable payloads designed not to overwhelm defenses today but to exhaust them progressively over weeks.
+          <div class="threshold-stat">Iran produces approximately 100 missiles per month. The US and Israel can manufacture six to seven advanced interceptors per month combined. The production ratio is roughly 15:1 in Iran's favor.</div>
+          The June 2025 conflict already revealed the shape of what's coming: Israel's interception rate dropped from approximately 90% to 65% within a single 24-hour period as Arrow interceptor stockpiles depleted. The US expended between 20-50% of its THAAD inventory in that 12-day conflict at a cost exceeding $1 billion — and replenishment cycles extend toward 2027.<br><br>
+          Four days into the current conflict, at least one US Gulf ally was already requesting emergency interceptor resupply. US officials confirmed interceptor stockpiles are under severe stress. Iron Beam laser defense, which offers theoretically unlimited "shots," remains in early deployment and cannot yet handle sustained ballistic missile barrages.<br><br>
+          <strong>Through the ELM, interceptor depletion is the most structurally dangerous variable because it operates across all four rooms simultaneously.</strong> In the Prediction Room: the depletion curve is mathematically predictable by both sides — Iran knows the timeline, which shapes its firing strategy. In the Agency Room: as interceptor stocks fall, the range of available responses compresses toward one — preemptive strikes on launch infrastructure before missiles fire, the logic that escalates toward hardened and nuclear facilities. In the Identity Room: the moment interception fails at population scale, Israel's entire post-1948 security doctrine — the foundational identity promise that the state protects its people — enters crisis. In the Meaning Room: depletion is Iran's proof-of-concept for the entire resistance theology — patient, material-cheap force exhausting technologically superior adversaries is the core text of the axis.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="convergence-box">
+      <div class="conv-title">CONVERGENCE DIAGNOSIS</div>
+      <p>The Strait closure is a slow-burning global Prediction Room cascade — worsening week by week as strategic reserves deplete and alternative supply chains fail to fill the gap. The interceptor depletion is a fast-burning Agency Room collapse — potentially reaching critical threshold within weeks, forcing immediate identity-level decisions. <strong>These dynamics are coupled and pulling in opposite directions.</strong> As the Strait closure drives global economic pressure mounting toward resolution, the interceptor depletion is simultaneously driving internal military logic toward escalation. The system is being stretched between two threshold dynamics running at different speeds. This is the metastable condition that precedes phase transition — not the gradual increase of a single variable, but the simultaneous approach of two incompatible thresholds, each of which forecloses the response the other demands.</p>
+    </div>
+  </div>
+
+  <!-- ESCHATOLOGICAL VARIABLE -->
+  <div class="section">
+    <div class="section-label">Part Eight</div>
+    <div class="section-title">The Eschatological <em>Variable</em></div>
+    <div class="section-rule"></div>
+
+    <div class="escha-intro">
+      Conventional geopolitical analysis has no framework for this variable. The ELM names it precisely: in all three primary actors, <strong>significant leadership constituencies carry Meaning Rooms that are eschatologically structured</strong> — meaning they assign positive rather than negative valence to outcomes that would constitute catastrophe for every other framework. This is not peripheral. It is the structural explanation for why the system's normal corrective mechanisms are failing.
+    </div>
+
+    <div class="escha-grid">
+
+      <div class="escha-card">
+        <div class="escha-tradition">JUDAISM — ISRAEL</div>
+        <div class="escha-name">Religious Nationalist<br>Zionism</div>
+        <div class="escha-body">
+          The operative theology here is not mainstream Judaism but the settler framework rooted in Rabbi Kook — the belief that the ingathering of Jewish people in the Land of Israel is divinely ordained, that the state's establishment is the "beginning of the flowering of redemption," and that <strong>territorial maximalism is religious imperative, not political preference.</strong><br><br>
+          This constituency has moved from the Israeli margins to its cabinet. For it, military action that expands or defends the biblical land inheritance is <em>sacred duty</em>. Restraint is not prudence — it is faithlessness.<br><br>
+          The ELM implication is unambiguous: these actors cannot be reached through Agency Room logic (cost-benefit) or Prediction Room logic (strategic outcomes) because <strong>both are explicitly subordinate to Meaning Room imperatives.</strong> You cannot negotiate someone out of a divine mandate.
+        </div>
+      </div>
+
+      <div class="escha-card">
+        <div class="escha-tradition">CHRISTIANITY — USA</div>
+        <div class="escha-name">Dispensationalist<br>Evangelical Eschatology</div>
+        <div class="escha-body">
+          The dispensationalist framework — Rapture, Tribulation, Battle of Armageddon, Second Coming — requires specific geopolitical preconditions: Israel in possession of the land, a third temple, conflict in the Middle East at civilizational scale. For tens of millions of American evangelicals, <strong>events that appear catastrophic to secular analysts appear as prophetic fulfillment.</strong><br><br>
+          The structural consequence is severe: this meaning architecture makes escalation spiritually <em>legible</em> and de-escalation spiritually <em>suspect</em>. A US leadership constituency with significant evangelical influence is not operating a broken Meaning Room — it has a highly coherent Meaning Room that assigns positive valence to outcomes most actors classify as catastrophic.<br><br>
+          This explains what otherwise looks like Agency Room incoherence in US policy: two Meaning Rooms operating simultaneously within the same government, generating contradictory Agency Room outputs. The incoherence is not strategic failure — it is the arithmetic of competing meaning architectures.
+        </div>
+      </div>
+
+      <div class="escha-card">
+        <div class="escha-tradition">ISLAM — IRAN</div>
+        <div class="escha-name">Shi'a Mahdism<br>and the Hidden Imam</div>
+        <div class="escha-body">
+          The Mahdist framework holds that the return of the Twelfth Imam — in occultation since 874 CE — will be preceded by a period of extreme global chaos and injustice. The specific eschatological geography centers on the Levant. Some strands of this theology hold that <strong>righteous action can hasten the Imam's return.</strong><br><br>
+          If leadership believes this — even partially, even as background assumption — then escalation carries <em>spiritual reward</em> rather than spiritual cost. Creating conditions of maximum chaos is not strategic error — it is spiritual preparation.<br><br>
+          This inverts the entire deterrence logic that Western Prediction Room models are built on. <strong>Deterrence assumes the adversary wants to avoid catastrophic outcomes.</strong> An actor whose Meaning Room assigns positive valence to catastrophe cannot be deterred by threatening catastrophe. Forty years of failed deterrence attempts are the empirical record of this theoretical point.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="inversion-box">
+      <div class="inv-label">ELM STRUCTURAL DIAGNOSIS</div>
+      <div class="inv-title">When the Meaning Room <em>Inverts</em>:<br>The Autoimmune Condition</div>
+      <p>The ELM maps load as something organisms seek to reduce. The normal corrective loop runs: high load → suffering → motivation to reduce load → pressure toward resolution. Eschatological meaning structures break this loop at the final step.</p>
+      <p>High load → suffering → <strong>confirmation of prophetic narrative</strong> → motivation to continue or accelerate. The feedback that would normally dampen the oscillation instead amplifies it. This is not a failure of rationality — it is a different rationality operating from a different Meaning Room premise.</p>
+      <p>The eschatological case reveals a theoretically significant edge condition in the ELM: <strong>a class of Meaning Room configuration where load-reduction is not the operative drive</strong> — where the Meaning Room has been structured such that increasing load serves the meaning architecture. The distinction is between Meaning Rooms that make load <em>bearable</em> versus Meaning Rooms that make load <em>desirable</em>.</p>
+      <p>At civilizational scale, this is the equivalent of an autoimmune condition: the system's own regulatory machinery — the mechanisms that would normally generate corrective pressure toward de-escalation — has been redirected against the organism's survival. The more the system suffers, the more the suffering is interpreted as confirmation, and the stronger the drive to continue.</p>
+      <p><strong>One structural opening remains:</strong> eschatological systems have a historic pattern of revision when prophesied events don't arrive on schedule, or arrive in forms that don't match the narrative. Meaning Rooms built on specific predictive content carry a Prediction Room vulnerability. If the apocalypse comes and the Messiah doesn't, the meaning structure faces a coherence crisis. This has occurred repeatedly across all three traditions. The long game is not military or diplomatic but <strong>narrative</strong> — the conditions under which eschatological meaning structures lose their grip. This is cold comfort given the immediate timeline, but it identifies the only leverage point conventional analysis cannot see.</p>
+    </div>
+
+    <div class="escha-theory-note">
+      <div class="etn-label">NOTE ON FRAMING</div>
+      <p>This analysis does not evaluate the truth content of eschatological beliefs. It maps their <strong>structural function</strong> within the load architecture of each system. The question is not whether the beliefs are true — it is what these meaning structures do to each system's capacity for self-correction. That is a functional question with measurable systemic effects, independent of theology.</p>
+    </div>
+  </div>
+
+  <!-- UPDATED CONCLUSION -->
+  <div class="section">
+    <div class="section-label">Synthesis</div>
+    <div class="section-title">What the Model <em>Reveals</em></div>
+    <div class="section-rule"></div>
+
+    <div class="conclusion-grid">
+
+      <div class="concl-card">
+        <div class="concl-num">01</div>
+        <div class="concl-label">THE CORE FINDING</div>
+        <div class="concl-title">This is not a conflict failing to resolve. It is a conflict successfully functioning.</div>
+        <div class="concl-body">The Iran conflict maintains the identity, agency, and meaning of every actor within it. Iran uses it to maintain identity coherence. Israel uses it to regulate prediction-failure anxiety through agency. The proxies use it as their entire Meaning Room architecture. The US uses it to perform agency in the absence of meaning. <strong>Disrupting the conflict means disrupting what the conflict is for.</strong></div>
+      </div>
+
+      <div class="concl-card">
+        <div class="concl-num">02</div>
+        <div class="concl-label">THE DECISIVE ASYMMETRY</div>
+        <div class="concl-title">Meaning Room coherence is the variable forty years of analysis keeps missing.</div>
+        <div class="concl-body">Iran and the proxies have high-coherence Meaning Rooms. Western actors have fractured ones. The eschatological dimension in all three governments further compounds this: key constituencies have Meaning Rooms that assign positive valence to catastrophic outcomes. <strong>In any prolonged conflict, the side that can absorb more suffering wins — and meaning coherence is the primary determinant of suffering-absorption capacity.</strong></div>
+      </div>
+
+      <div class="concl-card">
+        <div class="concl-num">03</div>
+        <div class="concl-label">THE THRESHOLD RISK</div>
+        <div class="concl-title">Two incompatible thresholds are converging at different speeds.</div>
+        <div class="concl-body">The Strait closure is driving slow-burning global Prediction Room cascade toward resolution pressure. Interceptor depletion is driving fast-burning Agency Room collapse toward escalation logic. <strong>The system is being pulled simultaneously toward negotiation and toward the most dangerous escalation it has ever faced</strong> — by dynamics that cannot both be satisfied.</div>
+      </div>
+
+      <div class="concl-card">
+        <div class="concl-num">04</div>
+        <div class="concl-label">THE PREDICTIVE CLAIM</div>
+        <div class="concl-title">Purely military or economic pressure will not resolve this system.</div>
+        <div class="concl-body">The ELM generates a falsifiable prediction: as long as the Meaning Room asymmetry persists and the eschatological inversion is active in key leadership constituencies, no amount of Agency Room pressure will produce stable resolution. <strong>Forty years of evidence supports this claim.</strong> The operative room is not being addressed.</div>
+      </div>
+
+      <div class="concl-card">
+        <div class="concl-num">05</div>
+        <div class="concl-label">THE PHASE TRANSITION CONDITION</div>
+        <div class="concl-title">Reorganization will come from whichever room crosses its threshold first.</div>
+        <div class="concl-body">A Prediction Room shock large enough to break the attractor (nuclear event, infrastructure collapse). A Meaning Room collapse in a primary actor (regime fracture, narrative implosion). Or the emergence of a coherent external oscillator. Each produces a qualitatively different reorganization. <strong>The eschatological variable means the third option — a coherent oscillator — requires engaging the Meaning Room directly, not around it.</strong></div>
+      </div>
+
+      <div class="concl-card">
+        <div class="concl-num">06</div>
+        <div class="concl-label">MODEL DEVELOPMENT NOTE</div>
+        <div class="concl-title">The eschatological case extends the ELM theoretically.</div>
+        <div class="concl-body">This analysis revealed an edge condition the model had not previously mapped explicitly: the distinction between Meaning Rooms that make load <em>bearable</em> and Meaning Rooms that make load <em>desirable</em>. This is a genuine theoretical refinement — the class of Meaning Room configuration where load-reduction is not the operative drive. <strong>The model grew under pressure from the real system it was applied to.</strong></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OBSERVER NOTE -->
+  <div class="observer-note">
+    <p>The Iran conflict cannot be understood primarily as a strategic problem, a military problem, or even a diplomatic problem. It is a <em>load problem</em> — a multi-system entrainment in which the dysregulation itself has become the organizing principle, stabilized by eschatological meaning structures that invert the normal corrective mechanisms. The war persists not from failure of effort but from the structural success of the load, compounded by Meaning Rooms that have learned to need it.</p>
+    <div class="attribution">ELM ANALYSIS — MADHU, 2026</div>
+  </div>
+
+
+</div>
+</body>
+</html>

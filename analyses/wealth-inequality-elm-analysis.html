@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wealth Inequality as a System — The World Through the Lens of Existential Load</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Emerald/verdigris palette — old money, slightly oxidized */
+    --accent: #3A7A5A;
+    --accent-light: #6AB890;
+    --accent-dim: #1E4A36;
+    --accent-glow: rgba(58,122,90,0.12);
+    --ink: #111816;
+    --warm-white: #EEF4F0;
+    --warm-mid: #D8E8DC;
+    --warm-dark: #1A2420;
+    --grey-warm: #5A6860;
+    --border: #2A3C34;
+    --border-mid: #1E2E28;
+
+    /* Room colors */
+    --prediction: #3A5A8C;
+    --agency: #7A3A2A;
+    --identity: #6A3A7A;
+    --meaning: #7A6A2A;
+
+    /* Signal colors */
+    --red-signal: #9B2B2B;
+    --amber-signal: #C4701A;
+    --crisis: #7B1A1A;
+    --gold: #C4A84A;
+    --gold-dim: #7A6020;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--ink);
+    color: var(--warm-white);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  /* ==================
+     SERIES BANNER
+  ================== */
+  .series-banner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 24px;
+    border: 1px solid var(--accent-dim);
+    background: rgba(58,122,90,0.06);
+    margin-bottom: 48px;
+  }
+
+  .series-pip {
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .series-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--accent-light);
+    flex-shrink: 0;
+  }
+
+  .series-divider {
+    width: 1px; height: 16px;
+    background: var(--accent-dim);
+    flex-shrink: 0;
+  }
+
+  .series-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--grey-warm);
+  }
+
+  .series-part {
+    margin-left: auto;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--accent-dim);
+  }
+
+  /* ==================
+     MASTHEAD
+  ================== */
+  .masthead {
+    text-align: center;
+    padding: 64px 0 50px;
+    border-bottom: 1px solid var(--accent-dim);
+    margin-bottom: 56px;
+    position: relative;
+  }
+
+  .masthead::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 1px; height: 28px;
+    background: linear-gradient(to bottom, transparent, var(--accent-dim));
+  }
+
+  .masthead .supertitle {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: var(--accent-light);
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    opacity: 0.8;
+  }
+
+  .masthead h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 54px;
+    font-weight: 300;
+    line-height: 1.12;
+    color: var(--warm-white);
+    margin-bottom: 14px;
+  }
+
+  .masthead h1 em { color: var(--accent-light); font-style: italic; }
+
+  .masthead .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--grey-warm);
+    margin-bottom: 28px;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .masthead .accent-rule {
+    width: 60px; height: 2px;
+    background: linear-gradient(to right, transparent, var(--accent), transparent);
+    margin: 0 auto;
+  }
+
+  /* ==================
+     PREMISE
+  ================== */
+  .premise {
+    background: var(--warm-dark);
+    border-left: 3px solid var(--accent);
+    padding: 34px 42px;
+    margin-bottom: 56px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.78;
+    color: #C8D8CC;
+  }
+
+  .premise strong { color: var(--accent-light); font-weight: 600; }
+
+  /* ==================
+     SECTION STRUCTURE
+  ================== */
+  .section { margin-bottom: 72px; }
+
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--accent-light);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: 0.75;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--warm-white);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .section-title em { color: var(--accent-light); font-style: italic; }
+
+  .section-rule {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, var(--accent-dim), transparent);
+    margin: 16px 0 40px;
+  }
+
+  /* ==================
+     METHOD NOTE
+  ================== */
+  .method-note {
+    background: rgba(58,122,90,0.05);
+    border: 1px solid rgba(58,122,90,0.22);
+    border-left: 3px solid var(--accent-dim);
+    padding: 28px 38px;
+    margin-bottom: 56px;
+  }
+
+  .method-note .mn-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--accent-dim);
+    margin-bottom: 12px;
+  }
+
+  .method-note p {
+    font-size: 13.5px;
+    color: #7A9080;
+    line-height: 1.82;
+    margin-bottom: 10px;
+  }
+
+  .method-note p:last-child { margin-bottom: 0; }
+  .method-note strong { color: #A8BEB0; }
+
+  /* ==================
+     STAT CALLOUT
+  ================== */
+  .stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2px;
+    margin-bottom: 56px;
+  }
+
+  .stat-cell {
+    background: var(--warm-dark);
+    border: 1px solid var(--border);
+    padding: 28px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-cell::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--accent-dim), var(--accent), var(--accent-dim));
+  }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--accent-light);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--grey-warm);
+    line-height: 1.5;
+  }
+
+  .stat-source {
+    font-size: 10px;
+    color: var(--accent-dim);
+    margin-top: 8px;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  /* ==================
+     ACTOR CARDS
+  ================== */
+  .actors-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin-bottom: 56px;
+  }
+
+  .actor-card {
+    background: var(--warm-dark);
+    border: 1px solid var(--border);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .actor-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .actor-card.ultra::before  { background: linear-gradient(to right, var(--gold), var(--gold-dim)); }
+  .actor-card.precariat::before { background: linear-gradient(to right, var(--red-signal), var(--crisis)); }
+  .actor-card.middle::before { background: linear-gradient(to right, var(--prediction), #1A3A6C); }
+  .actor-card.institutions::before { background: linear-gradient(to right, var(--accent), var(--accent-dim)); }
+
+  .actor-name {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+  }
+
+  .actor-card.ultra .actor-name { color: var(--gold); }
+  .actor-card.precariat .actor-name { color: #CF8A8A; }
+  .actor-card.middle .actor-name { color: #8AABCF; }
+  .actor-card.institutions .actor-name { color: var(--accent-light); }
+
+  .actor-dominant-room {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--grey-warm);
+    margin-bottom: 18px;
+  }
+
+  .room-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    padding: 3px 10px;
+    margin-bottom: 16px;
+    border: 1px solid;
+  }
+
+  .badge-identity { border-color: var(--identity); color: #B48ACF; background: rgba(106,58,122,0.1); }
+  .badge-prediction { border-color: var(--prediction); color: #8AABCF; background: rgba(58,90,140,0.1); }
+  .badge-agency { border-color: var(--agency); color: #CF9A8A; background: rgba(122,58,42,0.1); }
+  .badge-meaning { border-color: var(--meaning); color: #C8B870; background: rgba(122,106,42,0.1); }
+  .badge-accent { border-color: var(--accent-dim); color: var(--accent-light); background: rgba(58,122,90,0.1); }
+
+  .actor-desc {
+    font-size: 13.5px;
+    color: #8AA090;
+    line-height: 1.72;
+  }
+
+  .actor-desc strong { color: var(--warm-white); font-weight: 600; }
+
+  .load-indicator {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .load-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--grey-warm);
+    margin-bottom: 8px;
+  }
+
+  .load-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .load-fill { height: 100%; border-radius: 2px; }
+  .load-extreme { background: var(--crisis); width: 100%; animation: pulse-signal 2s infinite; }
+  .load-critical { background: var(--red-signal); width: 96%; }
+  .load-high { background: var(--amber-signal); width: 86%; }
+  .load-elevated { background: var(--accent); width: 70%; }
+
+  @keyframes pulse-signal {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  /* ==================
+     FOUR ROOMS MAP
+  ================== */
+  .rooms-map {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+    margin-bottom: 56px;
+  }
+
+  .room-cell {
+    padding: 36px;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+
+  .room-number {
+    font-family: 'Cinzel', serif;
+    font-size: 48px;
+    font-weight: 400;
+    position: absolute;
+    top: 16px; right: 24px;
+    opacity: 0.06;
+    color: var(--accent-light);
+    line-height: 1;
+  }
+
+  .room-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+
+  .room-cell.prediction .room-tag { color: #8AABCF; }
+  .room-cell.agency .room-tag { color: #CF9A8A; }
+  .room-cell.identity .room-tag { color: #B48ACF; }
+  .room-cell.meaning .room-tag { color: #C8B870; }
+
+  .room-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    font-weight: 300;
+    color: var(--warm-white);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+
+  .room-content {
+    font-size: 13.5px;
+    color: #7A9080;
+    line-height: 1.78;
+  }
+
+  .room-content strong { color: #C8D8CC; font-weight: 600; }
+
+  .actor-tag {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 7.5px;
+    letter-spacing: 1.5px;
+    padding: 2px 7px;
+    margin: 2px 2px 8px 0;
+    border-radius: 1px;
+  }
+
+  .tag-ultra { background: rgba(196,168,74,0.15); color: var(--gold); border: 1px solid rgba(196,168,74,0.35); }
+  .tag-precariat { background: rgba(155,43,43,0.15); color: #CF8A8A; border: 1px solid rgba(155,43,43,0.35); }
+  .tag-middle { background: rgba(58,90,140,0.15); color: #8AABCF; border: 1px solid rgba(58,90,140,0.35); }
+  .tag-institutions { background: rgba(58,122,90,0.15); color: var(--accent-light); border: 1px solid rgba(58,122,90,0.35); }
+
+  /* ==================
+     DYNAMICS TABLE
+  ================== */
+  .dynamics-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 56px;
+    font-size: 13.5px;
+  }
+
+  .dynamics-table th {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2.5px;
+    color: var(--accent-light);
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--accent-dim);
+    background: var(--warm-dark);
+  }
+
+  .dynamics-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-mid);
+    vertical-align: top;
+    color: #7A9080;
+    line-height: 1.68;
+  }
+
+  .dynamics-table td:first-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--warm-white);
+    font-style: italic;
+    white-space: nowrap;
+    padding-right: 24px;
+    width: 22%;
+  }
+
+  .dynamics-table td strong { color: #C8D8CC; }
+  .dynamics-table tr:hover td { background: rgba(58,122,90,0.03); }
+
+  /* ==================
+     CALLOUT
+  ================== */
+  .callout {
+    background: rgba(58,122,90,0.06);
+    border: 1px solid rgba(58,122,90,0.22);
+    padding: 26px 34px;
+    margin: 24px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--accent-light);
+    line-height: 1.72;
+  }
+
+  /* ==================
+     THE CORE FINDING BOX
+  ================== */
+  .finding-box {
+    background: rgba(58,122,90,0.07);
+    border: 1px solid rgba(58,122,90,0.30);
+    padding: 38px 46px;
+    margin-bottom: 56px;
+  }
+
+  .finding-box .fb-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--accent-light);
+    margin-bottom: 16px;
+  }
+
+  .finding-box .fb-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--warm-white);
+    margin-bottom: 22px;
+    line-height: 1.3;
+  }
+
+  .finding-box .fb-title em { color: var(--accent-light); }
+
+  .finding-box p {
+    font-size: 14px;
+    color: #7A9080;
+    line-height: 1.82;
+    margin-bottom: 14px;
+  }
+
+  .finding-box p:last-child { margin-bottom: 0; }
+  .finding-box p strong { color: #A8C8B4; }
+
+  /* ==================
+     DIAGNOSIS GRID
+  ================== */
+  .diagnosis {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin-bottom: 56px;
+  }
+
+  .diag-card {
+    background: var(--warm-dark);
+    border: 1px solid var(--border);
+    padding: 32px;
+  }
+
+  .diag-title {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--accent-light);
+    margin-bottom: 12px;
+  }
+
+  .diag-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--warm-white);
+    line-height: 1.42;
+    margin-bottom: 14px;
+  }
+
+  .diag-body {
+    font-size: 13.5px;
+    color: #7A9080;
+    line-height: 1.78;
+  }
+
+  .diag-body strong { color: #A8C8B4; }
+
+  /* ==================
+     CONCLUSION
+  ================== */
+  .conclusion-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .concl-card {
+    background: var(--warm-dark);
+    border: 1px solid var(--border);
+    padding: 28px;
+  }
+
+  .concl-num {
+    font-family: 'Cinzel', serif;
+    font-size: 36px;
+    color: var(--accent);
+    opacity: 0.2;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .concl-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--accent-light);
+    margin-bottom: 10px;
+  }
+
+  .concl-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: var(--warm-white);
+    margin-bottom: 12px;
+    line-height: 1.35;
+  }
+
+  .concl-body {
+    font-size: 13px;
+    color: #6A8878;
+    line-height: 1.72;
+  }
+
+  .concl-body strong { color: #90B09A; }
+
+  /* ==================
+     SOURCES
+  ================== */
+  .sources-section {
+    border-top: 1px solid var(--border);
+    padding-top: 48px;
+    margin-top: 24px;
+    margin-bottom: 48px;
+  }
+
+  .sources-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--accent-dim);
+    margin-bottom: 28px;
+  }
+
+  .sources-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 40px;
+  }
+
+  .source-item {
+    border-left: 1px solid var(--border);
+    padding-left: 16px;
+  }
+
+  .source-authors {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--accent-light);
+    line-height: 1.4;
+    margin-bottom: 3px;
+  }
+
+  .source-title {
+    font-size: 12px;
+    color: #7A9080;
+    line-height: 1.5;
+    margin-bottom: 2px;
+  }
+
+  .source-pub {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    color: var(--accent-dim);
+  }
+
+  /* ==================
+     OBSERVER NOTE
+  ================== */
+  .observer-note {
+    text-align: center;
+    padding: 52px 64px;
+    border-top: 1px solid var(--border);
+    margin-top: 24px;
+  }
+
+  .observer-note p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--grey-warm);
+    line-height: 1.82;
+    max-width: 700px;
+    margin: 0 auto 20px;
+  }
+
+  .observer-note .attribution {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--accent-dim);
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .series-nav {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--accent-dim);
+  }
+
+  /* ==================
+     SCROLLBAR
+  ================== */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--ink); }
+  ::-webkit-scrollbar-thumb { background: var(--accent-dim); }
+
+  /* ==================
+     RESPONSIVE
+  ================== */
+  @media (max-width: 1024px) {
+    .page { padding: 48px 32px; }
+    .masthead h1 { font-size: 42px; }
+    .stat-row { grid-template-columns: 1fr 1fr; }
+    .actors-grid { grid-template-columns: 1fr 1fr; }
+    .conclusion-grid { grid-template-columns: 1fr 1fr; }
+    .sources-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 767px) {
+    .page { padding: 32px 20px; }
+    .masthead { padding: 44px 0 36px; margin-bottom: 40px; }
+    .masthead h1 { font-size: 30px; }
+    .masthead .subtitle { font-size: 15px; }
+    .section-title { font-size: 24px; }
+    .premise { padding: 24px 24px; font-size: 16px; }
+    .series-banner { flex-wrap: wrap; gap: 10px; }
+    .series-part { margin-left: 0; }
+    .stat-row { grid-template-columns: 1fr 1fr; }
+    .actors-grid, .rooms-map, .diagnosis, .conclusion-grid, .sources-grid { grid-template-columns: 1fr; }
+    .rooms-map { border: none; }
+    .room-cell { border: 1px solid var(--border); margin-bottom: 2px; padding: 28px 20px; }
+    .dynamics-table, .dynamics-table thead, .dynamics-table tbody,
+    .dynamics-table th, .dynamics-table td, .dynamics-table tr { display: block; width: 100%; }
+    .dynamics-table thead { display: none; }
+    .dynamics-table td { padding: 10px 14px; border-bottom: none; }
+    .dynamics-table td:first-child {
+      width: 100%; white-space: normal; font-size: 14px;
+      color: var(--accent-light); padding-top: 20px; padding-bottom: 4px;
+      border-top: 1px solid var(--border);
+    }
+    .callout { padding: 20px 22px; font-size: 15px; }
+    .finding-box { padding: 24px 22px; }
+    .finding-box .fb-title { font-size: 22px; }
+    .observer-note { padding: 40px 22px; }
+    .observer-note p { font-size: 17px; }
+    .room-number { font-size: 32px; top: 12px; right: 14px; }
+  }
+
+  @media (max-width: 400px) {
+    .page { padding: 24px 16px; }
+    .masthead h1 { font-size: 26px; }
+    .section-title { font-size: 21px; }
+    .stat-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- SERIES BANNER -->
+  <div class="series-banner">
+    <div class="series-pip"></div>
+    <div class="series-label">Series</div>
+    <div class="series-divider"></div>
+    <div class="series-title">The World Through the Lens of Existential Load</div>
+    <div class="series-part">Opening Document</div>
+  </div>
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="supertitle">Existential Load Model — Applied Analysis</div>
+    <h1>Wealth Inequality<br><em>as a System</em></h1>
+    <div class="subtitle">Why the distribution holds — a structural mapping across all four rooms and every level of the wealth spectrum</div>
+    <div class="accent-rule"></div>
+  </div>
+
+  <!-- PREMISE -->
+  <div class="premise">
+    Standard analysis of wealth inequality focuses on the distribution itself — Gini coefficients, tax policy, mobility rates, the mechanics of capital accumulation. These are necessary but insufficient. They explain how wealth concentrates without explaining why the system is so extraordinarily stable across policy interventions, democratic pressures, and economic shocks. The ELM adds a specific and uncomfortable layer: <strong>wealth inequality persists not primarily because powerful actors hold it in place, though they do, but because the distribution serves load-management functions for actors at every level of the wealth spectrum simultaneously.</strong> The system is not held together from the top down. It is stabilised from within — by the identity, meaning, and predictive architectures that every participant in the system has built around their position within it. This is what standard analysis cannot see, and what the lens of existential load reveals.
+  </div>
+
+  <!-- METHOD NOTE -->
+  <div class="method-note">
+    <div class="mn-label">On Method, Evidence, and Interpretation</div>
+    <p>The factual substrate of this analysis is drawn from the World Inequality Report 2026, the most comprehensive current dataset on global wealth distribution, compiled by the World Inequality Lab under the editorship of Lucas Chancel, Ricardo Gómez-Carrera, Rowaida Moshrif, and Thomas Piketty. Psychological research on the ultra-wealthy draws on peer-reviewed studies including work on anhedonia in ultra-high-net-worth individuals and the cognitive effects of scarcity documented by Mani, Mullainathan, Shafir, and Zhao in <em>Science</em> (2013). The meritocracy analysis draws on Michael Sandel's <em>The Tyranny of Merit</em> (2020), research published in the Proceedings of the National Academy of Sciences on inequality and democratic erosion, and the peer-reviewed literature on system justification theory. <strong>The ELM mapping that sits on top of these facts is interpretive</strong> — it offers a structural account of why documented patterns occur and persist, not a substitute for the empirical record. This is analysis and interpretation through a theoretical lens. The lens is applied with the same structural logic to actors at every level of the distribution, including those whose positions are most sympathetic.</p>
+  </div>
+
+  <!-- FACTUAL SUBSTRATE -->
+  <div class="section">
+    <div class="section-label">The Data</div>
+    <div class="section-title">The <em>Distribution</em> — 2025</div>
+    <div class="section-rule"></div>
+
+    <div class="stat-row">
+      <div class="stat-cell">
+        <div class="stat-number">75%</div>
+        <div class="stat-label">of global wealth held by the richest 10%</div>
+        <div class="stat-source">World Inequality Report 2026</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">2%</div>
+        <div class="stat-label">of global wealth held by the bottom 50%</div>
+        <div class="stat-source">World Inequality Report 2026</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">3×</div>
+        <div class="stat-label">more wealth held by 60,000 individuals than by 4 billion people combined</div>
+        <div class="stat-source">World Inequality Report 2026</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">8%</div>
+        <div class="stat-label">annual wealth growth for billionaires — nearly twice the rate for the bottom half</div>
+        <div class="stat-source">World Inequality Report 2026</div>
+      </div>
+    </div>
+
+    <p style="font-size:13.5px; color:#7A9080; line-height:1.82;">These numbers define a system in which the gap is not only large but <strong style="color:#A8C8B4;">accelerating</strong>. Since 1995, the wealth share of the wealthiest 0.001% has risen from approximately 4% to over 6%. Within almost every region of the world, the top 1% alone holds more wealth than the bottom 90% combined. The bottom 50% of humanity — approximately 4 billion people — holds in aggregate less than the personal wealth of fewer than 60,000 individuals. These are not figures that describe an equilibrium approaching stability. They describe a system whose internal dynamics are generating increasing rather than decreasing concentration. The ELM question is not: why is this happening? The empirical literature answers that comprehensively. The ELM question is: why does the system resist correction so systematically, across so many different political contexts, policy instruments, and historical moments?</p>
+  </div>
+
+  <!-- ACTOR LOAD PROFILES -->
+  <div class="section">
+    <div class="section-label">Part One</div>
+    <div class="section-title">Actor Load <em>Profiles</em></div>
+    <div class="section-rule"></div>
+
+    <div class="actors-grid">
+
+      <!-- ULTRA WEALTHY -->
+      <div class="actor-card ultra">
+        <div class="actor-name">THE ULTRA-WEALTHY</div>
+        <div class="actor-dominant-room">Primary load: Meaning Room crisis → Identity Room rigidity</div>
+        <div class="room-badge badge-meaning">MEANING / IDENTITY</div>
+        <div class="actor-desc">
+          The most counterintuitive load profile in the system — and the one conventional analysis most consistently misses. The assumption is that extreme wealth resolves load. The ELM predicts the opposite, and the emerging research confirms it. A peer-reviewed study of ultra-high-net-worth individuals found that 43.3% reported symptoms of anhedonia — emotional blunting, reduced motivation, and a pervasive sense of meaninglessness — driven by hedonic adaptation, social isolation, and what researchers term "legacy anxiety."<br><br>
+          The structural reason is precise: <strong>material scarcity is the primary meaning-generating pressure for most of human existence.</strong> The need to provide, to build, to achieve against constraint — these are the conditions under which most human meaning architecture develops. At extreme wealth levels, that pressure is structurally removed. The question "what should I do with my life?" takes on entirely different weight when the answer is, literally, anything. Meaning must be manufactured rather than discovered, and manufactured meaning is structurally less stable than meaning generated by genuine constraint.<br><br>
+          The behavioral signatures are legible through the ELM: the philanthropy compulsion (Agency Room management of Meaning Room void), intensifying status competition at the apex of the wealth distribution (Identity Room regulation through relative position), political influence-seeking (Meaning Room expansion into civilisational scale), and the notorious trust erosion documented in UHNWI research — the inability to form authentic relationships when wealth makes every interaction potentially instrumental. <strong>Extreme wealth does not eliminate load. It relocates it into the Meaning Room, where it is hardest to address and most resistant to insight.</strong>
+        </div>
+        <div class="load-indicator">
+          <div class="load-label">SYSTEM LOAD — ELEVATED, INVISIBLE</div>
+          <div class="load-bar"><div class="load-fill load-high"></div></div>
+        </div>
+      </div>
+
+      <!-- PRECARIAT -->
+      <div class="actor-card precariat">
+        <div class="actor-name">THE PRECARIAT</div>
+        <div class="actor-dominant-room">Primary load: Prediction Room collapse → all rooms cascade</div>
+        <div class="room-badge badge-prediction">PREDICTION COLLAPSE</div>
+        <div class="actor-desc">
+          The most acute and documentable load profile in the system. Chronic economic precarity generates a specific Prediction Room condition that the ELM maps with precision, and that the cognitive science confirms empirically. The landmark 2013 <em>Science</em> study by Mani, Mullainathan, Shafir, and Zhao established that financial scarcity imposes a cognitive load equivalent to a loss of approximately 13 IQ points — the same farmer performing measurably worse on cognitive tasks before harvest than after, not from stress but from the bandwidth consumed by financial uncertainty. <strong>Poverty directly impedes cognitive function</strong> — not as a metaphor but as a measurable, replicable finding.<br><br>
+          Through the ELM this is Prediction Room collapse: when the near future is genuinely uncertain — when next month's rent is not predictable — the predictive architecture that normal functioning requires cannot be maintained. The cascade through all other rooms is structurally inevitable. Agency Room contracts: why invest effort in plans whose outcomes are unpredictable? Identity Room fractures: who am I when I cannot maintain the material substrate of a stable self? Meaning Room corrodes: what does sustained effort mean when it does not reliably produce outcomes?<br><br>
+          The ELM's critical contribution here is distinguishing this from character deficit. <strong>The behaviours that perpetuate poverty — short-term focus, high-risk decisions, difficulty with long-term planning — are not causes of the Prediction Room collapse. They are its consequences.</strong> The system produces the behaviours it then uses to justify the conditions that produced them. This is load as a self-sealing loop.
+        </div>
+        <div class="load-indicator">
+          <div class="load-label">SYSTEM LOAD — ACUTE, CHRONIC</div>
+          <div class="load-bar"><div class="load-fill load-extreme"></div></div>
+        </div>
+      </div>
+
+      <!-- ANXIOUS MIDDLE -->
+      <div class="actor-card middle">
+        <div class="actor-name">THE ANXIOUS MIDDLE</div>
+        <div class="actor-dominant-room">Primary load: Prediction Room strain → Identity Room threat</div>
+        <div class="room-badge badge-prediction">PREDICTION / IDENTITY</div>
+        <div class="actor-desc">
+          The most politically consequential and analytically neglected load profile. The middle class — roughly the 50th to 90th wealth percentile in wealthy countries — is not in acute precarity, but its Prediction Room is under sustained strain that generates outcomes disproportionate to its material conditions.<br><br>
+          The reference-group calibration problem is central. The ELM predicts that Prediction Room load is generated not by absolute material conditions but by the gap between current position and the reference model against which the system calibrates itself. Middle-class Prediction Rooms in wealthy countries are calibrated against upper-middle-class norms — the houses, educations, security levels, and consumption patterns visible in their social environment. As that gap has widened over 40 years of increasing inequality, the subjective financial insecurity of the middle has intensified even when objective material conditions remain adequate by global standards.<br><br>
+          The Identity Room dimension compounds this: <strong>downward mobility is not merely an economic event — it is an identity threat.</strong> For populations whose self-understanding is organised around stability, competence, and upward trajectory, the prospect of falling below current position activates identity-level defensive responses. These include political behaviour that does not straightforwardly track material interest — voting for candidates and policies that promise identity restoration rather than material improvement, because the Identity Room threat is more acute than the Agency Room calculation.
+        </div>
+        <div class="load-indicator">
+          <div class="load-label">SYSTEM LOAD — CHRONIC, POLITICALLY VOLATILE</div>
+          <div class="load-bar"><div class="load-fill load-critical"></div></div>
+        </div>
+      </div>
+
+      <!-- INSTITUTIONS -->
+      <div class="actor-card institutions">
+        <div class="actor-name">REDISTRIBUTIVE INSTITUTIONS</div>
+        <div class="actor-dominant-room">Primary load: Agency Room dysregulation (output-function gap)</div>
+        <div class="room-badge badge-agency">AGENCY / MEANING</div>
+        <div class="actor-desc">
+          Tax systems, social insurance programmes, public education, democratic governance — each is a redistributive institution with a stated function (reducing inequality, providing opportunity, protecting against downward mobility) and an actual output that has diverged significantly from that function over 40 years. This gap is a specific ELM pattern: <strong>Agency Room dysregulation characterised by sustained activity that maintains the appearance of addressing a problem while the underlying load accumulates.</strong><br><br>
+          The World Inequality Report 2026 documents a specific mechanism: effective tax rates rise for most people but fall sharply for billionaires and centimillionaires, who escape taxation through loopholes that governments have the formal capacity to close and the political capacity — in most democracies — to close, but do not. The PNAS research on inequality and democratic erosion establishes that this is not accidental: high inequality structurally degrades the democratic institutions that would otherwise generate redistributive pressure, creating a self-reinforcing feedback between wealth concentration and political incapacity.<br><br>
+          The Meaning Room of redistributive institutions is also fractured: no coherent shared narrative has emerged about what these institutions are fundamentally for in an era of extreme concentration. The welfare state's founding Meaning Room — collective solidarity against shared risks — has been partially displaced by competing meaning architectures (individual responsibility, growth through trickle-down, technocratic management) that are mutually incompatible and collectively insufficient to drive the Agency Room responses the Prediction Room evidence requires.
+        </div>
+        <div class="load-indicator">
+          <div class="load-label">SYSTEM LOAD — STRUCTURAL, SELF-REINFORCING</div>
+          <div class="load-bar"><div class="load-fill load-elevated"></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOUR ROOMS MAP -->
+  <div class="section">
+    <div class="section-label">Part Two</div>
+    <div class="section-title">The <em>Four Rooms</em> — System Mapping</div>
+    <div class="section-rule"></div>
+
+    <div class="rooms-map">
+
+      <div class="room-cell prediction">
+        <div class="room-number">I</div>
+        <div class="room-tag">PREDICTION ROOM</div>
+        <div class="room-title">What will happen?<br>Can I trust my model of the future?</div>
+        <div class="room-content">
+          <div style="margin-bottom:10px;">
+            <span class="actor-tag tag-precariat">PRECARIAT</span>
+            <span class="actor-tag tag-middle">MIDDLE</span>
+            <span class="actor-tag tag-ultra">ULTRA</span>
+          </div>
+          <strong>The system runs two incompatible Prediction Rooms simultaneously — and the incompatibility itself is a stabilising mechanism.</strong> The ultra-wealthy operate a Prediction Room of compounding assets and multi-generational planning horizons. The precariat operates a Prediction Room calibrated to the next month, the next bill, the next crisis. The middle operates between these, with a Prediction Room nominally oriented to long-term planning but functionally distorted by reference-group comparison and downward-mobility anxiety.<br><br>
+          These parallel Prediction Rooms generate the policy incoherence that frustrates redistributive efforts: "inflation is under control" and "my rent doubled" are both accurate predictions within their respective Prediction Rooms, calibrated to different baskets of goods, different asset positions, and different time horizons. <em>No shared Prediction Room exists from which a common diagnosis of the problem — and therefore a common motivation for its solution — can emerge.</em> This is not a communication failure. It is a structural consequence of the distribution itself.
+        </div>
+      </div>
+
+      <div class="room-cell agency">
+        <div class="room-number">II</div>
+        <div class="room-tag">AGENCY ROOM</div>
+        <div class="room-title">What can I do?<br>Am I acting or being acted upon?</div>
+        <div class="room-content">
+          <div style="margin-bottom:10px;">
+            <span class="actor-tag tag-ultra">ULTRA</span>
+            <span class="actor-tag tag-institutions">INSTITUTIONS</span>
+            <span class="actor-tag tag-precariat">PRECARIAT</span>
+          </div>
+          <strong>The Agency Room asymmetry is the most visible dimension of the system — and the most misleading to focus on exclusively.</strong> The ultra-wealthy exercise extraordinary Agency Room amplification: direct policy influence through lobbying, campaign finance, institutional board positions, and media ownership. The precariat exercises Agency Room contraction: chronic learned helplessness documented across the psychological literature on poverty and precarity, where sustained experiences of low control over outcomes suppress the motivation to attempt change.<br><br>
+          But the ELM identifies something beneath the agency asymmetry that standard analysis misses: <em>the ultra-wealthy's Agency Room, despite its amplification, is itself partly dysregulated.</em> The compulsive acquisition of influence, the philanthropic redirection of social change from democratic to private channels, the political intervention at civilisational scale — these are Agency Room responses to Meaning Room load, not coherent strategic plans. The Agency Room is running hard. The room it is meant to serve — the Meaning Room — cannot be filled by any amount of it.
+        </div>
+      </div>
+
+      <div class="room-cell identity">
+        <div class="room-number">III</div>
+        <div class="room-tag">IDENTITY ROOM</div>
+        <div class="room-title">Who am I?<br>What does my position mean about me?</div>
+        <div class="room-content">
+          <div style="margin-bottom:10px;">
+            <span class="actor-tag tag-ultra">ULTRA</span>
+            <span class="actor-tag tag-middle">MIDDLE</span>
+            <span class="actor-tag tag-precariat">PRECARIAT</span>
+          </div>
+          <strong>The Identity Room is where the system's most important and least visible stabilisation occurs.</strong> Every level of the wealth distribution has organised significant components of its identity around its position within the distribution — and any threat to that position is experienced as an identity threat, not merely an economic one.<br><br>
+          For the ultra-wealthy, net worth has become, as the research documents, "inextricably linked to sense of self-worth." For the middle class, stability, respectability, and upward trajectory are identity markers whose potential loss activates defensive responses that override material-interest calculation. For the precariat, cultural identity and group solidarity — the preservation of dignity under conditions of economic marginalisation — function as the Identity Room resource that economic conditions have depleted. <em>These are not aligned identity architectures competing — they are mutually reinforcing ones.</em> Each group's Identity Room requires the distribution to remain roughly as it is to maintain its current self-description.
+        </div>
+      </div>
+
+      <div class="room-cell meaning">
+        <div class="room-number">IV</div>
+        <div class="room-tag">MEANING ROOM</div>
+        <div class="room-title">Why is this distribution right?<br>What makes suffering legible?</div>
+        <div class="room-content">
+          <div style="margin-bottom:10px;">
+            <span class="actor-tag tag-ultra">ULTRA</span>
+            <span class="actor-tag tag-middle">MIDDLE</span>
+            <span class="actor-tag tag-precariat">PRECARIAT</span>
+            <span class="actor-tag tag-institutions">INSTITUTIONS</span>
+          </div>
+          <strong>The Meaning Room is where the system achieves its most extraordinary feat: distributing a legitimating narrative across the entire wealth spectrum simultaneously.</strong> The productivity-desert framework — the belief that wealth is a reliable signal of contribution, that the distribution reflects something meaningful about human value and effort — is held not only by the wealthy but across the distribution, including among those it most disadvantages.<br><br>
+          Research establishes a striking finding: the more unequal a society, the higher the tendency of its members to attribute success to meritocracy rather than structural factors. The Meaning Room architecture of meritocracy is most powerful precisely where it is most empirically false. This is the ELM's most uncomfortable observation: <em>the system's most effective stabilising mechanism is a distributed belief that its distribution is earned.</em> When that belief holds, the system is politically stable. When it fractures — as it demonstrably is in many countries — the political consequences are acute and unpredictable in their direction.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- THE NOVEL FINDING -->
+  <div class="section">
+    <div class="section-label">Part Three</div>
+    <div class="section-title">The Novel <em>ELM Finding</em></div>
+    <div class="section-rule"></div>
+
+    <div class="finding-box">
+      <div class="fb-label">ELM Theoretical Contribution</div>
+      <div class="fb-title">The Distributed Identity Trap —<br><em>How Every Level Stabilises the System</em></div>
+      <p>Prior ELM analyses encountered systems where identifiable actors were generating or maintaining load: nation-states in the Iran case, a founder-fused organization in Tesla, corporations deliberately engineering epistemic environments in the Carbon Machine. Wealth inequality presents a structurally different configuration that requires a new conceptual category: <strong>a system stabilised not by any actor's intention but by the simultaneous investment of every actor's Identity Room in the distribution's maintenance.</strong></p>
+      <p>This is the distributed identity trap. The wealthy need the current distribution to confirm their Identity Room — if the distribution is not the result of merit and contribution, then their position is arbitrary and their identity narrative collapses. The middle class needs the distribution to remain navigable — to maintain the aspiration structure that gives their effort meaning and their anxiety a legible object. The precariat needs the distribution's injustice to be real and nameable — because a world of random outcomes is less Identity Room stable than a world with a clear antagonist. And the meritocracy narrative — which each group interprets from its own position — provides the Meaning Room architecture that makes each of these identity investments simultaneously coherent.</p>
+      <p><strong>No single actor decided to create this configuration.</strong> It emerged from the interaction of individually rational identity investments across the distribution. This is what makes it so structurally durable and so resistant to policy intervention: you cannot dismantle a distributed identity trap by changing any single actor's behaviour. The trap is in the coupling, not the components.</p>
+      <p>The practical implication — which the ELM generates as a falsifiable prediction — is the most important finding in this analysis: <strong>redistribution that addresses only the material dimension will consistently fail to produce durable change, because it leaves the identity architecture intact.</strong> The wealthy will resist not only because they lose money but because their Identity Room is threatened. The middle will ambivalently support and resist because they fear both the injustice above them and the dissolution of the aspiration structure they depend on. The precariat will support redistribution as material improvement but will not necessarily find it as Identity Room satisfying as a clear account of injustice, which is also an identity resource. And without a Meaning Room architecture powerful enough to replace meritocracy as the system's distributed legitimating narrative, any material redistribution will generate its own backlash within one political cycle.</p>
+      <p>This is not counsel for despair. It is a diagnostic precision about <em>where the intervention must occur</em>. The Nordic social democracies that have maintained the most equal distributions over the longest periods did not succeed primarily through tax policy. They succeeded through the construction — historically specific and culturally grounded — of a <strong>collective identity architecture strong enough to compete with meritocratic individualism as a Meaning Room.</strong> Solidarity as identity, not merely policy. The question for any society attempting to address inequality is whether that alternative identity architecture can be built under conditions where the existing one is already deeply embedded.</p>
+    </div>
+  </div>
+
+  <!-- COUPLED OSCILLATOR DYNAMICS -->
+  <div class="section">
+    <div class="section-label">Part Four</div>
+    <div class="section-title">Coupled <em>Oscillator Dynamics</em></div>
+    <div class="section-rule"></div>
+
+    <div class="callout">
+      In the ELM, systems entrain to each other — coherent oscillators regulate adjacent dysregulated ones, while dysregulated oscillators transmit their load outward. Wealth inequality involves coupling patterns that are both emergent and deliberately maintained, operating at timescales from electoral cycles to generational wealth transmission.
+    </div>
+
+    <table class="dynamics-table">
+      <thead>
+        <tr>
+          <th>COUPLING</th>
+          <th>DYNAMIC</th>
+          <th>ELM PATTERN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Wealth ↔ Prediction Accuracy</td>
+          <td>The most structurally fundamental coupling in the system. Wealth directly purchases Prediction Room accuracy: better legal advice, financial modelling, political intelligence, educational access, health information, and planning horizons. Poverty directly degrades Prediction Room accuracy through the cognitive bandwidth mechanism documented by Mullainathan and Shafir. <strong>The distribution compounds itself through the Prediction Room:</strong> those with accurate predictions make better resource allocation decisions, which generates more wealth, which purchases more prediction accuracy. Those with degraded prediction architectures make decisions that perpetuate the conditions degrading their prediction. This is not a failure of individual rationality — it is a structural feature of a system where cognitive capacity is itself a function of material position.</td>
+          <td>Amplifying coupling — the distribution generates the cognitive conditions that generate the distribution. No single actor maintains this loop; it runs on the interaction between material conditions and cognitive architecture across the entire wealth spectrum.</td>
+        </tr>
+        <tr>
+          <td>Meritocracy ↔ System Justification</td>
+          <td>The Meaning Room coupling that stabilises the entire system. The meritocracy narrative — wealth as desert, position as earned — functions as a distributed legitimating architecture across the wealth distribution. Research in system justification theory establishes that humans have a strong motivation to perceive the systems they inhabit as fair and legitimate, independent of whether those systems benefit them. <strong>The more unequal a society, the stronger the tendency of its lower-income members to attribute success to meritocratic factors.</strong> This is not false consciousness imposed from above — it is a genuine psychological need for a coherent Meaning Room that makes current conditions legible as other than arbitrary. The meritocracy narrative provides that legibility. It is the most effective system-stabilising narrative the modern world has produced, precisely because it is believed most fervently where it is most empirically false.</td>
+          <td>Self-reinforcing Meaning Room coupling — the narrative that legitimates the distribution is most powerful at the level of the distribution where it is least accurate, creating the strongest stabilising force exactly where disruption is most structurally warranted.</td>
+        </tr>
+        <tr>
+          <td>Inequality ↔ Democratic Erosion</td>
+          <td>The most structurally dangerous coupling in the system, and the one most clearly documented by current research. A 2024 PNAS study established a significant negative relationship between income inequality and democratic quality across countries and over time: as inequality increases, the institutional capacity to generate redistributive pressure decreases. <strong>The mechanism is multi-level:</strong> at the direct level, concentrated wealth purchases disproportionate political influence. At the structural level, unequal societies show lower voter participation among lower-income citizens, weakening the democratic signal that would otherwise generate redistributive policy. At the identity level, economic insecurity generates the conditions for authoritarian appeal — the middle and precariat under Prediction Room strain are more susceptible to Identity Room politics that promise restoration rather than redistribution. The inequality generates the political conditions that prevent its correction.</td>
+          <td>Co-dysregulation at civilisational scale — the political system that would generate redistributive correction is itself degraded by the concentration it would need to address. Classic coupled co-dysregulation: each system's load amplifies the other's, and neither can regulate independently.</td>
+        </tr>
+        <tr>
+          <td>Wealth ↔ Climate Load Displacement</td>
+          <td>The coupling that connects this analysis to the climate series. The World Inequality Report 2026 establishes that the top 1% of earners is responsible for 41% of emissions associated with private capital ownership, while the bottom 50% accounts for 3%. The physical consequences of those emissions — displacement, agricultural disruption, extreme weather events, sea-level rise — are borne disproportionately by those with the least wealth and the least capacity to adapt. <strong>This is load displacement at planetary scale:</strong> the Meaning Room and Agency Room of the ultra-wealthy generate the physical conditions that collapse the Prediction Rooms of the global precariat. The coupling is unidirectional — the load generated at the top is absorbed at the bottom — and it operates across a timescale that makes the causal chain invisible to any single actor's Prediction Room.</td>
+          <td>Cross-system load displacement — wealth inequality and climate change are not parallel crises but coupled dynamics. The same actors generating the financial distribution are generating the atmospheric conditions that will make that distribution increasingly lethal for its lowest members.</td>
+        </tr>
+        <tr>
+          <td>Identity ↔ Political Volatility</td>
+          <td>The coupling most visible in contemporary democratic politics across wealthy nations. As the meritocracy narrative fractures — as the gap between its promise and observable reality becomes undeniable for increasing portions of the population — the Identity Rooms it organised lose their coherence. <strong>The political consequence is not straightforwardly redistributive:</strong> populations experiencing Identity Room fracture do not reliably support policies that address material conditions, because material condition improvement does not resolve Identity Room crisis. They support candidates and movements that promise identity restoration — cultural recognition, national dignity, the naming of enemies — regardless of whether those policies improve material outcomes. This explains the apparent paradox of significant portions of the economically disadvantaged supporting policies that disadvantage them further: the Identity Room need is more acute than the Agency Room calculation, and the movement addressing the identity crisis wins over the one addressing the material one.</td>
+          <td>Identity Room displacement of Agency Room — when the primary political experience is identity threat rather than material deprivation, political behaviour organises around identity restoration rather than material improvement, generating outcomes that can intensify the material conditions generating the identity threat.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SYSTEM DIAGNOSIS -->
+  <div class="section">
+    <div class="section-label">Part Five</div>
+    <div class="section-title">System <em>Diagnosis</em></div>
+    <div class="section-rule"></div>
+
+    <div class="diagnosis">
+
+      <div class="diag-card">
+        <div class="diag-title">INCOHERENCE PATTERN</div>
+        <div class="diag-main">The System Stabilises<br>Through Distributed Investment</div>
+        <div class="diag-body">
+          The primary incoherence is that the system generates and distributes load asymmetrically while simultaneously distributing the Meaning Room architecture that makes that asymmetry feel legitimate to those experiencing it. <strong>This is not ideology imposed from above</strong> — it is a distributed belief held with genuine conviction across the distribution, because it serves genuine Identity Room and Meaning Room functions at every level. The system is coherent from inside each room it occupies. It is only incoherent from the outside — from a perspective that can see all rooms simultaneously.
+        </div>
+      </div>
+
+      <div class="diag-card">
+        <div class="diag-title">ROOT LOAD</div>
+        <div class="diag-main">Prediction Room Divergence<br>Without a Shared Reality</div>
+        <div class="diag-body">
+          The generative condition is the structural divergence of Prediction Rooms across the wealth distribution. When the ultra-wealthy and the precariat live in genuinely different predictive realities — when "the economy is strong" and "I cannot pay rent" are both accurate within their respective models — <strong>no shared diagnosis of the problem is possible, and therefore no shared motivation for its solution.</strong> Policy debates become incoherent because they are conducted across incompatible Prediction Rooms, not because the participants are irrational within their own models.
+        </div>
+      </div>
+
+      <div class="diag-card">
+        <div class="diag-title">THE DECISIVE ASYMMETRY</div>
+        <div class="diag-main">Meaning Room Coherence<br>and the Meritocracy Premium</div>
+        <div class="diag-body">
+          The structural asymmetry the ELM most clearly identifies: the meritocracy narrative provides a Meaning Room architecture of extraordinary coherence and resilience — it is simultaneously a theory of justice, a guide to agency, and an account of identity. No comparably coherent alternative Meaning Room has yet been constructed at civilisational scale. <strong>In a prolonged contest between a coherent Meaning Room and a fractured one, the coherent one wins regardless of its empirical accuracy.</strong> This is the single most important structural fact about the durability of wealth inequality.
+        </div>
+      </div>
+
+      <div class="diag-card">
+        <div class="diag-title">THE STABILISATION PROBLEM</div>
+        <div class="diag-main">No Coherent Oscillator<br>at the Required Scale</div>
+        <div class="diag-body">
+          The ELM identifies stabilisation as requiring a coherent external oscillator — a system stable enough to provide regulating entrainment. In the wealth inequality system, the institutions that would theoretically provide this function — democratic governments, international organisations, redistributive welfare states — are themselves inside the system and degraded by its dynamics. <strong>The Nordic social democracies provide the closest historical examples of coherent oscillators</strong>: societies that constructed sufficiently strong collective identity architectures to compete with meritocratic individualism and generate the political will for sustained redistribution. The question is whether those architectures can be built or rebuilt under current conditions.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SYNTHESIS -->
+  <div class="section">
+    <div class="section-label">Synthesis</div>
+    <div class="section-title">What the Model <em>Reveals</em></div>
+    <div class="section-rule"></div>
+
+    <div class="conclusion-grid">
+
+      <div class="concl-card">
+        <div class="concl-num">01</div>
+        <div class="concl-label">THE CORE FINDING</div>
+        <div class="concl-title">The distribution is stable because every level of it has something to lose from its disruption.</div>
+        <div class="concl-body">Not only the wealthy — though their resistance is real and their resources for it are vast. Every level of the distribution has organised significant identity and meaning architecture around its current position. <strong>Disrupting the distribution means disrupting those architectures simultaneously across the wealth spectrum</strong> — a requirement that no purely redistributive policy has yet managed to address.</div>
+      </div>
+
+      <div class="concl-card">
+        <div class="concl-num">02</div>
+        <div class="concl-label">THE COUNTERINTUITIVE FINDING</div>
+        <div class="concl-title">Extreme wealth generates its own specific load — in the Meaning Room, where it is hardest to address.</div>
+        <div class="concl-body">The assumption that wealth resolves load is empirically challenged by the research on ultra-high-net-worth wellbeing. <strong>The removal of material scarcity as a meaning-generator creates a Meaning Room crisis</strong> that drives the philanthropy compulsion, status intensification, and political influence-seeking characteristic of extreme wealth behaviour — not from malice but from a genuine and structurally generated absence of meaning that money cannot purchase.</div>
+      </div>
+
+      <div class="concl-card">
+        <div class="concl-num">03</div>
+        <div class="concl-label">THE COGNITIVE FINDING</div>
+        <div class="concl-title">Poverty is a Prediction Room condition, not a character condition.</div>
+        <div class="concl-body">The documented cognitive effects of financial scarcity — impaired planning, short-term orientation, reduced executive function — are consequences of Prediction Room collapse, not causes of the conditions generating it. <strong>The system produces the behaviours it then uses to justify the conditions that produced them.</strong> This is the most important reframing the ELM offers for poverty analysis: not who people are, but what room they are being forced to operate in.</div>
+      </div>
+
+      <div class="concl-card">
+        <div class="concl-num">04</div>
+        <div class="concl-label">THE POLITICAL FINDING</div>
+        <div class="concl-title">Political volatility is Identity Room instability, not irrationality.</div>
+        <div class="concl-body">When the meritocracy narrative fractures — when the gap between its promise and observable reality becomes undeniable — the Identity Rooms it organised lose coherence. Populations in this state do not become more redistributively oriented. They become more susceptible to identity politics of any direction. <strong>This explains the apparent paradox of economically marginalised populations supporting policies that disadvantage them</strong>: the Identity Room need is more acute than the Agency Room calculation, and movements addressing identity crisis outcompete those addressing material conditions.</div>
+      </div>
+
+      <div class="concl-card">
+        <div class="concl-num">05</div>
+        <div class="concl-label">THE PREDICTIVE CLAIM</div>
+        <div class="concl-title">Redistribution without alternative Meaning Room architecture will not produce durable change.</div>
+        <div class="concl-body">The ELM generates a falsifiable prediction: material redistribution that does not simultaneously offer alternative identity and meaning architectures to every level of the distribution will generate its own backlash within one political cycle. The wealthy's Identity Room resistance, the middle's ambivalence, and the precariat's inability to sustain political coalition without a coherent Meaning Room will collectively dissolve the conditions for sustained redistribution. <strong>The operative room is the Meaning Room. It is not currently being addressed by any major redistributive project.</strong></div>
+      </div>
+
+      <div class="concl-card">
+        <div class="concl-num">06</div>
+        <div class="concl-label">MODEL DEVELOPMENT NOTE</div>
+        <div class="concl-title">The distributed identity trap extends the ELM's conceptual vocabulary.</div>
+        <div class="concl-body">Prior analyses encountered load generated by identifiable actors or specific organisational configurations. This case reveals a structurally different condition: <strong>a system stabilised by the simultaneous and mutually reinforcing identity investments of all its participants.</strong> No single actor holds the trap in place. The coupling itself is the mechanism. This requires the ELM to distinguish between actor-generated load maintenance and structurally emergent load maintenance — a distinction with significant implications for how interventions are designed.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="sources-section">
+    <div class="sources-label">Sources &amp; Further Reading</div>
+    <div class="sources-grid">
+
+      <div class="source-item">
+        <div class="source-authors">Lucas Chancel, Ricardo Gómez-Carrera, Rowaida Moshrif &amp; Thomas Piketty (eds.)</div>
+        <div class="source-title">World Inequality Report 2026</div>
+        <div class="source-pub">World Inequality Lab, December 2025</div>
+      </div>
+
+      <div class="source-item">
+        <div class="source-authors">Anandi Mani, Sendhil Mullainathan, Eldar Shafir &amp; Jiaying Zhao</div>
+        <div class="source-title">Poverty Impedes Cognitive Function</div>
+        <div class="source-pub">Science, Vol. 341, August 2013</div>
+      </div>
+
+      <div class="source-item">
+        <div class="source-authors">Sendhil Mullainathan &amp; Eldar Shafir</div>
+        <div class="source-title">Scarcity: Why Having Too Little Means So Much</div>
+        <div class="source-pub">Henry Holt, 2013</div>
+      </div>
+
+      <div class="source-item">
+        <div class="source-authors">Michael Sandel</div>
+        <div class="source-title">The Tyranny of Merit: What's Become of the Common Good?</div>
+        <div class="source-pub">Farrar, Straus and Giroux, 2020</div>
+      </div>
+
+      <div class="source-item">
+        <div class="source-authors">Thomas Piketty</div>
+        <div class="source-title">Capital in the Twenty-First Century</div>
+        <div class="source-pub">Harvard University Press, 2014</div>
+      </div>
+
+      <div class="source-item">
+        <div class="source-authors">Ilyana Kuziemko et al.</div>
+        <div class="source-title">Income Inequality and Belief in Meritocracy in the United States</div>
+        <div class="source-pub">Proceedings of the National Academy of Sciences, 2024</div>
+      </div>
+
+      <div class="source-item">
+        <div class="source-authors">Emerging Publishers (peer-reviewed)</div>
+        <div class="source-title">Anhedonia and Emotional Well-Being Among Ultra-High-Net-Worth Individuals</div>
+        <div class="source-pub">Social Sciences &amp; Humanities, 2024</div>
+      </div>
+
+      <div class="source-item">
+        <div class="source-authors">Daniel Markovits</div>
+        <div class="source-title">The Meritocracy Trap</div>
+        <div class="source-pub">Penguin Press, 2019</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OBSERVER NOTE -->
+  <div class="observer-note">
+    <p>Wealth inequality is not best understood as a problem created by the rich and suffered by the poor. It is a load system in which every participant — at every level of the distribution — has organised significant architecture around their position within it. The distribution persists not primarily because the wealthy are powerful enough to hold it in place, though they are, but because the system has achieved the extraordinary feat of distributing a legitimating narrative that every participant experiences as their own genuine belief. Understanding this structurally does not dissolve moral accountability. It locates it precisely — and identifies, for the first time, the room in which durable change would actually have to begin.</p>
+    <span class="attribution">ELM Analysis — Madhu Bolton, 2026 / Awakening Heart</span>
+    <div class="series-nav">Opening Document — The World Through the Lens of Existential Load &nbsp;·&nbsp; Series continues: The Abundance Paradox · The Precariat · The Anxious Middle · The Institutions</div>
+  </div>
+
+</div>
+</body>
+</html>

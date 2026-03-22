@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sovereignty and Smoke — Climate Through the Lens of Existential Load, Part II</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Series palette — deep slate/petroleum blue for Part II */
+    --accent: #2E6B9E;
+    --accent-light: #6AADD4;
+    --accent-dim: #1A4A72;
+    --accent-glow: rgba(46,107,158,0.12);
+    --ink: #0E1520;
+    --warm-white: #EEF3F8;
+    --warm-mid: #D5E0EC;
+    --warm-dark: #141E2A;
+    --grey-warm: #5A6A7A;
+    --border: #1E2E42;
+    --border-mid: #162030;
+
+    /* Room colors */
+    --prediction: #3A5A8C;
+    --agency: #7A3A2A;
+    --identity: #2A6B4A;
+    --meaning: #6A3A7A;
+
+    /* Signal colors */
+    --red-signal: #9B2B2B;
+    --amber-signal: #B07020;
+    --crisis: #7B1A1A;
+
+    /* Part II geo-specific accents */
+    --gulf: #C89A30;
+    --gulf-dim: #7A5A10;
+    --russia: #8B3030;
+    --russia-dim: #5A1A1A;
+    --south: #3A8A5A;
+    --south-dim: #1A5A30;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--ink);
+    color: var(--warm-white);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  /* ==================
+     SERIES BANNER
+  ================== */
+  .series-banner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 24px;
+    border: 1px solid var(--accent-dim);
+    background: rgba(46,107,158,0.06);
+    margin-bottom: 48px;
+  }
+
+  .series-pip {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .series-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .series-divider {
+    width: 1px;
+    height: 16px;
+    background: var(--accent-dim);
+    flex-shrink: 0;
+  }
+
+  .series-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--grey-warm);
+  }
+
+  .series-part {
+    margin-left: auto;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--accent-dim);
+  }
+
+  /* ==================
+     MASTHEAD
+  ================== */
+  .masthead {
+    text-align: center;
+    padding: 60px 0 48px;
+    border-bottom: 1px solid var(--accent-dim);
+    margin-bottom: 56px;
+    position: relative;
+  }
+
+  .masthead::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 1px;
+    height: 30px;
+    background: linear-gradient(to bottom, transparent, var(--accent-dim));
+  }
+
+  .masthead .supertitle {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 5px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    opacity: 0.85;
+  }
+
+  .masthead h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 54px;
+    font-weight: 300;
+    line-height: 1.12;
+    color: var(--warm-white);
+    margin-bottom: 14px;
+  }
+
+  .masthead h1 em {
+    color: var(--accent-light);
+    font-style: italic;
+  }
+
+  .masthead .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--grey-warm);
+    margin-bottom: 28px;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .masthead .accent-rule {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--accent), transparent);
+    margin: 0 auto;
+  }
+
+  /* ==================
+     PREMISE
+  ================== */
+  .premise {
+    background: var(--warm-dark);
+    border-left: 3px solid var(--accent);
+    padding: 34px 42px;
+    margin-bottom: 56px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.78;
+    color: #C8D8E8;
+  }
+
+  .premise strong { color: var(--accent-light); font-weight: 600; }
+
+  /* ==================
+     SECTION STRUCTURE
+  ================== */
+  .section { margin-bottom: 72px; }
+
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: 0.75;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--warm-white);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .section-title em { color: var(--accent-light); font-style: italic; }
+
+  .section-rule {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, var(--accent-dim), transparent);
+    margin: 16px 0 40px;
+  }
+
+  /* ==================
+     METHOD NOTE
+  ================== */
+  .method-note {
+    background: rgba(46,107,158,0.05);
+    border: 1px solid rgba(46,107,158,0.22);
+    border-left: 3px solid var(--accent-dim);
+    padding: 28px 38px;
+    margin-bottom: 56px;
+  }
+
+  .method-note .mn-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--accent-dim);
+    margin-bottom: 12px;
+  }
+
+  .method-note p {
+    font-size: 13.5px;
+    color: #7A8A9A;
+    line-height: 1.82;
+    margin-bottom: 10px;
+  }
+
+  .method-note p:last-child { margin-bottom: 0; }
+  .method-note strong { color: #A8B8C8; }
+
+  /* ==================
+     ACTOR CARDS
+  ================== */
+  .actors-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin-bottom: 56px;
+  }
+
+  .actor-card {
+    background: var(--warm-dark);
+    border: 1px solid var(--border);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .actor-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .actor-card.gulf::before    { background: linear-gradient(to right, var(--gulf), var(--gulf-dim)); }
+  .actor-card.russia::before  { background: linear-gradient(to right, var(--russia), var(--russia-dim)); }
+  .actor-card.south::before   { background: linear-gradient(to right, var(--south), var(--south-dim)); }
+  .actor-card.opec::before    { background: linear-gradient(to right, var(--accent), var(--accent-dim)); }
+
+  .actor-name {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+  }
+
+  .actor-card.gulf .actor-name   { color: var(--gulf); }
+  .actor-card.russia .actor-name { color: #CF8A8A; }
+  .actor-card.south .actor-name  { color: #7ABA9A; }
+  .actor-card.opec .actor-name   { color: var(--accent-light); }
+
+  .actor-dominant-room {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--grey-warm);
+    margin-bottom: 18px;
+    letter-spacing: 0.5px;
+  }
+
+  .room-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    padding: 3px 10px;
+    margin-bottom: 16px;
+    border: 1px solid;
+  }
+
+  .badge-identity  { border-color: var(--identity);  color: #7AB89A; background: rgba(42,107,74,0.1); }
+  .badge-prediction{ border-color: var(--prediction);color: #8AABCF; background: rgba(58,90,140,0.1); }
+  .badge-agency    { border-color: var(--agency);    color: #CF9A8A; background: rgba(122,58,42,0.1); }
+  .badge-meaning   { border-color: var(--meaning);   color: #B48ACF; background: rgba(106,58,122,0.1); }
+  .badge-accent    { border-color: var(--accent-dim);color: var(--accent-light); background: rgba(46,107,158,0.1); }
+
+  .actor-desc {
+    font-size: 13.5px;
+    color: #8A9AAA;
+    line-height: 1.72;
+  }
+
+  .actor-desc strong { color: var(--warm-white); font-weight: 600; }
+
+  .load-indicator {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .load-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--grey-warm);
+    margin-bottom: 8px;
+  }
+
+  .load-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .load-fill { height: 100%; border-radius: 2px; }
+  .load-extreme  { background: var(--crisis);      width: 100%; animation: pulse-signal 2s infinite; }
+  .load-critical { background: var(--red-signal);  width: 96%; }
+  .load-high     { background: var(--accent);      width: 82%; }
+  .load-elevated { background: #4A6A8A;            width: 66%; }
+
+  @keyframes pulse-signal {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.55; }
+  }
+
+  /* ==================
+     DEPTH BOX — Century Archive
+  ================== */
+  .depth-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+    margin-bottom: 56px;
+  }
+
+  .depth-cell {
+    padding: 32px;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+
+  .depth-cell.gulf-cell   { border-top: 3px solid var(--gulf); }
+  .depth-cell.russia-cell { border-top: 3px solid var(--russia); }
+  .depth-cell.south-cell  { border-top: 3px solid var(--south); }
+
+  .depth-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 8.5px;
+    letter-spacing: 2.5px;
+    margin-bottom: 10px;
+  }
+
+  .depth-cell.gulf-cell .depth-tag   { color: var(--gulf); }
+  .depth-cell.russia-cell .depth-tag { color: #CF8A8A; }
+  .depth-cell.south-cell .depth-tag  { color: #7ABA9A; }
+
+  .depth-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--warm-white);
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+
+  .depth-body {
+    font-size: 13px;
+    color: #7A8A9A;
+    line-height: 1.75;
+  }
+
+  .depth-body strong { color: #A8B8C8; }
+
+  /* ==================
+     FOUR ROOMS MAP
+  ================== */
+  .rooms-map {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+    margin-bottom: 56px;
+  }
+
+  .room-cell {
+    padding: 36px;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+
+  .room-number {
+    font-family: 'Cinzel', serif;
+    font-size: 48px;
+    font-weight: 400;
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    opacity: 0.06;
+    color: var(--accent-light);
+    line-height: 1;
+  }
+
+  .room-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+  }
+
+  .room-cell.prediction .room-tag { color: #8AABCF; }
+  .room-cell.agency .room-tag     { color: #CF9A8A; }
+  .room-cell.identity .room-tag   { color: #7AB89A; }
+  .room-cell.meaning .room-tag    { color: #B48ACF; }
+
+  .room-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    font-weight: 300;
+    color: var(--warm-white);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+
+  .room-content {
+    font-size: 13.5px;
+    color: #7A8A9A;
+    line-height: 1.78;
+  }
+
+  .room-content strong { color: #C8D8E8; font-weight: 600; }
+
+  .actor-tag {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 7.5px;
+    letter-spacing: 1.5px;
+    padding: 2px 7px;
+    margin: 2px 2px 8px 0;
+    border-radius: 1px;
+  }
+
+  .tag-gulf   { background: rgba(200,154,48,0.15); color: var(--gulf); border: 1px solid rgba(200,154,48,0.35); }
+  .tag-russia { background: rgba(139,48,48,0.15);  color: #CF8A8A;     border: 1px solid rgba(139,48,48,0.35); }
+  .tag-south  { background: rgba(58,138,90,0.15);  color: #7ABA9A;     border: 1px solid rgba(58,138,90,0.35); }
+  .tag-opec   { background: rgba(46,107,158,0.15); color: var(--accent-light); border: 1px solid rgba(46,107,158,0.35); }
+
+  /* ==================
+     DYNAMICS TABLE
+  ================== */
+  .dynamics-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 56px;
+    font-size: 13.5px;
+  }
+
+  .dynamics-table th {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2.5px;
+    color: var(--accent);
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--accent-dim);
+    background: var(--warm-dark);
+  }
+
+  .dynamics-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-mid);
+    vertical-align: top;
+    color: #7A8A9A;
+    line-height: 1.68;
+  }
+
+  .dynamics-table td:first-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--warm-white);
+    font-style: italic;
+    white-space: nowrap;
+    padding-right: 24px;
+    width: 22%;
+  }
+
+  .dynamics-table td strong { color: #C8D8E8; }
+  .dynamics-table tr:hover td { background: rgba(46,107,158,0.03); }
+
+  /* ==================
+     MEANING FAULT LINE — THE ASYMMETRY BOX
+  ================== */
+  .asymmetry-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+    margin-bottom: 56px;
+  }
+
+  .asym-cell {
+    padding: 38px;
+    border: 1px solid var(--border);
+  }
+
+  .asym-cell.responsible { border-top: 3px solid var(--russia); }
+  .asym-cell.suffering   { border-top: 3px solid var(--south); }
+
+  .asym-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+  }
+
+  .asym-cell.responsible .asym-label { color: #CF8A8A; }
+  .asym-cell.suffering .asym-label   { color: #7ABA9A; }
+
+  .asym-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--warm-white);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+
+  .asym-body {
+    font-size: 13.5px;
+    color: #7A8A9A;
+    line-height: 1.78;
+  }
+
+  .asym-body strong { color: #A8B8C8; }
+
+  .asym-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--accent-light);
+    line-height: 1.6;
+    padding: 12px 18px;
+    border-left: 2px solid var(--accent-dim);
+    margin: 16px 0;
+  }
+
+  /* ==================
+     VERBAL MARKERS
+  ================== */
+  .markers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 56px;
+  }
+
+  .marker-card {
+    background: var(--warm-dark);
+    border: 1px solid var(--border);
+    padding: 24px;
+  }
+
+  .marker-actor {
+    font-family: 'Cinzel', serif;
+    font-size: 8.5px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    color: var(--accent);
+  }
+
+  .marker-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--accent-light);
+    line-height: 1.6;
+    margin-bottom: 12px;
+    padding-left: 16px;
+    border-left: 2px solid var(--accent-dim);
+  }
+
+  .marker-decode {
+    font-size: 12px;
+    color: #5A6A7A;
+    line-height: 1.65;
+  }
+
+  /* ==================
+     CALLOUT
+  ================== */
+  .callout {
+    background: rgba(46,107,158,0.06);
+    border: 1px solid rgba(46,107,158,0.22);
+    padding: 26px 34px;
+    margin: 24px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--accent-light);
+    line-height: 1.72;
+  }
+
+  /* ==================
+     INVERSION BOX (Novel ELM Finding)
+  ================== */
+  .inversion-box {
+    background: rgba(46,107,158,0.06);
+    border: 1px solid rgba(46,107,158,0.28);
+    padding: 38px 46px;
+    margin-bottom: 56px;
+  }
+
+  .inversion-box .inv-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .inversion-box .inv-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--warm-white);
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+
+  .inversion-box .inv-title em { color: var(--accent-light); }
+
+  .inversion-box p {
+    font-size: 14px;
+    color: #7A8A9A;
+    line-height: 1.82;
+    margin-bottom: 14px;
+  }
+
+  .inversion-box p:last-child { margin-bottom: 0; }
+  .inversion-box p strong { color: #A8B8C8; }
+
+  /* ==================
+     CRISIS / CONVERGENCE BOX
+  ================== */
+  .crisis-box {
+    background: rgba(123,26,26,0.09);
+    border: 1px solid rgba(155,43,43,0.32);
+    padding: 34px 42px;
+    margin-bottom: 56px;
+  }
+
+  .crisis-box .crisis-title {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #CF7A7A;
+    margin-bottom: 16px;
+  }
+
+  .crisis-box p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: #A8B8C8;
+    line-height: 1.82;
+  }
+
+  .crisis-box p strong { color: var(--warm-white); }
+
+  /* ==================
+     DIAGNOSIS GRID
+  ================== */
+  .diagnosis {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin-bottom: 56px;
+  }
+
+  .diag-card {
+    background: var(--warm-dark);
+    border: 1px solid var(--border);
+    padding: 32px;
+  }
+
+  .diag-title {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .diag-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--warm-white);
+    line-height: 1.42;
+    margin-bottom: 14px;
+  }
+
+  .diag-body {
+    font-size: 13.5px;
+    color: #7A8A9A;
+    line-height: 1.78;
+  }
+
+  .diag-body strong { color: #A8B8C8; }
+
+  /* ==================
+     CONCLUSION
+  ================== */
+  .conclusion-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .concl-card {
+    background: var(--warm-dark);
+    border: 1px solid var(--border);
+    padding: 28px;
+  }
+
+  .concl-num {
+    font-family: 'Cinzel', serif;
+    font-size: 36px;
+    color: var(--accent);
+    opacity: 0.18;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .concl-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .concl-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    color: var(--warm-white);
+    margin-bottom: 12px;
+    line-height: 1.35;
+  }
+
+  .concl-body {
+    font-size: 13px;
+    color: #5A6A7A;
+    line-height: 1.72;
+  }
+
+  .concl-body strong { color: #8A9AAA; }
+
+  /* ==================
+     SOURCES
+  ================== */
+  .sources-section {
+    border-top: 1px solid var(--border);
+    padding-top: 48px;
+    margin-top: 24px;
+    margin-bottom: 48px;
+  }
+
+  .sources-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: var(--accent-dim);
+    margin-bottom: 28px;
+  }
+
+  .sources-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 40px;
+  }
+
+  .source-item {
+    border-left: 1px solid var(--border);
+    padding-left: 16px;
+  }
+
+  .source-authors {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--accent-light);
+    line-height: 1.4;
+    margin-bottom: 3px;
+  }
+
+  .source-title {
+    font-size: 12px;
+    color: #7A8A9A;
+    line-height: 1.5;
+    margin-bottom: 2px;
+  }
+
+  .source-pub {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    color: var(--accent-dim);
+  }
+
+  /* ==================
+     OBSERVER NOTE
+  ================== */
+  .observer-note {
+    text-align: center;
+    padding: 52px 64px;
+    border-top: 1px solid var(--border);
+    margin-top: 24px;
+  }
+
+  .observer-note p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--grey-warm);
+    line-height: 1.82;
+    max-width: 720px;
+    margin: 0 auto 20px;
+  }
+
+  .observer-note .attribution {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--accent-dim);
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .series-nav {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--accent-dim);
+  }
+
+  /* ==================
+     SCROLLBAR
+  ================== */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--ink); }
+  ::-webkit-scrollbar-thumb { background: var(--accent-dim); }
+
+  /* ==================
+     RESPONSIVE
+  ================== */
+  @media (max-width: 1024px) {
+    .page { padding: 48px 32px; }
+    .masthead h1 { font-size: 42px; }
+    .actors-grid { grid-template-columns: 1fr 1fr; }
+    .depth-box { grid-template-columns: 1fr; }
+    .markers-grid { grid-template-columns: 1fr 1fr; }
+    .conclusion-grid { grid-template-columns: 1fr 1fr; }
+    .sources-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 767px) {
+    .page { padding: 32px 20px; }
+    .masthead { padding: 44px 0 36px; margin-bottom: 40px; }
+    .masthead h1 { font-size: 30px; }
+    .masthead .subtitle { font-size: 15px; }
+    .section-title { font-size: 24px; }
+    .premise { padding: 24px 24px; font-size: 16px; }
+    .series-banner { flex-wrap: wrap; gap: 10px; }
+    .series-part { margin-left: 0; }
+    .actors-grid, .rooms-map, .markers-grid, .diagnosis,
+    .asymmetry-box, .conclusion-grid, .sources-grid { grid-template-columns: 1fr; }
+    .rooms-map { border: none; }
+    .room-cell { border: 1px solid var(--border); margin-bottom: 2px; padding: 28px 20px; }
+    .asymmetry-box { border: none; }
+    .asym-cell { border: 1px solid var(--border); margin-bottom: 2px; padding: 28px 20px; }
+    .dynamics-table, .dynamics-table thead, .dynamics-table tbody,
+    .dynamics-table th, .dynamics-table td, .dynamics-table tr { display: block; width: 100%; }
+    .dynamics-table thead { display: none; }
+    .dynamics-table td { padding: 10px 14px; border-bottom: none; }
+    .dynamics-table td:first-child {
+      width: 100%; white-space: normal; font-size: 14px;
+      color: var(--accent-light); padding-top: 20px; padding-bottom: 4px;
+      border-top: 1px solid var(--border);
+    }
+    .callout { padding: 20px 22px; font-size: 15px; }
+    .crisis-box { padding: 24px 22px; }
+    .crisis-box p { font-size: 15px; }
+    .inversion-box { padding: 24px 22px; }
+    .inversion-box .inv-title { font-size: 20px; }
+    .observer-note { padding: 40px 22px; }
+    .observer-note p { font-size: 17px; }
+    .room-number { font-size: 32px; top: 12px; right: 14px; }
+  }
+
+  @media (max-width: 400px) {
+    .page { padding: 24px 16px; }
+    .masthead h1 { font-size: 26px; }
+    .section-title { font-size: 21px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- SERIES BANNER -->
+  <div class="series-banner">
+    <div class="series-pip"></div>
+    <div class="series-label">Series</div>
+    <div class="series-divider"></div>
+    <div class="series-title">The World Through the Lens of Existential Load — Climate</div>
+    <div class="series-part">Part II of IV</div>
+  </div>
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="supertitle">Existential Load Model — Applied Analysis</div>
+    <h1>Sovereignty and <em>Smoke</em></h1>
+    <div class="subtitle">Oil-producing nations, the geopolitics of energy transition, and the Identity Room threat that no carbon price can reach</div>
+    <div class="accent-rule"></div>
+  </div>
+
+  <!-- PREMISE -->
+  <div class="premise">
+    For petrostate governments, the energy transition is not an economic disruption. It is an existential identity event. The nations most responsible for sustaining high-carbon geopolitics carry Identity Rooms built over generations around the material, symbolic, and political power that oil provides — and they are being asked to dismantle that architecture while simultaneously managing the social contracts, sovereign legitimacy, and military capacities it funds. <strong>Understanding why climate negotiations consistently produce insufficient commitments from oil-producing states requires understanding what those states actually are, not just what they produce. The ELM reveals a system in which the standard tools of external pressure — carbon pricing, diplomatic condemnation, transition finance — are operating on the wrong room entirely.</strong>
+  </div>
+
+  <!-- METHODOLOGICAL NOTE -->
+  <div class="method-note">
+    <div class="mn-label">On Method, Evidence, and Interpretation</div>
+    <p>The factual claims in this analysis are drawn from the Carbon Tracker Initiative's petrostate fiscal analysis, IMF country assessments, the Harvard Growth Lab's evaluation of Saudi Vision 2030, the CSIS analysis of Gulf strategic positioning, Atlantic Council research on the Russian war economy, and UNFCCC documentation of Loss and Damage negotiations including COP28 and COP29 outcomes. Specific data on fiscal breakeven oil prices, revenue dependence ratios, and OPEC+ production decisions draws on current reporting from the IEA, Energy Information Administration, and CREA energy monitoring. <strong>The ELM analysis is interpretive — it offers a structural account of why petrostate behaviour in climate negotiations occurs and has persisted, not a substitute for the geopolitical and economic literature.</strong> This analysis applies the same structural logic to all actors, including those whose positions are more morally complex than simple obstruction.</p>
+  </div>
+
+  <!-- ACTOR LOAD PROFILES -->
+  <div class="section">
+    <div class="section-label">Part One</div>
+    <div class="section-title">Actor Load <em>Profiles</em></div>
+    <div class="section-rule"></div>
+
+    <div class="actors-grid">
+
+      <!-- GULF MONARCHIES -->
+      <div class="actor-card gulf">
+        <div class="actor-name">THE GULF MONARCHIES — SAUDI ARABIA, UAE, QATAR, KUWAIT</div>
+        <div class="actor-dominant-room">Primary load: Identity Room (civilisational depth)</div>
+        <div class="room-badge badge-identity">IDENTITY / MEANING</div>
+        <div class="actor-desc">
+          Saudi Arabia is the archetype, and its load architecture runs centuries deep. The modern Saudi state fused three elements into a single identity structure: the Al Saud dynasty's political legitimacy, the Wahhabi religious establishment's moral authority, and oil wealth as the material substrate of both. Oil does not merely fund the Saudi government — it <strong>constitutes the social contract</strong>: the arrangement by which the ruling family provides healthcare, education, subsidised energy, and public employment in exchange for political quiescence. This social contract is not separable from oil revenue. It is oil revenue redistributed.<br><br>
+          The fiscal architecture makes this explicit. Saudi Arabia's 2025 fiscal breakeven price — the oil price required to balance the government budget — stands at approximately $96 per barrel; at $113 per barrel if Public Investment Fund spending is included. Current oil prices have been consistently below this threshold. <strong>Vision 2030, launched in 2016 to diversify the economy away from oil dependence, has produced a paradox documented by Harvard's Growth Lab: despite significant non-oil sector development, Saudi Arabia is measurably more dependent on oil revenue in 2025 than it was in 2016.</strong> The diversification spending itself is funded by oil, tightening the coupling rather than loosening it.<br><br>
+          The Identity Room threat is therefore not abstract. A rapid energy transition that structurally reduces global oil demand does not merely reduce Saudi Arabia's income — it dissolves the material foundation of the political arrangement that holds the state together.
+        </div>
+        <div class="load-indicator">
+          <div class="load-label">SYSTEM LOAD</div>
+          <div class="load-bar"><div class="load-fill load-extreme"></div></div>
+        </div>
+      </div>
+
+      <!-- RUSSIA -->
+      <div class="actor-card russia">
+        <div class="actor-name">RUSSIA — THE EXTRACTIVE EMPIRE</div>
+        <div class="actor-dominant-room">Primary load: Meaning Room → Identity Room (war fusion)</div>
+        <div class="room-badge badge-meaning">MEANING / IDENTITY</div>
+        <div class="actor-desc">
+          Russia's load architecture is the most acute in the system because it is being stress-tested in real time. Oil and gas revenues account for approximately one-third of Russian federal budget inflows — a figure that understates structural dependence because the entire war economy is built on the assumption of continued energy export revenue. As of late 2025, Russian fossil fuel export revenues were running 27% below pre-invasion levels; oil revenue in individual months fell 37% year-on-year as sanctions, price caps, Ukrainian drone strikes on refineries, and falling global prices converged.<br><br>
+          The ELM diagnosis is sharp: <strong>Russia has fused its Identity Room (great power, sovereign actor, civilisational counterweight to the West) with its Meaning Room (the war in Ukraine as existential struggle for national survival and sovereignty) — and both are now coupled to oil revenue as the enabling mechanism.</strong> The war cannot be sustained without energy export income. The national identity cannot be maintained without the war narrative. The energy transition therefore threatens the Identity Room not merely economically but militarily and existentially in the most literal sense.<br><br>
+          Russia's pivot to Asian energy markets — China accounting for 47% of crude exports, India 38% — has provided partial stabilisation, but at structurally disadvantageous terms: China and India buy Russian oil precisely because they can extract deep discounts. Russia needs the revenue more than either buyer needs the oil.
+        </div>
+        <div class="load-indicator">
+          <div class="load-label">SYSTEM LOAD</div>
+          <div class="load-bar"><div class="load-fill load-extreme"></div></div>
+        </div>
+      </div>
+
+      <!-- GLOBAL SOUTH PRODUCERS -->
+      <div class="actor-card south">
+        <div class="actor-name">GLOBAL SOUTH PRODUCERS — NIGERIA, VENEZUELA, ANGOLA, IRAQ</div>
+        <div class="actor-dominant-room">Primary load: Agency Room (development trap)</div>
+        <div class="room-badge badge-agency">AGENCY / MEANING</div>
+        <div class="actor-desc">
+          The most morally complex load profile in the geopolitical system. These states share with the Gulf monarchies and Russia a structural dependence on oil revenue — but the context differs in a way the ELM must account for precisely: <strong>they did not generate the historical emissions that created the climate crisis, they are among its most acute victims, and they are now being asked to forgo the same fossil-fuel-enabled development pathway that generated the prosperity of the nations asking them to do so.</strong><br><br>
+          Nigeria's oil revenue funds 58% of its government budget even as production has structurally declined. Venezuela's economy collapsed catastrophically when prices fell — GDP per capita has shrunk 68% since 2013. Iraq is simultaneously one of the world's largest oil producers and one of its most climate-vulnerable nations — the Tigris and Euphrates now flow at a fraction of historical levels. These are not states with the luxury of long-run portfolio optimisation. They are Agency Room actors under immediate survival load.<br><br>
+          The ELM maps their position precisely: the Agency Room has no coherent choice available. Transition away from oil without substitute revenue means collapse of state services, social instability, and likely political disintegration. Continuation of oil production perpetuates the system that is destroying the physical conditions of their populations' survival. <strong>This is a genuine Agency Room entrapment — not a failure of will but a structural absence of viable action.</strong>
+        </div>
+        <div class="load-indicator">
+          <div class="load-label">SYSTEM LOAD</div>
+          <div class="load-bar"><div class="load-fill load-critical"></div></div>
+        </div>
+      </div>
+
+      <!-- OPEC+ AS SYSTEM ACTOR -->
+      <div class="actor-card opec">
+        <div class="actor-name">OPEC+ — THE COLLECTIVE PREDICTION ROOM</div>
+        <div class="actor-dominant-room">Primary load: Agency Room coordination under fractured Meaning</div>
+        <div class="room-badge badge-accent">AGENCY / PREDICTION</div>
+        <div class="actor-desc">
+          OPEC+ functions as something the ELM has not previously encountered in its applied analyses: a collective mechanism for Prediction Room management and Agency Room coordination across states whose individual Identity and Meaning Rooms are often incompatible. Saudi Arabia and Russia are structural allies within OPEC+ despite one being a US-aligned Gulf monarchy and the other an adversarial power waging war in Europe. <strong>What holds them together is a shared Prediction Room architecture — both need oil prices above their respective fiscal breakevens, and production coordination is the primary mechanism for maintaining those prices.</strong><br><br>
+          The 2025 OPEC+ dynamics are diagnostic: eight member states made a surprising decision to increase production beyond previous agreements — driving prices down — in anticipation of the economic slowdown generated by US tariff policy. This is a Prediction Room-driven Agency Room response: the cartel's collective prediction about demand destruction from a global recession outweighed the individual members' identity-based preference for higher prices. The OPEC+ system is, paradoxically, one of the more Prediction Room-coherent actors in the climate geopolitics — it generates accurate price forecasts and acts on them. The problem is that its Prediction Room excludes the climate trajectory as an operative variable. Energy transition is treated as a demand signal to be monitored, not an identity challenge to be engaged.
+        </div>
+        <div class="load-indicator">
+          <div class="load-label">SYSTEM LOAD</div>
+          <div class="load-bar"><div class="load-fill load-high"></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- IDENTITY ARCHITECTURE — CENTURY DEPTH -->
+  <div class="section">
+    <div class="section-label">Part Two</div>
+    <div class="section-title">The Identity Room — <em>Century Depth</em></div>
+    <div class="section-rule"></div>
+
+    <div class="callout">
+      The most important structural difference between corporate identity (Part I) and national identity (Part II) is depth. A corporation's identity is decades old. A nation-state's identity is centuries old — and in the case of petrostates, the oil era has been layered on top of pre-existing identity structures that oil then transformed and deepened. Understanding what the energy transition asks these states to give up requires understanding what oil became for them — not just economically, but existentially.
+    </div>
+
+    <div class="depth-box">
+
+      <div class="depth-cell gulf-cell">
+        <div class="depth-tag">THE GULF — OIL AS SOVEREIGN LEGITIMACY</div>
+        <div class="depth-title">The Rentier Contract and the Architecture of Consent</div>
+        <div class="depth-body">
+          The Gulf monarchies operate what political scientists call rentier states: governments that derive revenue not from taxing the productive activity of citizens but from resource rents, which are then redistributed to generate consent. <strong>In rentier states, the social contract runs in the opposite direction from democratic states: citizens do not fund the government, the government funds the citizens.</strong> This inversion has profound Identity Room consequences: the state's legitimacy is not grounded in procedural democratic representation but in the material provision of welfare, security, and opportunity funded by oil.<br><br>
+          Remove the oil revenue and you do not merely create a fiscal crisis. You dissolve the basis of political legitimacy. The Chatham House analysis of Vision 2030 documents this precisely: MBS's economic reforms require imposing austerity — public sector salary cuts, subsidy reductions, new taxes — on a population that has understood the social contract to run in the opposite direction for two generations. The ELM reads Vision 2030 not primarily as an economic diversification programme but as an Identity Room renegotiation under duress: <strong>an attempt to build a new legitimacy architecture before the oil revenue that sustains the old one becomes structurally insufficient.</strong>
+        </div>
+      </div>
+
+      <div class="depth-cell russia-cell">
+        <div class="depth-tag">RUSSIA — OIL AS GREAT POWER SUBSTRATE</div>
+        <div class="depth-title">Hydrocarbons and the Restoration of Imperial Standing</div>
+        <div class="depth-body">
+          Russia's identity architecture is anchored not in a rentier social contract but in great power status — the conviction that Russia is, and has always been, a civilisational actor of the first rank, not a peripheral or dependent state. <strong>The collapse of the Soviet Union was experienced by the Russian political elite as an identity catastrophe of the first order — and the oil and gas revenues of the early Putin years were the material mechanism by which great power status was restored.</strong> The Atlantic Council documents the coupling explicitly: oil revenues funded the state, the state funded the military, the military funded the geopolitical assertions, and the geopolitical assertions funded the identity narrative of Russian resurgence.<br><br>
+          This means the energy transition threatens not just Russia's fiscal position but the specific restoration of greatness that oil enabled. A Russia in a decarbonised world is a Russia without the material substrate of its great power identity — a country with a large landmass, nuclear weapons, and a declining population that cannot generate the revenue required to maintain its current military posture or its current claim to great power status. The ELM predicts: this Identity Room threat will generate the most extreme available defensive responses. The Ukraine invasion, viewed through the ELM, is not simply territorial aggression — it is an Identity Room assertion under existential pressure.
+        </div>
+      </div>
+
+      <div class="depth-cell south-cell">
+        <div class="depth-tag">GLOBAL SOUTH — OIL AS DEVELOPMENT POSSIBILITY</div>
+        <div class="depth-title">The Development Pathway and the Meaning Room Asymmetry</div>
+        <div class="depth-body">
+          For Global South producers, oil represents something neither the Gulf monarchies nor Russia possess: <strong>the possibility of a development trajectory they have not yet completed.</strong> The Western industrial nations built their prosperity on fossil fuels across two centuries. The Gulf states translated oil wealth into high-income welfare states across two generations. Global South producers have not had equivalent opportunity — and they are now being told that the pathway is closed.<br><br>
+          The Aramco CEO's forecast that 80% of hydrocarbon demand through 2050 will come from the Global South is not merely a market projection — it is an Identity Room claim: that the Global South's development aspirations are legitimate, that the energy access required to realise them is a right, and that the North's request to close that pathway while retaining the benefits of its own fossil-fuel-enabled prosperity is a Meaning Room injustice of the first order. The COP29 outcome — described by developing nation representatives as a "betrayal" — is the political expression of this Meaning Room fracture.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- THE MEANING ROOM ASYMMETRY — DEVELOPMENT JUSTICE -->
+  <div class="section">
+    <div class="section-label">Part Three</div>
+    <div class="section-title">The Meaning Room <em>Fault Line</em></div>
+    <div class="section-rule"></div>
+
+    <div class="callout">
+      The most significant ELM contribution in the geopolitical domain is the mapping of what this analysis calls the development justice Meaning Room asymmetry — the civilisational-scale gap between who bears the cost of decarbonisation and who caused the problem. This is not simply a political disagreement. It is a Meaning Room incompatibility: two architectures of what the climate transition means, built from incompatible positions, that cannot be resolved by evidence or negotiation alone because they arise from structural position, not information failure.
+    </div>
+
+    <div class="asymmetry-box">
+
+      <div class="asym-cell responsible">
+        <div class="asym-label">HISTORICALLY RESPONSIBLE — THE GLOBAL NORTH MEANING ROOM</div>
+        <div class="asym-title">What the transition means from a position of completed development</div>
+        <div class="asym-body">
+          For the wealthy nations most responsible for historical emissions, the energy transition carries a Meaning Room architecture of technological optimism, green growth, and managed adjustment. Decarbonisation is meaningful as the next chapter of industrial civilisation — not the end of prosperity but its continuation through different means. Solar panels, EVs, and heat pumps are not sacrifices; they are upgrades. The transition creates green jobs, reduces energy import dependence, and generates competitive advantage in new industries. <strong>This meaning architecture makes the required commitment coherent: some cost now, significant benefit later, national identity intact or enhanced throughout.</strong><br><br>
+          The COP process is largely structured around this Meaning Room. The frameworks — net-zero commitments, technology deployment pathways, carbon markets — presuppose an actor who has the institutional capacity and economic slack to absorb transition costs while maintaining social stability. Nationally Determined Contributions assume sovereign states capable of making credible long-run commitments. The entire architecture of international climate governance is built for actors whose Meaning Rooms permit it.
+          <div class="asym-quote">Developed countries, who are responsible for 92% of historical global emissions, have betrayed the global south — the lives of people from the global south are collateral damage for their overconsumption, profit and wars. — Natural Justice, COP29 response</div>
+        </div>
+      </div>
+
+      <div class="asym-cell suffering">
+        <div class="asym-label">ACUTELY SUFFERING — THE GLOBAL SOUTH MEANING ROOM</div>
+        <div class="asym-title">What the transition means from a position of incomplete development and immediate loss</div>
+        <div class="asym-body">
+          For the nations least responsible for historical emissions and most acutely experiencing their consequences, the transition carries a radically different Meaning Room architecture. The transition is not a managed adjustment from a position of prosperity — it is a demand made simultaneously with the experience of present loss. Flooding in Bangladesh, drought in the Sahel, collapsing fisheries in Pacific Island states, extreme heat in sub-Saharan Africa: <strong>these losses are occurring now, in communities that contributed minimally to the problem, and the loss and damage finance pledged to address them falls between $128–937 billion short of estimated need in 2025 alone.</strong><br><br>
+          The request to forgo fossil-fuel development is experienced in this context as a demand to remain poor in order to correct a problem created by the wealthy. The IIASA research is quantitatively stark: Loss and Damage needs of vulnerable low- and middle-income countries in 2025 alone are estimated at $128–937 billion; the actual Loss and Damage Fund received pledges of approximately $800 million at COP29. The ratio of need to provision is not a rounding error — it is a Meaning Room signal about whose losses are treated as real. The COP29 LDC group statement — "This is not a failure; it is a betrayal" — is precise Meaning Room language: the transition framework asks sacrifice from those already sacrificing and calls it global solidarity.
+          <div class="asym-quote">We were not asking for a donation; we were demanding what is owed to us by developed countries. We got nothing. More than 65% of climate financing consists of debt. We don't want any more debt. — West African civil society representative, COP29</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOUR ROOMS MAP -->
+  <div class="section">
+    <div class="section-label">Part Four</div>
+    <div class="section-title">The <em>Four Rooms</em> — Petrostate Geopolitics Mapping</div>
+    <div class="section-rule"></div>
+
+    <div class="rooms-map">
+
+      <div class="room-cell prediction">
+        <div class="room-number">I</div>
+        <div class="room-tag">PREDICTION ROOM</div>
+        <div class="room-title">What do petrostates actually believe about the energy future?</div>
+        <div class="room-content">
+          <div style="margin-bottom:10px;">
+            <span class="actor-tag tag-gulf">GULF</span>
+            <span class="actor-tag tag-russia">RUSSIA</span>
+            <span class="actor-tag tag-opec">OPEC+</span>
+          </div>
+          The petrostate Prediction Room is more internally coherent than the corporate case in Part I, and arguably more accurate on some dimensions. <strong>The Aramco CEO's forecast — that 80% of hydrocarbon demand through 2050 will come from the Global South — is a defensible Prediction Room position, not manufactured uncertainty.</strong> Global South energy demand is real, growing, and currently substantially fossil-fuel-dependent. The IEA's own scenarios show continued significant oil demand under most pathways.<br><br>
+          Where the petrostate Prediction Room dysregulates is in its selective engagement with the climate science itself. Gulf state officials increasingly acknowledge climate change as real and serious — Saudi Arabia has signed onto net-zero commitments and is building significant domestic renewable capacity — while simultaneously projecting continued global oil demand that is structurally incompatible with those climate commitments. <em>The split Prediction Room encountered in the corporate case is present here too, but it is less deliberately engineered and more structurally produced by the position these states occupy:</em> they cannot afford to believe the transition will be as fast as the science requires, so they construct forecasts in which it won't be.
+        </div>
+      </div>
+
+      <div class="room-cell agency">
+        <div class="room-number">II</div>
+        <div class="room-tag">AGENCY ROOM</div>
+        <div class="room-title">What actions are available, and what drives the choices made?</div>
+        <div class="room-content">
+          <div style="margin-bottom:10px;">
+            <span class="actor-tag tag-gulf">GULF</span>
+            <span class="actor-tag tag-russia">RUSSIA</span>
+            <span class="actor-tag tag-south">GLOBAL SOUTH</span>
+          </div>
+          The Agency Room varies dramatically across the petrostate spectrum. <strong>The Gulf monarchies have the most genuine agency — financial reserves, institutional capacity, and the runway to make real transition choices — and are making the most ambivalent use of it.</strong> Vision 2030 is a real Agency Room response; the simultaneous expansion of Aramco's production capacity to 12 million barrels per day is a contradictory one. Both are occurring simultaneously, revealing an Agency Room attempting to hedge against two incompatible futures.<br><br>
+          Russia's Agency Room has been drastically narrowed by the war: the primary available action is continued energy export at whatever price the market will bear, to fund continued military operations. The war has locked the Agency Room into a single trajectory — not because Putin lacks imagination but because the system has reached a state where all other options have been foreclosed by prior Agency Room choices.<br><br>
+          Global South producers face the most constrained Agency Room of all. <em>There is no coherent available action that simultaneously maintains fiscal solvency, meets development commitments, and decarbonises at the pace the science requires</em> — because the international community has not provided the financial architecture that would make such an action possible.
+        </div>
+      </div>
+
+      <div class="room-cell identity">
+        <div class="room-number">III</div>
+        <div class="room-tag">IDENTITY ROOM</div>
+        <div class="room-title">Who are these states? What is the oil doing for them beyond revenue?</div>
+        <div class="room-content">
+          <div style="margin-bottom:10px;">
+            <span class="actor-tag tag-gulf">GULF</span>
+            <span class="actor-tag tag-russia">RUSSIA</span>
+            <span class="actor-tag tag-south">GLOBAL SOUTH</span>
+          </div>
+          <strong>This is the room that the standard geopolitical analysis consistently misses — and it is the room that determines everything else.</strong> For the Gulf monarchies, oil is the material substrate of political legitimacy. For Russia, it is the enabling mechanism of great power identity. For Global South producers, it is the possibility of development not yet realised. In every case, oil is doing something for the national Identity Room that cannot be replaced simply by switching to renewables and maintaining economic output.<br><br>
+          Saudi Arabia's Vision 2030 is the most revealing data point: a decade of intentional, resource-intensive diversification effort has not reduced oil dependence — it has, by key measures, increased it — because the Identity Room cannot let go of the social contract that oil funds while an alternative legitimacy architecture is still being constructed. <em>The ELM predicts this outcome precisely: when the Identity Room is threatened, the system will maintain the threatening condition (oil dependence) rather than risk the destabilisation of the identity architecture the condition supports.</em> The threat of transition is more dangerous than the transition itself.
+        </div>
+      </div>
+
+      <div class="room-cell meaning">
+        <div class="room-number">IV</div>
+        <div class="room-tag">MEANING ROOM</div>
+        <div class="room-title">What framework makes sacrifice coherent — or incoherent?</div>
+        <div class="room-content">
+          <div style="margin-bottom:10px;">
+            <span class="actor-tag tag-gulf">GULF</span>
+            <span class="actor-tag tag-south">GLOBAL SOUTH</span>
+            <span class="actor-tag tag-opec">OPEC+</span>
+          </div>
+          <strong>The Meaning Room fracture in the geopolitical system is more severe than in the corporate case — because it is not merely between actors who know the truth and those who have manufactured doubt, but between actors whose legitimate material positions generate genuinely incompatible meaning architectures.</strong><br><br>
+          The global North's Meaning Room for the transition is: managed technological substitution that preserves prosperity while reducing emissions. The Gulf's Meaning Room is: managed transition that preserves the social contract while developing alternative revenue. Russia's Meaning Room is: great power survival that requires continued fossil fuel income as long as the war requires funding. The Global South's Meaning Room is: we did not create this problem, we are suffering it most acutely, and we are being asked to forgo development while receiving inadequate compensation. <em>These Meaning Room architectures cannot all be satisfied by the current international climate framework</em> — which is why the framework consistently produces commitments insufficient to the trajectory the Prediction Room requires.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COUPLED OSCILLATOR DYNAMICS -->
+  <div class="section">
+    <div class="section-label">Part Five</div>
+    <div class="section-title">Coupled <em>Oscillator Dynamics</em> — The Geopolitical System</div>
+    <div class="section-rule"></div>
+
+    <div class="callout">
+      Where Part I documented deliberately engineered couplings between actors, Part II reveals couplings that are structurally produced by the architecture of sovereignty, energy dependence, and development inequality. These couplings are not the product of conspiracy — they are the emergent properties of a system in which the price of oil simultaneously determines the fiscal capacity of producer states, the energy security of consumer states, the political stability of fragile economies, and the revenue available for climate finance. Everything is entrained to everything else.
+    </div>
+
+    <table class="dynamics-table">
+      <thead>
+        <tr>
+          <th>COUPLING</th>
+          <th>DYNAMIC</th>
+          <th>ELM PATTERN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Oil Price ↔ Petrostate Social Contracts</td>
+          <td>The most consequential coupling in the system: oil price directly determines the fiscal capacity of petrostate governments to maintain the social contracts that generate political legitimacy. Carbon Tracker estimates that petrostate government revenues would be $9 trillion lower over the next two decades under a low-carbon scenario — not primarily through volume reduction but through price compression. <strong>This coupling means that every successful climate policy that reduces oil demand simultaneously destabilises the social contracts of the governments most critical to global climate cooperation.</strong> The countries whose cooperation is most necessary are the countries whose internal stability is most threatened by the conditions that cooperation would create. This is not cynicism — it is a structural trap the ELM maps precisely.</td>
+          <td>Structural incoherence coupling — the international community's climate goals and its petrostate partners' social stability are entrained to an oil price dynamic that cannot satisfy both simultaneously. The coupling is not engineered; it is the emergent property of the system's architecture.</td>
+        </tr>
+        <tr>
+          <td>Russia ↔ China / India Energy Relationship</td>
+          <td>Russia's post-Ukraine energy pivot has created a coupling that structurally complicates both climate and geopolitical dynamics. China now accounts for 47% of Russian crude exports, India 38%. These relationships are not symmetrical: Russia needs China and India's purchases far more than either needs Russia's oil. China deliberately maintains a diversified import base — Russia accounts for less than one-fifth of Chinese crude imports — specifically to avoid the kind of structural dependence Russia is now locked into with its Asian customers. <strong>Russia has traded dependency on Europe (which was its "irreplaceable golden goose" until 2022) for dependency on Asia — at structurally disadvantageous terms.</strong> This coupling simultaneously sustains Russia's war capacity, complicates Western sanctions, provides China and India with discounted energy, and delays the fiscal pressure that might otherwise accelerate Russia's negotiating position on Ukraine — and, more distantly, climate commitments.</td>
+          <td>Asymmetric dependency coupling — Russia's identity-driven Agency Room choices (the war) have produced a market dependency that limits its future Agency Room while providing leverage to actors whose identity and meaning architectures are not aligned with the Western climate framework.</td>
+        </tr>
+        <tr>
+          <td>OPEC+ Production ↔ Global Climate Finance</td>
+          <td>An underanalysed coupling: when OPEC+ maintains high oil prices, producing states accumulate fiscal surpluses that could theoretically fund both domestic social contracts and transition investment. When OPEC+ increases production to defend market share (as in early 2025, partly in anticipation of demand destruction from US tariff policy), prices fall, fiscal surpluses shrink, domestic social contracts come under pressure, and the political space for transition commitment narrows. <strong>The production decisions of an oil cartel are directly coupled to the political conditions under which climate commitments are or are not possible in its member states.</strong> This coupling is invisible to the carbon pricing frameworks that assume a smooth relationship between decarbonisation incentives and state behaviour.</td>
+          <td>Production-politics coupling — OPEC+ production management creates fiscal conditions that either expand or contract the political space for climate engagement in member states. The cartel is, inadvertently, a climate governance actor whose choices shape the conditions for cooperation.</td>
+        </tr>
+        <tr>
+          <td>Loss and Damage Finance ↔ Global South Negotiating Position</td>
+          <td>The COP29 outcome made this coupling visible in its absence. The Loss and Damage Fund was operationalised in 2025 — a genuine institutional achievement — but received pledges of approximately $800 million against estimated needs of $128–937 billion for 2025 alone. The ratio is not a gap; it is a signal. <strong>When the Meaning Room architecture of vulnerable nations generates a demand ("we are owed this") and the response is a provision approximately 0.1–0.6% of need, the Meaning Room signal received is not "we acknowledge the justice claim" but "your losses do not count at the same rate as our economic interests."</strong> The LDC group's characterisation of COP29 as a "betrayal" rather than a "failure" is ELLM-precise: betrayal is a Meaning Room verdict on an Agency Room outcome. The inadequacy of Loss and Damage finance is not just a financial shortfall — it is a Meaning Room event that erodes the Global South's reason to cooperate with Northern-led transition frameworks.</td>
+          <td>Justice-cooperation coupling — the adequacy of Loss and Damage finance is directly coupled to the Meaning Room coherence of Global South climate cooperation. Insufficient finance does not merely fail to compensate losses; it undermines the Meaning Room architecture that makes cooperation meaningful. The coupling is currently running in the wrong direction: inadequate finance generates meaning fracture, which generates negotiating obstruction, which slows the transition, which generates more loss and damage.</td>
+        </tr>
+        <tr>
+          <td>Saudi Vision 2030 ↔ Oil Production Expansion</td>
+          <td>The most internally contradictory coupling in the Gulf system. Saudi Arabia is simultaneously advancing Vision 2030 — intended to reduce oil dependence — and expanding Aramco's production capacity toward 12 million barrels per day, investing billions in upstream oil development. The contradiction is not irrational from an Identity Room perspective: <strong>if Vision 2030 succeeds, the expanded production capacity is unnecessary. If Vision 2030 fails, the expanded production capacity is the only available stabiliser of the social contract.</strong> The dual investment is Agency Room hedging at national scale — maintaining two incompatible futures simultaneously because neither can be committed to with confidence. The ELM pattern is identical to the corporate greenwashing case in Part I, at state scale: the minimum credible transition narrative maintained alongside the maximum possible extraction infrastructure.</td>
+          <td>Dual-future hedging — the petrostate maintains incompatible investment trajectories simultaneously because the Identity Room threat of committing to either exclusively is greater than the cost of funding both. The hedge is coherent as load-management; it is structurally antithetical to the transition the Prediction Room requires.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- VERBAL MARKERS — ELLM -->
+  <div class="section">
+    <div class="section-label">Part Six</div>
+    <div class="section-title">ELLM — Verbal <em>Markers</em> in the Geopolitical Field</div>
+    <div class="section-rule"></div>
+
+    <p style="color:#5A6A7A; font-size:14px; margin-bottom:28px;">The ELLM applied to petrostate public speech reveals the room of origin with particular clarity in the geopolitical context, because diplomatic language is highly conventionalised — which makes departures from convention more diagnostically significant, and Identity Room language surfacing through diplomatic register more legible as such.</p>
+
+    <div class="markers-grid">
+
+      <div class="marker-card">
+        <div class="marker-actor">ARAMCO CEO AMIN NASSER — 2024 DAVOS</div>
+        <div class="marker-quote">"The world should abandon the fantasy of phasing out oil and gas and instead invest more in hydrocarbons."</div>
+        <div class="marker-decode">The word "fantasy" is Identity Room language dressed in Prediction Room vocabulary — identical in structure to the ExxonMobil "sheer speculation" construction identified in Part I. When a Prediction Room claim uses affect-laden dismissal rather than technical objection, the ELM identifies it as Identity Room defence. A genuine Prediction Room challenge to transition timelines would specify which demand forecasts are in error and by how much. "Fantasy" is an identity signal: this claim cannot be engaged on its own terms because engaging it threatens something more fundamental than the forecast.</div>
+        <span class="room-badge badge-identity">IDENTITY → PREDICTION ROOM LANGUAGE</span>
+      </div>
+
+      <div class="marker-card">
+        <div class="marker-actor">MBS — VISION 2030 LAUNCH DOCUMENT, 2016</div>
+        <div class="marker-quote">"Our real wealth lies in the ambition of our people and the potential of our younger generation. They are our nation's pride and the architects of our future."</div>
+        <div class="marker-decode">This is a Meaning Room construction performing an Identity Room function: the reframing of national wealth from oil to human capital. The ELLM identifies this as a transition signal — not a cynical one, but a genuine attempt to construct a new Meaning Room architecture that could sustain legitimacy in a post-oil future. The fact that the diversification programme has deepened oil dependence rather than reducing it does not make this language insincere; it makes it diagnostically significant as a gap between Meaning Room aspiration and Agency Room outcome. The new identity is desired; the conditions for it are not yet present.</div>
+        <span class="room-badge badge-meaning">MEANING ROOM — IDENTITY CONSTRUCTION</span>
+      </div>
+
+      <div class="marker-card">
+        <div class="marker-actor">LDC GROUP — COP29 STATEMENT, NOVEMBER 2024</div>
+        <div class="marker-quote">"This is not a failure; it is a betrayal."</div>
+        <div class="marker-decode">The most compressed and diagnostically precise ELLM marker in this analysis. "Failure" is an Agency Room verdict — something was attempted and did not succeed. "Betrayal" is a Meaning Room verdict — a commitment was made and deliberately broken. The LDC group's insistence on the latter word is not rhetorical escalation; it is an accurate description of the room in which the injury was sustained. The inadequacy of Loss and Damage finance is not experienced as a capacity limitation — it is experienced as a statement about whose losses carry moral weight. The ELM predicts: a Meaning Room injury of this kind does not heal through subsequent technical improvements to finance mechanisms. It requires a Meaning Room response — acknowledgement of the justice claim at the same register in which it was made.</div>
+        <span class="room-badge badge-meaning">MEANING ROOM — JUSTICE VERDICT</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- THE NOVEL ELM FINDING -->
+  <div class="section">
+    <div class="section-label">Part Seven</div>
+    <div class="section-title">The Novel <em>ELM Finding</em></div>
+    <div class="section-rule"></div>
+
+    <div class="inversion-box">
+      <div class="inv-label">ELM THEORETICAL CONTRIBUTION — PART II</div>
+      <div class="inv-title">The Development Justice Asymmetry as<br><em>Structural Meaning Room Incompatibility</em></div>
+      <p>Part I identified organised Prediction Room noise production as a novel ELM pattern — a system deliberately engineering epistemic uncertainty in adjacent systems to manage its own identity load. Part II reveals something structurally different and equally significant: <strong>a Meaning Room incompatibility that is not produced by bad faith or strategic manipulation but by structural position.</strong> The Global North and Global South are not in conflict because one side is lying or acting cynically. They inhabit genuinely incompatible Meaning Rooms generated by their different positions in the causal history of climate change and the causal future of its consequences.</p>
+      <p>Prior ELM analyses — from the individual therapy context through the Iran analysis — encountered Meaning Room conflicts that were in principle resolvable through mutual disclosure, load reduction, and reality-attuned reframing. The development justice conflict is different: <strong>it cannot be resolved by any of these mechanisms because it is not generated by distortion — it is generated by accurate perception of structurally incompatible positions.</strong> The Global South's Meaning Room ("we are owed this; we did not create this problem; we are suffering it most") is not a distorted or dysregulated perception. It is a precise description of the situation. The Global North's Meaning Room ("we are engaging in good faith; we are offering transition finance and technology transfer") is also not distorted. Both are accurate, and they are incompatible.</p>
+      <p>The ELM contribution here: <strong>this type of Meaning Room conflict — structurally produced, not distortion-generated — requires a different resolution architecture than the standard load-reduction pathway.</strong> Accurate perception of a genuinely asymmetric situation cannot be resolved by encouraging more accurate perception. It requires a change in the situation itself — specifically, in the material conditions (finance, technology access, development pathway options) that would allow the Global South's Meaning Room to be satisfied rather than merely acknowledged.</p>
+      <p>The second theoretical contribution: Part II identifies what might be called <strong>the social contract load-transfer problem</strong>. Petrostate governments are not simply choosing to obstruct climate action for economic reasons. They are managing a structural condition in which the energy transition, if it proceeds at the pace the science requires, simultaneously destroys the material basis of their political legitimacy before any alternative legitimacy architecture has been constructed. The load that the transition generates in the social contract — political instability, loss of welfare provision, unemployment — is not manageable through transition finance alone. It requires the prior construction of an alternative social contract that can survive the transition. <strong>The ELM predicts: as long as the alternative social contract architecture has not been built, no amount of carbon pricing or diplomatic pressure will generate the petrostate commitments the climate system requires.</strong> The operative load is not fiscal. It is political-identity. It is not currently being addressed.</p>
+    </div>
+  </div>
+
+  <!-- SYSTEM DIAGNOSIS -->
+  <div class="section">
+    <div class="section-label">Part Eight</div>
+    <div class="section-title">System <em>Diagnosis</em> — The Geopolitical Architecture</div>
+    <div class="section-rule"></div>
+
+    <div class="diagnosis">
+
+      <div class="diag-card">
+        <div class="diag-title">PRIMARY INCOHERENCE</div>
+        <div class="diag-main">The transition framework addresses the wrong actors in the wrong rooms</div>
+        <div class="diag-body">
+          International climate diplomacy primarily targets the Agency Room: commitments, targets, carbon markets, transition finance flows. <strong>The petrostate load is primarily in the Identity Room and the Meaning Room.</strong> Agency Room pressure on systems whose primary resistance is identity-structural will produce exactly the pattern the COP process has generated for three decades: technically sophisticated commitments on timelines that conveniently exceed current leadership horizons, accompanied by insufficient underlying structural change.
+        </div>
+      </div>
+
+      <div class="diag-card">
+        <div class="diag-title">THE DEPTH PROBLEM</div>
+        <div class="diag-main">National identity operates on century timescales; climate transition requires decade timescales</div>
+        <div class="diag-body">
+          Corporate identities can restructure in years when sufficiently pressured — Tesla's founder-fused identity trap (Part III of the original series) is a decade-old problem. National identities built around oil — Saudi legitimacy, Russian great-power status, Global South development aspirations — are multi-generational structures. <strong>The transition timeline required by climate science (decades) is shorter than the timeline on which national identity structures can coherently reorganise without crisis.</strong> The gap between these timescales is the primary structural barrier the ELM identifies. It is not addressable by policy instruments operating at the Agency Room level.
+        </div>
+      </div>
+
+      <div class="diag-card">
+        <div class="diag-title">THE RUSSIA THRESHOLD</div>
+        <div class="diag-main">War has foreclosed the available Agency Room — transition engagement requires a different geopolitical condition</div>
+        <div class="diag-body">
+          Russia's Agency Room has been locked into a single trajectory by the war: continue exporting energy at whatever price to fund continued operations. <strong>The threshold event that would re-open the Russian Agency Room — a negotiated settlement of the Ukraine conflict — is a prerequisite for any meaningful Russian climate engagement.</strong> The ELM makes a hard prediction: Russia's climate commitments will remain meaningless as long as the war continues, regardless of what diplomatic instruments are brought to bear on its energy sector alone. The systems are too tightly coupled.
+        </div>
+      </div>
+
+      <div class="diag-card">
+        <div class="diag-title">THE COHERENT OSCILLATOR REQUIREMENT</div>
+        <div class="diag-main">No actor currently provides regulating entrainment at the geopolitical scale</div>
+        <div class="diag-body">
+          The Iran analysis (prior ELM work) identified the third-attractor problem: no actor stable enough to provide entraining coherence to a dysregulated multi-actor system. The geopolitical climate system faces the same deficit at larger scale. <strong>The UNFCCC has Prediction Room accuracy but no Agency Room capacity. Major economies have Agency Room capacity but fractured Meaning Rooms. Petrostates have intense identity coherence but it runs in the wrong direction.</strong> No actor in the system currently provides the combination of clarity, legitimacy, and material resources required to function as a coherent oscillator.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SYNTHESIS -->
+  <div class="section">
+    <div class="section-label">Synthesis</div>
+    <div class="section-title">What the Model <em>Reveals</em> at National Scale</div>
+    <div class="section-rule"></div>
+
+    <div class="conclusion-grid">
+
+      <div class="concl-card">
+        <div class="concl-num">01</div>
+        <div class="concl-label">THE CORE FINDING</div>
+        <div class="concl-title">The petrostate problem is not obstruction. It is a structural absence of viable action.</div>
+        <div class="concl-body">The ELM generates a more precise diagnosis than the standard framing of petrostate climate obstruction. Most producers are not simply choosing to obstruct — they are in a structural condition in which no available Agency Room action satisfies both the transition requirement and the social contract maintenance requirement simultaneously. <strong>Obstruction and entrapment look identical from the outside. They require different interventions.</strong></div>
+      </div>
+
+      <div class="concl-card">
+        <div class="concl-num">02</div>
+        <div class="concl-label">THE DEPTH FINDING</div>
+        <div class="concl-title">National identity runs deeper than corporate identity, and requires different pressure.</div>
+        <div class="concl-body">Corporate identities restructure under sustained financial pressure. National identity structures built over generations do not. <strong>The mechanisms that moved public companies toward climate disclosure and net-zero commitments are not adequate at the sovereign scale.</strong> The ELM predicts: without engagement at the Identity Room level — through alternative legitimacy architectures, transition-compatible sources of national pride and sovereignty, and genuine social contract support — no amount of carbon pricing or market signal will move petrostates at the required pace.</div>
+      </div>
+
+      <div class="concl-card">
+        <div class="concl-num">03</div>
+        <div class="concl-label">THE JUSTICE FINDING</div>
+        <div class="concl-title">The development justice asymmetry is a Meaning Room incompatibility that requires a Meaning Room response.</div>
+        <div class="concl-body">More Loss and Damage finance is necessary but not sufficient. <strong>The Global South's Meaning Room verdict — "betrayal," not "failure" — requires acknowledgement at the register in which it was delivered.</strong> Technical improvements to finance mechanisms are Agency Room responses to a Meaning Room injury. The ELM predicts they will be received as insufficient regardless of their scale, until the justice claim itself is engaged as such.</div>
+      </div>
+
+      <div class="concl-card">
+        <div class="concl-num">04</div>
+        <div class="concl-label">THE RUSSIA FINDING</div>
+        <div class="concl-title">Ukraine and climate are the same problem, operating at the same level.</div>
+        <div class="concl-body">Russia's war economy, its climate commitments, and its energy geopolitics are entrained to a single oscillator: the fossil fuel revenue that sustains all three. <strong>Climate engagement with Russia is structurally foreclosed until the war creates the conditions for a different energy geopolitics.</strong> Treating the Ukraine conflict and the climate system as separate policy domains understates their coupling — they share a root load in the identity architecture of Russian great-power reconstitution through extractive sovereignty.</div>
+      </div>
+
+      <div class="concl-card">
+        <div class="concl-num">05</div>
+        <div class="concl-label">THE SOCIAL CONTRACT FINDING</div>
+        <div class="concl-title">Transition finance that addresses fiscal gaps but not legitimacy architecture will not hold.</div>
+        <div class="concl-body">Saudi Arabia's fiscal breakeven of $96/barrel is not the operative load. The operative load is the social contract that requires that price to be maintained. <strong>Transition finance that replaces the revenue but not the legitimacy structure it funds — healthcare, employment, education, security — will generate political instability that forecloses transition commitment.</strong> The ELM predicts: petrostate transition requires social contract architecture support, not just fiscal support. This has not been attempted at scale.</div>
+      </div>
+
+      <div class="concl-card">
+        <div class="concl-num">06</div>
+        <div class="concl-label">WHAT COMES NEXT</div>
+        <div class="concl-title">Part III turns the lens on the sympathetic actors — scientists and activists — where the model finds its most uncomfortable findings.</div>
+        <div class="concl-body">Parts I and II have analysed systems whose climate resistance is structural and, in the corporate case, partly deliberate. Part III applies the ELM to the climate movement itself — the scientists, the activists, the IPCC — and finds a distinct and underanalysed load configuration: <strong>accurate prediction without agency, and Meaning Room fractures within the movement that undermine the coherence of its response.</strong> The most important findings are about the people trying hardest to solve the problem.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="sources-section">
+    <div class="sources-label">Sources &amp; Further Reading</div>
+    <div class="sources-grid">
+
+      <div class="source-item">
+        <div class="source-authors">Carbon Tracker Initiative</div>
+        <div class="source-title">Beyond Petrostates: The burning need to cut oil dependence in the energy transition</div>
+        <div class="source-pub">Carbon Tracker, 2021 / Updated Analysis 2024</div>
+      </div>
+
+      <div class="source-item">
+        <div class="source-authors">Harvard Growth Lab — Ricardo Hausmann et al.</div>
+        <div class="source-title">Diversifying from Oil: Aspirations and Results of Saudi Arabia's Vision 2030</div>
+        <div class="source-pub">Harvard Kennedy School Growth Lab DevTalks, December 2025</div>
+      </div>
+
+      <div class="source-item">
+        <div class="source-authors">Centre for Research on Energy and Clean Air (CREA)</div>
+        <div class="source-title">Monthly analysis of Russian fossil fuel exports and sanctions</div>
+        <div class="source-pub">CREA, September 2025 and ongoing</div>
+      </div>
+
+      <div class="source-item">
+        <div class="source-authors">Atlantic Council — Global Energy Center</div>
+        <div class="source-title">The Russian economy in 2025: Between stagnation and militarization</div>
+        <div class="source-pub">Atlantic Council, December 2025</div>
+      </div>
+
+      <div class="source-item">
+        <div class="source-authors">CSIS — Natasha Hall and Kelsey Hartigan</div>
+        <div class="source-title">Saudi Arabia's Strategic Vision</div>
+        <div class="source-pub">Center for Strategic and International Studies, 2025</div>
+      </div>
+
+      <div class="source-item">
+        <div class="source-authors">IIASA / CMCC</div>
+        <div class="source-title">Loss and Damage funding needs of vulnerable low- and middle-income countries, 2025</div>
+        <div class="source-pub">International Institute for Applied Systems Analysis, November 2024</div>
+      </div>
+
+      <div class="source-item">
+        <div class="source-authors">Natural Justice / LDC Group</div>
+        <div class="source-title">COP29 climate finance goal: a flawed process and betrayal for developing nations</div>
+        <div class="source-pub">COP29 Civil Society and LDC Group Statements, November 2024</div>
+      </div>
+
+      <div class="source-item">
+        <div class="source-authors">Emma Ashford</div>
+        <div class="source-title">Oil, the State, and War: The Foreign Policies of Petrostates</div>
+        <div class="source-pub">Georgetown University Press, 2022</div>
+      </div>
+
+      <div class="source-item">
+        <div class="source-authors">Jennifer Kinninmont / Chatham House</div>
+        <div class="source-title">Vision 2030 and Saudi Arabia's Social Contract: Austerity and Transformation</div>
+        <div class="source-pub">Chatham House Research Paper, July 2017</div>
+      </div>
+
+      <div class="source-item">
+        <div class="source-authors">Baker Institute for Public Policy — Ulrichsen and Sheline</div>
+        <div class="source-title">Saudi Arabia's Vision 2030 and a Nation in Transition</div>
+        <div class="source-pub">Rice University Baker Institute, July 2025</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OBSERVER NOTE -->
+  <div class="observer-note">
+    <p>The petrostate system is not best understood as a collection of obstructionist governments making bad-faith calculations. It is a set of national identity structures doing what identity structures do: protecting the social contracts, legitimacy architectures, and sovereignty claims that define them — through every mechanism available, including climate diplomacy that produces commitments insufficient to the task. Holding that structural account does not diminish the moral weight of the outcome. It clarifies why the tools currently being applied are not commensurate with the problem they are trying to solve — and what a commensurate response would require.</p>
+    <span class="attribution">ELM Analysis — Madhu Bolton, 2026 / Awakening Heart</span>
+    <div class="series-nav">Part II of IV — Sovereignty and Smoke &nbsp;·&nbsp; Next: The Scientists and the Activists</div>
+  </div>
+
+</div>
+</body>
+</html>
