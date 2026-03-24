@@ -773,6 +773,43 @@ Full, substantive analysis — not placeholders. Every section must have real EL
 `;
 }
 
+
+// =====================
+// POST-PROCESSING — runs on every generated analysis
+// Guarantees: ™ on first ELM/Existential Load Model, copyright, no Awakening Heart
+// =====================
+function postProcess(html) {
+  // 1. Add ™ to first "Existential Load Model" in content (not title tag)
+  const titleEnd = html.indexOf('</title>');
+  const bodyHtml = html.slice(titleEnd);
+  if (bodyHtml.includes('Existential Load Model') && !bodyHtml.includes('Existential Load Model™')) {
+    const idx = html.indexOf('Existential Load Model', titleEnd);
+    html = html.slice(0, idx) + 'Existential Load Model™' + html.slice(idx + 'Existential Load Model'.length);
+  }
+
+  // 2. Add ™ to first standalone "ELM" in body text
+  // Find "The ELM" first (most common premise pattern), else first ELM after title
+  if (html.includes('The ELM ') && !html.includes('The ELM™')) {
+    html = html.replace('The ELM ', 'The ELM™ ');
+  } else if (html.includes('>ELM ') && !html.includes('>ELM™')) {
+    html = html.replace('>ELM ', '>ELM™ ');
+  }
+
+  // 3. Remove "/ Awakening Heart" from attribution
+  html = html.replace(/ \/ Awakening Heart/g, '');
+
+  // 4. Add copyright after attribution if not already present
+  if (!html.includes('© 2026')) {
+    // Handle both span and div attribution elements
+    html = html.replace(
+      /(<(?:span|div)[^>]*class="attribution"[^>]*>ELM Analysis[^<]*<\/(?:span|div)>)/,
+      '$1\n      <span class="attribution" style="display:block;margin-top:6px;opacity:0.75;letter-spacing:2px;">© 2026 Madhu Bolton. All rights reserved.</span>'
+    );
+  }
+
+  return html;
+}
+
 // =====================
 // GENERATION
 // =====================
@@ -905,6 +942,8 @@ Produce the complete HTML document now. Output ONLY the HTML — nothing else.`;
     log('');
     log(`// Generation complete — ${generatedHTML.length.toLocaleString()} characters`, 'done');
     log(`// Rendering preview...`, 'done');
+
+    generatedHTML = postProcess(generatedHTML);
 
     const iframe = document.getElementById('previewFrame');
     iframe.style.display = 'block';
