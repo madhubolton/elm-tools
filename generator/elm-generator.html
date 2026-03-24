@@ -100,7 +100,7 @@ select option { background: #1C1F25; }
     <div class="topbar-sep"></div>
     <div class="topbar-status" id="statusLabel">Ready</div>
     <div class="topbar-right">
-      <span style="font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:2px;color:var(--text-dim);">v6.0 · Legibility + Structure Unified</span>
+      <span style="font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:2px;color:var(--text-dim);">v6.1 · 32k tokens, ™ + copyright</span>
     </div>
   </div>
 
@@ -755,6 +755,18 @@ Always required. 3–4 specific falsifiable predictions. Each names which Room i
 - Premises and observer notes use Cormorant italic register — slightly more contemplative.
 - The observer note always ends with the closing statement, then the attribution line.
 
+## TRADEMARK AND COPYRIGHT
+
+Every analysis must include:
+
+1. **First instance of "Existential Load Model"** in rendered content (not the HTML title tag): append ™ immediately after — "Existential Load Model™"
+2. **First standalone instance of "ELM"** in body text (after the full name has appeared): append ™ — "ELM™"
+3. **Observer note attribution**: end with exactly:
+   ELM Analysis — Madhu Bolton, 2026
+   © 2026 Madhu Bolton. All rights reserved.
+
+Do NOT add ™ to every instance — only the first of each. Do NOT add "Awakening Heart" to the attribution.
+
 ## CONTENT DEPTH
 
 Full, substantive analysis — not placeholders. Every section must have real ELM insight specific to the subject. Minimum: 4 actor cards, 3 verbal markers, 5 dynamics rows, 5 conclusions, 3 predictions.
@@ -816,7 +828,7 @@ Produce the complete HTML document now. Output ONLY the HTML — nothing else.`;
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
-        max_tokens: 16000,
+        max_tokens: 32000,
         stream: true,
         system: buildSystemPrompt(),
         messages: [{ role: 'user', content: userPrompt }],
