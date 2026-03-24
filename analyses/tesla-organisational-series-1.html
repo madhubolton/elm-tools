@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tesla Through the Four Rooms — ELM Analysis</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #C4701A;
+      --accent-light: #E8A050;
+      --accent-dim: #7A4010;
+      --accent-glow: rgba(196,112,26,0.12);
+      --ink: #181210;
+      --warm-white: #F5F0E8;
+      --warm-dark: #261E14;
+      --grey-warm: #A89880;
+      --border: #3A2E20;
+      --border-mid: #2A2018;
+      --prediction: #3A5A8C;
+      --agency: #7A3A2A;
+      --identity: #2A6B4A;
+      --meaning: #6A3A7A;
+      --red-signal: #9B2B2B;
+      --amber-signal: #B46A1A;
+      --crisis: #7B1A1A;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--ink); color: var(--warm-white); font-family: 'Source Sans 3', sans-serif; font-weight: 300; line-height: 1.7; }
+    .page { max-width: 1100px; margin: 0 auto; padding: 60px 40px; }
+    .series-banner { display: flex; align-items: center; gap: 16px; padding: 14px 24px; border: 1px solid var(--accent-dim); background: var(--accent-glow); margin-bottom: 48px; }
+    .series-pip { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
+    .series-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 4px; color: var(--accent); flex-shrink: 0; }
+    .series-divider { width: 1px; height: 16px; background: var(--accent-dim); flex-shrink: 0; }
+    .series-title { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: var(--grey-warm); }
+    .series-part { margin-left: auto; font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: var(--accent-dim); }
+    .masthead { text-align: center; padding: 64px 0 50px; border-bottom: 1px solid var(--accent-dim); margin-bottom: 56px; position: relative; }
+    .masthead::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 28px; background: linear-gradient(to bottom, transparent, var(--accent-dim)); }
+    .masthead .supertitle { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 5px; color: var(--accent); text-transform: uppercase; margin-bottom: 22px; opacity: 0.85; }
+    .masthead h1 { font-family: 'Cormorant Garamond', serif; font-size: 54px; font-weight: 300; line-height: 1.12; color: var(--warm-white); margin-bottom: 14px; }
+    .masthead h1 em { color: var(--accent-light); font-style: italic; }
+    .masthead .subtitle { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: var(--grey-warm); margin-bottom: 28px; max-width: 660px; margin-left: auto; margin-right: auto; }
+    .masthead .accent-rule { width: 60px; height: 2px; background: linear-gradient(to right, transparent, var(--accent), transparent); margin: 0 auto; }
+    .premise { background: var(--warm-dark); border-left: 3px solid var(--accent); padding: 34px 42px; margin-bottom: 56px; font-family: 'Cormorant Garamond', serif; font-size: 19px; line-height: 1.78; color: var(--warm-white); font-weight: 300; }
+    .premise strong { color: var(--accent-light); font-weight: 600; }
+    .section { margin-bottom: 72px; }
+    .section-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; opacity: 0.75; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: var(--warm-white); margin-bottom: 6px; line-height: 1.2; }
+    .section-title em { color: var(--accent-light); font-style: italic; }
+    .section-rule { width: 100%; height: 1px; background: linear-gradient(to right, var(--accent-dim), transparent); margin: 16px 0 40px; }
+    .method-note { background: var(--accent-glow); border: 1px solid var(--accent-dim); border-left: 3px solid var(--accent-dim); padding: 28px 38px; margin-bottom: 56px; }
+    .method-note .mn-label { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 3px; color: var(--accent-dim); margin-bottom: 12px; }
+    .method-note p { font-size: 14px; color: var(--grey-warm); line-height: 1.82; margin-bottom: 10px; }
+    .method-note p:last-child { margin-bottom: 0; }
+    .method-note strong { color: var(--warm-white); }
+    .stat-row { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 2px; margin-bottom: 56px; }
+    .stat-cell { background: var(--warm-dark); border: 1px solid var(--border); padding: 28px 24px; text-align: center; position: relative; overflow: hidden; }
+    .stat-cell::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, var(--accent-dim), var(--accent), var(--accent-dim)); }
+    .stat-number { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-weight: 300; color: var(--warm-white); line-height: 1.1; margin-bottom: 8px; }
+    .stat-label { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 2px; color: var(--grey-warm); margin-bottom: 4px; }
+    .stat-source { font-size: 12px; color: var(--grey-warm); }
+    .rooms-map { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--border); margin-bottom: 56px; }
+    .room-cell { padding: 36px; border: 1px solid var(--border); position: relative; }
+    .room-cell.prediction { border-left: 3px solid #3A5A8C; }
+    .room-cell.agency     { border-left: 3px solid #7A3A2A; }
+    .room-cell.identity   { border-left: 3px solid #2A6B4A; }
+    .room-cell.meaning    { border-left: 3px solid #6A3A7A; }
+    .room-number { font-family: 'Cinzel', serif; font-size: 48px; font-weight: 400; position: absolute; top: 16px; right: 24px; opacity: 0.06; color: var(--accent-light); line-height: 1; }
+    .room-tag { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; margin-bottom: 8px; }
+    .room-cell.prediction .room-tag { color: #8AABCF; }
+    .room-cell.agency .room-tag     { color: #CF9A8A; }
+    .room-cell.identity .room-tag   { color: #7AB89A; }
+    .room-cell.meaning .room-tag    { color: #B48ACF; }
+    .room-title { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 300; color: var(--warm-white); margin-bottom: 16px; line-height: 1.3; }
+    .room-content { font-size: 14px; color: var(--grey-warm); line-height: 1.78; }
+    .room-content strong { color: var(--warm-white); font-weight: 600; }
+    .room-content em { color: var(--grey-warm); font-style: italic; }
+    .room-actors { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border-mid); display: flex; flex-wrap: wrap; gap: 6px; }
+    .actor-tag { font-family: 'Cinzel', serif; font-size: 7px; letter-spacing: 1.5px; padding: 3px 8px; border-width: 1px; border-style: solid; display: inline-block; }
+    .tag-musk, .tag-tesla, .tag-subject { background-color: rgba(139,105,20,0.35); border-color: #C4701A; color: #E8A050; }
+    .tag-investors  { background-color: rgba(58,90,140,0.2);  border-color: #3A5A8C; color: #8AABCF; }
+    .tag-employees, .tag-workforce { background-color: rgba(42,107,74,0.2);  border-color: #2A6B4A; color: #7AB89A; }
+    .tag-consumers, .tag-market    { background-color: rgba(106,58,122,0.2); border-color: #6A3A7A; color: #B48ACF; }
+    .tag-government { background-color: rgba(122,58,42,0.2);  border-color: #7A3A2A; color: #CF9A8A; }
+    .actors-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 56px; }
+    .actor-card { background: var(--warm-dark); border: 1px solid var(--border); padding: 32px; position: relative; overflow: hidden; }
+    .actor-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, var(--accent), var(--accent-dim)); }
+    .actor-card.alt::before  { background: linear-gradient(to right, #3A5A8C, #1A3A6C); }
+    .actor-card.alt2::before { background: linear-gradient(to right, #6A3A7A, #3A1A4A); }
+    .actor-card.alt3::before { background: linear-gradient(to right, #2A6B4A, #1A3A2A); }
+    .actor-card.alt4::before { background: linear-gradient(to right, #7A3A2A, #4A1A0A); }
+    .actor-name { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px; color: var(--accent-light); margin-bottom: 4px; }
+    .actor-card.alt  .actor-name { color: #8AABCF; }
+    .actor-card.alt2 .actor-name { color: #B48ACF; }
+    .actor-card.alt3 .actor-name { color: #7AB89A; }
+    .actor-card.alt4 .actor-name { color: #CF9A8A; }
+    .actor-dominant-room { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: var(--grey-warm); margin-bottom: 18px; }
+    .actor-desc { font-size: 14px; color: var(--grey-warm); line-height: 1.75; }
+    .actor-desc strong { color: var(--warm-white); font-weight: 600; }
+    .actor-desc em { color: var(--grey-warm); font-style: italic; }
+    .load-indicator { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
+    .load-label { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 2px; color: var(--grey-warm); margin-bottom: 8px; }
+    .load-bar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+    .load-fill { height: 100%; border-radius: 2px; }
+    .load-extreme  { background: #7B1A1A; width: 100%; }
+    .load-critical { background: #9B2B2B; width: 96%; }
+    .load-high     { background: var(--accent); width: 84%; }
+    .load-elevated { background: var(--accent-dim); width: 68%; }
+    .markers-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 56px; }
+    .marker-card { background: var(--warm-dark); border: 1px solid var(--border); padding: 24px; }
+    .marker-actor { font-family: 'Cinzel', serif; font-size: 8.5px; letter-spacing: 2px; margin-bottom: 12px; color: var(--accent); }
+    .marker-quote { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: var(--accent-light); line-height: 1.6; margin-bottom: 12px; padding-left: 16px; border-left: 2px solid var(--accent-dim); }
+    .marker-decode { font-size: 13px; color: var(--grey-warm); line-height: 1.68; }
+    .marker-decode strong { color: var(--warm-white); }
+    .dynamics-table { width: 100%; border-collapse: collapse; margin-bottom: 56px; font-size: 14px; }
+    .dynamics-table th { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 2.5px; color: var(--accent); text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--accent-dim); background: var(--warm-dark); }
+    .dynamics-table td { padding: 16px; border-bottom: 1px solid var(--border-mid); vertical-align: top; color: var(--grey-warm); line-height: 1.72; }
+    .dynamics-table td:first-child { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--warm-white); font-style: italic; white-space: nowrap; padding-right: 24px; width: 22%; }
+    .dynamics-table td strong { color: var(--warm-white); }
+    .dynamics-table td em { color: var(--grey-warm); font-style: italic; }
+    .inversion-box { background: var(--accent-glow); border: 1px solid var(--accent-dim); padding: 38px 46px; margin-bottom: 56px; }
+    .inversion-box .inv-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: var(--accent); margin-bottom: 16px; }
+    .inversion-box .inv-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: var(--warm-white); margin-bottom: 20px; line-height: 1.3; }
+    .inversion-box .inv-title em { color: var(--accent-light); }
+    .inversion-box p { font-size: 14px; color: var(--grey-warm); line-height: 1.82; margin-bottom: 14px; }
+    .inversion-box p:last-child { margin-bottom: 0; }
+    .inversion-box p strong { color: var(--warm-white); }
+    .ralg-section { background: var(--warm-dark); border: 1px solid var(--border); border-left: 3px solid var(--accent-dim); padding: 40px; margin-bottom: 56px; }
+    .ralg-steps { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 28px; }
+    .ralg-step { padding: 24px; border: 1px solid var(--border); }
+    .ralg-letter { font-family: 'Cinzel', serif; font-size: 32px; color: var(--accent); opacity: 0.5; line-height: 1; margin-bottom: 10px; }
+    .ralg-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2px; color: var(--accent); margin-bottom: 12px; }
+    .ralg-body { font-size: 14px; color: var(--grey-warm); line-height: 1.72; }
+    .ralg-body strong { color: var(--warm-white); }
+    .diagnosis { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 56px; }
+    .diag-card { background: var(--warm-dark); border: 1px solid var(--border); padding: 32px; }
+    .diag-title { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: var(--accent); margin-bottom: 12px; }
+    .diag-main { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; color: var(--warm-white); line-height: 1.42; margin-bottom: 14px; }
+    .diag-body { font-size: 14px; color: var(--grey-warm); line-height: 1.78; }
+    .diag-body strong { color: var(--warm-white); }
+    .predictions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 56px; }
+    .pred-card { background: var(--warm-dark); border: 1px solid var(--border); border-top: 3px solid var(--accent-dim); padding: 28px; }
+    .pred-room { font-family: 'Cinzel', serif; font-size: 8.5px; letter-spacing: 2.5px; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; }
+    .pred-claim { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 300; color: var(--warm-white); line-height: 1.5; margin-bottom: 20px; }
+    .pred-conditions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; border-top: 1px solid var(--border); padding-top: 16px; }
+    .pred-cond-label { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 2px; margin-bottom: 6px; }
+    .pred-confirms .pred-cond-label  { color: #5A9A6A; }
+    .pred-falsifies .pred-cond-label { color: #9A5A5A; }
+    .pred-cond-text { font-size: 13px; line-height: 1.65; color: var(--grey-warm); }
+    .conclusion-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 40px; }
+    .concl-card { background: var(--warm-dark); border: 1px solid var(--border); padding: 28px; }
+    .concl-num { font-family: 'Cinzel', serif; font-size: 36px; color: var(--accent); opacity: 0.18; line-height: 1; margin-bottom: 8px; }
+    .concl-label { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 2px; color: var(--accent); margin-bottom: 10px; }
+    .concl-title { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--warm-white); margin-bottom: 12px; line-height: 1.35; }
+    .concl-body { font-size: 13px; color: var(--grey-warm); line-height: 1.72; }
+    .concl-body strong { color: var(--warm-white); }
+    .sources-section { border-top: 1px solid var(--border); padding-top: 48px; margin-top: 24px; margin-bottom: 48px; }
+    .sources-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 4px; color: var(--accent-dim); margin-bottom: 28px; }
+    .sources-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 40px; }
+    .source-item { border-left: 1px solid var(--border); padding-left: 16px; }
+    .source-authors { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: var(--accent-light); line-height: 1.4; margin-bottom: 3px; }
+    .source-title { font-size: 12px; color: var(--grey-warm); line-height: 1.5; margin-bottom: 2px; }
+    .source-pub { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 1.5px; color: var(--accent-dim); }
+    .observer-note { text-align: center; padding: 52px 64px; border-top: 1px solid var(--border); margin-top: 24px; }
+    .observer-note p { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; color: var(--grey-warm); line-height: 1.82; max-width: 700px; margin: 0 auto 20px; }
+    .observer-note .attribution { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: var(--accent-dim); display: block; margin-bottom: 10px; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--ink); }
+    ::-webkit-scrollbar-thumb { background: var(--accent-dim); }
+    @media (max-width: 1024px) {
+      .page { padding: 48px 32px; }
+      .masthead h1 { font-size: 42px; }
+      .actors-grid, .markers-grid, .conclusion-grid, .ralg-steps { grid-template-columns: 1fr 1fr; }
+      .sources-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 767px) {
+      .page { padding: 32px 20px; }
+      .masthead { padding: 44px 0 36px; margin-bottom: 40px; }
+      .masthead h1 { font-size: 30px; }
+      .masthead .subtitle { font-size: 15px; }
+      .section-title { font-size: 24px; }
+      .premise { padding: 24px 24px; font-size: 16px; }
+      .series-banner { flex-wrap: wrap; gap: 10px; }
+      .series-part { margin-left: 0; }
+      .actors-grid, .rooms-map, .markers-grid, .diagnosis, .conclusion-grid, .sources-grid, .ralg-steps, .stat-row { grid-template-columns: 1fr; }
+      .rooms-map { border: none; }
+      .room-cell { border: 1px solid var(--border); margin-bottom: 2px; padding: 28px 20px; }
+      .dynamics-table, .dynamics-table thead, .dynamics-table tbody, .dynamics-table th, .dynamics-table td, .dynamics-table tr { display: block; width: 100%; }
+      .dynamics-table thead { display: none; }
+      .dynamics-table td { padding: 10px 14px; border-bottom: none; }
+      .dynamics-table td:first-child { width: 100%; white-space: normal; font-size: 14px; color: var(--accent-light); padding-top: 20px; padding-bottom: 4px; border-top: 1px solid var(--border); }
+      .inversion-box { padding: 24px 22px; }
+      .inversion-box .inv-title { font-size: 20px; }
+      .observer-note { padding: 40px 22px; }
+      .observer-note p { font-size: 17px; }
+      .ralg-section { padding: 24px 20px; }
+      .predictions-grid { grid-template-columns: 1fr; }
+      .pred-conditions { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 400px) {
+      .page { padding: 24px 16px; }
+      .masthead h1 { font-size: 26px; }
+      .section-title { font-size: 21px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="series-banner">
+      <div class="series-pip"></div>
+      <div class="series-label">ORGANISATIONAL</div>
+      <div class="series-divider"></div>
+      <div class="series-title">Applied ELM analysis for institutional systems</div>
+      <div class="series-part">IDENTITY-CAPTURE</div>
+    </div>
+
+    <header class="masthead">
+      <div class="supertitle">Existential Load Model™ — Applied Analysis</div>
+      <h1>Tesla Through <em>the Four Rooms</em></h1>
+      <div class="subtitle">Identity-capture and the architecture of organisational dysregulation</div>
+      <div class="accent-rule"></div>
+    </header>
+
+    <div class="premise">
+      The ELM™ maps the existential load of organisms — individual, relational, systemic. Organizations are organisms in the relevant sense: they predict, act, maintain identity, and construct meaning. Tesla in 2026 is a case study in what happens when all four rooms dysregulate simultaneously — and when the identity of the organisation becomes so fused with the identity of a single person that the system cannot diagnose its own load without that person being able to see themselves clearly. This is <strong>identity-capture</strong>: the mechanism by which an organisation's identity becomes so fused with a founder's personal identity that neither can update independently.
+    </div>
+
+    <div class="method-note">
+      <div class="mn-label">METHODOLOGICAL NOTE</div>
+      <p>This analysis distinguishes three types of claims: <strong>(a) Empirically grounded facts</strong> — Tesla's 2025 delivery figures, staff reductions, stock valuation metrics, and market performance data. These are verifiable and sourced.</p>
+      <p><strong>(b) ELM theoretical mappings</strong> — the framework's interpretation of those facts through the four-room architecture and load dynamics. These are theoretical constructs applied to the empirical base.</p>
+      <p><strong>(c) Scenario assessments</strong> — predictions about Tesla's trajectory under different conditions. These are marked as uncertain and designed to be falsifiable.</p>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-cell">
+        <div class="stat-number">1.64M</div>
+        <div class="stat-label">2025 DELIVERIES</div>
+        <div class="stat-source">9% YoY decline</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">-36%</div>
+        <div class="stat-label">BRAND VALUE 2025</div>
+        <div class="stat-source">$27.6B vs $66.2B peak</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">120x</div>
+        <div class="stat-label">VALUATION MULTIPLE</div>
+        <div class="stat-source">2026 consensus earnings</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">14,000</div>
+        <div class="stat-label">JOBS CUT 2025</div>
+        <div class="stat-source">10% of workforce</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">LOAD ARCHITECTURE</div>
+      <div class="section-title">The <em>Four Rooms</em> Map</div>
+      <div class="section-rule"></div>
+      
+      <div class="rooms-map">
+        <div class="room-cell prediction">
+          <div class="room-number">01</div>
+          <div class="room-tag">PREDICTION ROOM</div>
+          <div class="room-title">What will happen next? / Can I trust my model of reality?</div>
+          <div class="room-content">
+            Tesla's competitive model has been invalidated by a market that moved faster than anticipated. BYD delivered 2.26M EVs in 2025 vs Tesla's 1.64M. European market share collapse: <strong>13 consecutive months of YoY decline in a growing market</strong>. Germany January 2026: Tesla -46% while the EV market grew 50%+. Musk's public prediction inflation compounds the load — claiming "~2M" deliveries when actual was 1.65M. <em>Reality is outrunning the prediction engine, and the system is compensating with narrative rather than recalibration.</em>
+            
+            <div class="room-actors">
+              <div class="actor-tag tag-tesla">TESLA</div>
+              <div class="actor-tag tag-musk">MUSK</div>
+              <div class="actor-tag tag-investors">INVESTORS</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="room-cell agency">
+          <div class="room-number">02</div>
+          <div class="room-tag">AGENCY ROOM</div>
+          <div class="room-title">What can I do? / Am I acting or being acted upon?</div>
+          <div class="room-content">
+            Compulsive pivot cascade as antidote to market helplessness. Model S and X discontinued, lines converted to Optimus humanoid robots. Tesla Energy, Robotaxi, Cybercab, xAI merger discussions — <strong>action multiplying faster than coherent strategy</strong>. Musk's attention dispersed across Tesla, SpaceX, xAI, X, and now DOGE. 14,000 jobs cut while launching new product categories. <em>The system is running — motion substituting for progress when the core automotive business cannot deliver growth.</em>
+            
+            <div class="room-actors">
+              <div class="actor-tag tag-musk">MUSK</div>
+              <div class="actor-tag tag-employees">WORKFORCE</div>
+              <div class="actor-tag tag-tesla">TESLA</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="room-cell identity">
+          <div class="room-number">03</div>
+          <div class="room-tag">IDENTITY ROOM</div>
+          <div class="room-title">Who are we? / Does this threaten what we fundamentally are?</div>
+          <div class="room-content">
+            Identity fracturing along two axes: sustainable energy mission vs "physical AI company" pivot. Neither fully coherent yet. The deeper pathology is <strong>identity-capture</strong> — Tesla's organisational identity fused with Musk's personal brand to the point where his $300M Trump campaign investment directly damages Tesla's European consumer appeal. When his brand loses 36% of value, Tesla's does too. <em>The organisation cannot update its identity without Musk experiencing it as personal dissolution.</em>
+            
+            <div class="room-actors">
+              <div class="actor-tag tag-tesla">TESLA</div>
+              <div class="actor-tag tag-musk">MUSK</div>
+              <div class="actor-tag tag-consumers">CONSUMERS</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="room-cell meaning">
+          <div class="room-number">04</div>
+          <div class="room-tag">MEANING ROOM</div>
+          <div class="room-title">Why does this matter? / What does this difficulty serve?</div>
+          <div class="room-content">
+            Triple fracture across stakeholder groups. Consumer meaning: sustainability pioneer vs political toxicity. Employee meaning: saving the planet vs building robots for unclear purposes. Investor meaning: faith in AI future vs declining automotive present. <strong>The brand that once aligned meaning across all constituencies has become a meaning-destruction mechanism</strong>. European consumers now use Tesla rejection as identity expression. <em>What was Tesla's deepest competitive moat has inverted to its primary load source.</em>
+            
+            <div class="room-actors">
+              <div class="actor-tag tag-consumers">CONSUMERS</div>
+              <div class="actor-tag tag-employees">EMPLOYEES</div>
+              <div class="actor-tag tag-investors">INVESTORS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">SYSTEM ACTORS</div>
+      <div class="section-title">Load <em>Distribution</em></div>
+      <div class="section-rule"></div>
+
+      <div class="actors-grid">
+        <div class="actor-card">
+          <div class="actor-name">TESLA ORGANISATION</div>
+          <div class="actor-dominant-room">Identity Room primary, Prediction Room secondary</div>
+          <div class="actor-desc">
+            Tesla cannot resolve whether it is a sustainable transport company or a physical AI company. The pivot narrative emerges from automotive decline but lacks operational coherence. Model S/X discontinued to make Optimus robots while core EV market share collapses. <strong>The organisation's strategic identity is held hostage to Musk's personal brand decisions</strong> — his political investments directly damage Tesla's consumer appeal in key markets. <em>The company has become structurally incapable of independent identity evolution.</em>
+          </div>
+          <div class="load-indicator">
+            <div class="load-label">EXISTENTIAL LOAD</div>
+            <div class="load-bar"><div class="load-fill load-extreme"></div></div>
+          </div>
+        </div>
+
+        <div class="actor-card alt">
+          <div class="actor-name">ELON MUSK</div>
+          <div class="actor-dominant-room">Meaning Room civilisational scale, Agency Room compulsive</div>
+          <div class="actor-desc">
+            Musk operates at civilisational meaning scales — Mars colonisation, AGI development, political transformation. But attention disperses across Tesla, SpaceX, xAI, X, and DOGE faster than any single entity can coherently absorb. His $300M Trump campaign investment represents <strong>meaning-room prioritisation that directly conflicts with Tesla's consumer base</strong>. The key man risk is now maximal. <em>His identity architecture cannot accommodate the load of simultaneous system leadership across five entities.</em>
+          </div>
+          <div class="load-indicator">
+            <div class="load-label">EXISTENTIAL LOAD</div>
+            <div class="load-bar"><div class="load-fill load-critical"></div></div>
+          </div>
+        </div>
+
+        <div class="actor-card alt2">
+          <div class="actor-name">INVESTORS & MARKET</div>
+          <div class="actor-dominant-room">Prediction Room split architecture</div>
+          <div class="actor-desc">
+            The market runs dual incompatible prediction models. Current automotive performance: 2025 deliveries down 9%, net income down 46% from 2024, brand value declined 36%. Yet valuation trades at ~120x 2026 consensus earnings on AI/robotics faith. <strong>Institutional investors maintain positions based on future narrative while fundamentals deteriorate</strong>. European retail sentiment has inverted — Tesla ownership now signals political alignment rather than environmental values. <em>The prediction room sustains a faith-based premium that requires active evidence avoidance.</em>
+          </div>
+          <div class="load-indicator">
+            <div class="load-label">EXISTENTIAL LOAD</div>
+            <div class="load-bar"><div class="load-fill load-high"></div></div>
+          </div>
+        </div>
+
+        <div class="actor-card alt3">
+          <div class="actor-name">WORKFORCE & EMPLOYEES</div>
+          <div class="actor-dominant-room">Agency Room collapse, Identity Room secondary</div>
+          <div class="actor-desc">
+            14,000 jobs cut in early 2025 while launching new product categories. Mission-aligned talent hired to "accelerate sustainable transport" now builds humanoid robots of unclear market purpose. <strong>The workforce's agency room has collapsed</strong> — they cannot connect individual contribution to organisational outcome. Factory lines that built Model S now produce Optimus units. The identity anchor of "saving the planet" has been replaced with "physical AI company" without equivalent meaning-generation capacity. <em>The human talent system is experiencing mission-identity whiplash.</em>
+          </div>
+          <div class="load-indicator">
+            <div class="load-label">EXISTENTIAL LOAD</div>
+            <div class="load-bar"><div class="load-fill load-high"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">VERBAL MARKERS</div>
+      <div class="section-title">Load <em>Signals</em></div>
+      <div class="section-rule"></div>
+
+      <div class="markers-grid">
+        <div class="marker-card">
+          <div class="marker-actor">ELON MUSK — Q3 2025</div>
+          <div class="marker-quote">"We're not really a car company, we're an AI robotics company that happens to make cars."</div>
+          <div class="marker-decode">
+            <strong>Identity Room dysregulation signal.</strong> The organisation cannot resolve its core identity, so narrative pivots compensate for automotive decline. This statement attempts to reframe declining car deliveries as strategic repositioning rather than market failure.
+          </div>
+        </div>
+
+        <div class="marker-card">
+          <div class="marker-actor">TESLA INVESTOR RELATIONS — Q4 2025</div>
+          <div class="marker-quote">"Deliveries were within guidance range despite challenging market conditions."</div>
+          <div class="marker-decode">
+            <strong>Prediction Room reality management.</strong> 1.64M deliveries were described as "within range" of initially promised "~2M". The system maintains narrative coherence by retroactively adjusting success criteria rather than acknowledging prediction failure.
+          </div>
+        </div>
+
+        <div class="marker-card">
+          <div class="marker-actor">FORMER TESLA ENGINEER — LinkedIn</div>
+          <div class="marker-quote">"I joined to help save the planet. I left to save my sanity."</div>
+          <div class="marker-decode">
+            <strong>Meaning Room inversion signal.</strong> The employee's original meaning-generating motivation has transformed into a load-generating experience. The mission that attracted talent has become the reason talent departs.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">SYSTEM DYNAMICS</div>
+      <div class="section-title">Load <em>Transmission Architecture</em></div>
+      <div class="section-rule"></div>
+
+      <table class="dynamics-table">
+        <thead>
+          <tr>
+            <th>COUPLING</th>
+            <th>TRANSMISSION MECHANISM</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Musk → Tesla Identity</td>
+            <td>Musk's personal political investments ($300M Trump campaign) directly damage Tesla's brand value in European markets. His identity decisions automatically become Tesla's identity decisions. <strong>The organisation cannot insulate its brand identity from its founder's personal choices.</strong></td>
+          </tr>
+          <tr>
+            <td>Automotive Decline → Pivot Compulsion</td>
+            <td>Each quarter of declining vehicle deliveries triggers new product category launches. Model S/X discontinued to build Optimus robots. Energy storage pivots. Robotaxi announcements. <strong>Motion compensates for progress when core business cannot generate growth.</strong></td>
+          </tr>
+          <tr>
+            <td>Prediction Failure → Narrative Inflation</td>
+            <td>When "~2M" deliveries become 1.64M, the system increases narrative amplitude rather than recalibrating models. AI/robotics valuations justify 120x earnings multiples despite automotive fundamentals. <strong>Reality gaps filled with story escalation.</strong></td>
+          </tr>
+          <tr>
+            <td>Brand Inversion → Consumer Identity</td>
+            <td>European consumers increasingly use Tesla rejection as identity expression. What was once environmental virtue signaling becomes political statement avoidance. <strong>The brand serves as negative identity marker for its former target demographic.</strong></td>
+          </tr>
+          <tr>
+            <td>Key Man Risk → Organisational Paralysis</td>
+            <td>Musk's attention dispersed across Tesla, SpaceX, xAI, X, DOGE. Tesla cannot make strategic identity decisions without his approval, but he cannot focus long enough on any single entity. <strong>Maximum key man risk generates systemic decision paralysis.</strong></td>
+          </tr>
+          <tr>
+            <td>Mission Drift → Talent Hemorrhaging</td>
+            <td>Employees hired to "accelerate sustainable transport" now build humanoid robots. 14,000 jobs cut while launching new categories. <strong>Mission-aligned talent experiences identity-anchor loss and departs.</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="inversion-box">
+      <div class="inv-label">STRUCTURAL INVERSION</div>
+      <div class="inv-title">The Brand <em>as Load Generator</em></div>
+      <p>Tesla's brand was historically its deepest competitive moat — the only automotive company that aligned meaning across consumers (environmental identity), employees (mission purpose), and investors (sustainable future returns). This triple-alignment generated pricing power, talent attraction, and capital access.</p>
+      <p><strong>The inversion is complete.</strong> The brand now operates as Tesla's primary load source. European consumers use Tesla rejection as identity expression. Mission-driven employees leave citing meaning-drift. Investors maintain positions through faith-based reasoning that requires active evidence avoidance.</p>
+      <p>The mechanism that once solved Tesla's competitive problem has become the mechanism generating existential load across all four rooms simultaneously.</p>
+    </div>
+
+    <div class="ralg-section">
+      <div class="section-label">RESOLUTION PROTOCOL</div>
+      <div class="section-title">RALG <em>Analysis</em></div>
+      <div class="section-rule"></div>
+      
+      <p style="color: var(--grey-warm); font-size: 14px; line-height: 1.78;">Tesla's load resolution would structurally require recognition, acceptance, and letting go of the identity-capture mechanism. This is diagnostic analysis, not prescriptive recommendation.</p>
+
+      <div class="ralg-steps">
+        <div class="ralg-step">
+          <div class="ralg-letter">R</div>
+          <div class="ralg-label">RECOGNIZE</div>
+          <div class="ralg-body">
+            <strong>Identity-capture diagnosis.</strong> Tesla and Musk share a single Identity Room. His personal brand decisions automatically become organisational brand consequences. This architectural fusion prevents independent identity evolution for either entity.
+          </div>
+        </div>
+
+        <div class="ralg-step">
+          <div class="ralg-letter">A</div>
+          <div class="ralg-label">ACCEPT</div>
+          <div class="ralg-body">
+            <strong>The automotive business is in structural decline.</strong> Two consecutive years of delivery drops. Market share loss to Chinese manufacturers with superior cost structures. European consumer meaning-inversion is not temporary reputational damage.
+          </div>
+        </div>
+
+        <div class="ralg-step">
+          <div class="ralg-letter">L</div>
+          <div class="ralg-label">LET GO</div>
+          <div class="ralg-body">
+            <strong>The sustainable transport mission as primary identity.</strong> Tesla's original meaning-architecture cannot accommodate the reality of Chinese EV dominance and European brand toxicity. The identity anchor must dissolve before coherent alternative identity can emerge.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">DIAGNOSTIC ASSESSMENT</div>
+      <div class="section-title">System <em>Status</em></div>
+      <div class="section-rule"></div>
+
+      <div class="diagnosis">
+        <div class="diag-card">
+          <div class="diag-title">PRIMARY PATHOLOGY</div>
+          <div class="diag-main">Identity-Capture Mechanism</div>
+          <div class="diag-body">
+            Tesla's organisational identity is structurally fused with Musk's personal identity. Neither entity can update independently. His political investments damage Tesla's consumer appeal. His attention dispersion across five entities creates decision paralysis for Tesla. <strong>The organisation cannot evolve without the founder experiencing it as personal dissolution.</strong>
+          </div>
+        </div>
+
+        <div class="diag-card">
+          <div class="diag-title">LOAD DISTRIBUTION</div>
+          <div class="diag-main">Four-Room Simultaneous Dysregulation</div>
+          <div class="diag-body">
+            Prediction Room: competitive model invalidated. Agency Room: compulsive pivot cascade. Identity Room: sustainable transport vs physical AI fracture. Meaning Room: triple stakeholder meaning-destruction. <strong>All four load-management systems are generating rather than resolving existential tension.</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">PREDICTIVE ASSESSMENT</div>
+      <div class="section-title">Falsifiable <em>Predictions</em></div>
+      <div class="section-rule"></div>
+
+      <div class="predictions-grid">
+        <div class="pred-card">
+          <div class="pred-room">PREDICTION ROOM</div>
+          <div class="pred-claim">Tesla deliveries will continue declining through 2026 as Chinese manufacturers gain European market share.</div>
+          <div class="pred-conditions">
+            <div class="pred-confirms">
+              <div class="pred-cond-label">CONFIRMS IF</div>
+              <div class="pred-cond-text">Q2 2026 deliveries below 400k. European market share drops below 12%. BYD/Chinese EVs gain 15%+ European market share.</div>
+            </div>
+            <div class="pred-falsifies">
+              <div class="pred-cond-label">FALSIFIES IF</div>
+              <div class="pred-cond-text">Tesla deliveries exceed 1.8M for 2026. European market share recovery above 18%. Significant new European production capacity announced.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pred-card">
+          <div class="pred-room">AGENCY ROOM</div>
+          <div class="pred-claim">Musk will initiate another major pivot or acquisition before achieving Optimus commercialisation.</div>
+          <div class="pred-conditions">
+            <div class="pred-confirms">
+              <div class="pred-cond-label">CONFIRMS IF</div>
+              <div class="pred-cond-text">xAI merger announcement. New product category launch. Major acquisition activity before Optimus reaches 10k unit production.</div>
+            </div>
+            <div class="pred-falsifies">
+              <div class="pred-cond-label">FALSIFIES IF</div>
+              <div class="pred-cond-text">Sustained 18-month focus on Optimus development. No new major strategic announcements. Production milestones hit consistently.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pred-card">
+          <div class="pred-room">IDENTITY ROOM</div>
+          <div class="pred-claim">Tesla will experience senior executive departures as identity-capture mechanism intensifies.</div>
+          <div class="pred-conditions">
+            <div class="pred-confirms">
+              <div class="pred-cond-label">CONFIRMS IF</div>
+              <div class="pred-cond-text">CFO, CTO, or head of automotive departs citing "strategic differences". Public statements about company direction conflicts.</div>
+            </div>
+            <div class="pred-falsifies">
+              <div class="pred-cond-label">FALSIFIES IF</div>
+              <div class="pred-cond-text">Executive team stability maintained for 24 months. New senior hires from outside Tesla ecosystem. Clear succession planning announced.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pred-card">
+          <div class="pred-room">MEANING ROOM</div>
+          <div class="pred-claim">Tesla's brand recovery will require explicit separation from Musk's political activities.</div>
+          <div class="pred-conditions">
+            <div class="pred-confirms">
+              <div class="pred-cond-label">CONFIRMS IF</div>
+              <div class="pred-cond-text">European sales recovery follows reduced Musk political visibility. Brand value stabilises after governance changes. Consumer surveys show political/brand decoupling.</div>
+            </div>
+            <div class="pred-falsifies">
+              <div class="pred-cond-label">FALSIFIES IF</div>
+              <div class="pred-cond-text">Brand recovery occurs without governance changes. Political activity correlation with sales breaks down. New consumer meaning emerges despite political toxicity.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">ANALYTICAL CONCLUSIONS</div>
+      <div class="section-title">ELM <em>Findings</em></div>
+      <div class="section-rule"></div>
+
+      <div class="conclusion-grid">
+        <div class="concl-card">
+          <div class="concl-num">01</div>
+          <div class="concl-label">IDENTITY-CAPTURE MECHANISM</div>
+          <div class="concl-title">Tesla exhibits the first documented case of organisational identity-capture</div>
+          <div class="concl-body">
+            The organisation's identity has fused with Musk's personal identity beyond normal founder-led dynamics. <strong>Neither entity can update independently without the other experiencing dissolution threat.</strong> This creates systemic load-generation rather than load-resolution.
+          </div>
+        </div>
+
+        <div class="concl-card">
+          <div class="concl-num">02</div>
+          <div class="concl-label">BRAND INVERSION</div>
+          <div class="concl-title">The competitive moat has become the primary load source</div>
+          <div class="concl-body">
+            Tesla's brand historically aligned meaning across all stakeholder groups. <strong>It now operates as an identity-rejection mechanism for its former target demographic.</strong> The mechanism that solved competitive problems now generates existential load.
+          </div>
+        </div>
+
+        <div class="concl-card">
+          <div class="concl-num">03</div>
+          <div class="concl-label">FOUR-ROOM DYSREGULATION</div>
+          <div class="concl-title">All load-management systems are simultaneously malfunctioning</div>
+          <div class="concl-body">
+            Prediction models invalidated by Chinese competition. Agency room generating compulsive pivots. Identity fracturing between missions. Meaning destroyed across stakeholder groups. <strong>The organisation has no functional load-resolution capacity remaining.</strong>
+          </div>
+        </div>
+
+        <div class="concl-card">
+          <div class="concl-num">04</div>
+          <div class="concl-label">ATTENTION DISPERSION</div>
+          <div class="concl-title">Key man risk has reached systemic threshold</div>
+          <div class="concl-body">
+            Musk's attention across Tesla, SpaceX, xAI, X, and DOGE creates decision paralysis for Tesla-specific strategic evolution. <strong>The organisation cannot make identity decisions without approval from someone who cannot focus on it.</strong>
+          </div>
+        </div>
+
+        <div class="concl-card">
+          <div class="concl-num">05</div>
+          <div class="concl-label">MARKET REALITY</div>
+          <div class="concl-title">The automotive competitive position is in structural decline</div>
+          <div class="concl-body">
+            Two consecutive years of delivery decline. Chinese manufacturers have achieved superior cost structures. European market share collapse reflects permanent consumer meaning-shift. <strong>The pivot to AI/robotics narrative is load-management, not strategic repositioning.</strong>
+          </div>
+        </div>
+
+        <div class="concl-card">
+          <div class="concl-num">06</div>
+          <div class="concl-label">RESOLUTION THRESHOLD</div>
+          <div class="concl-title">Load resolution requires architectural separation</div>
+          <div class="concl-body">
+            Tesla cannot resolve its existential load while organisational identity remains fused with Musk's personal identity. <strong>The identity-capture mechanism must dissolve before either entity can achieve coherent load-management.</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sources-section">
+      <div class="sources-label">EMPIRICAL SOURCES</div>
+      <div class="sources-grid">
+        <div class="source-item">
+          <div class="source-authors">Tesla, Inc.</div>
+          <div class="source-title">Q4 2025 Vehicle Delivery & Production Report</div>
+          <div class="source-pub">SEC FILING / 2025</div>
+        </div>
+        <div class="source-item">
+          <div class="source-authors">European Alternative Fuels Observatory</div>
+          <div class="source-title">EV Market Share Analysis: European Markets 2025</div>
+          <div class="source-pub">EAFO ANNUAL REPORT / 2025</div>
+        </div>
+        <div class="source-item">
+          <div class="source-authors">BYD Company Limited</div>
+          <div class="source-title">2025 Annual Sales and Production Summary</div>
+          <div class="source-pub">HONG KONG EXCHANGE / 2025</div>
+        </div>
+        <div class="source-item">
+          <div class="source-authors">Brand Finance</div>
+          <div class="source-title">Global 500 2025: Most Valuable Brands Ranking</div>
+          <div class="source-pub">BRAND FINANCE / 2025</div>
+        </div>
+        <div class="source-item">
+          <div class="source-authors">Federal Election Commission</div>
+          <div class="source-title">Campaign Finance Reports: 2024 Presidential Election</div>
+          <div class="source-pub">FEC DATABASE / 2024</div>
+        </div>
+        <div class="source-item">
+          <div class="source-authors">Tesla, Inc.</div>
+          <div class="source-title">Workforce Reduction Announcement SEC 8-K Filing</div>
+          <div class="source-pub">SEC FILING / Q1 2025</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="observer-note">
+      <p>Tesla cannot be understood primarily as a product problem, a market problem, or a leadership execution problem. It is a load problem — and the mechanism generating it is identity-capture: the point at which founder and organisation share a single Identity Room, and neither can update without the other experiencing it as dissolution.</p>
+      
+      <span class="attribution">ELM Analysis — Madhu Bolton, 2026</span>
+      <span class="attribution" style="display:block;margin-top:6px;opacity:0.7;">© 2026 Madhu Bolton. All rights reserved.</span>
+    </div>
+  </div>
+</body>
+</html>
